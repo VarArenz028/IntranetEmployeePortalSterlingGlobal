@@ -1,0 +1,690 @@
+<!-- <section id = "caMyArticleLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section> -->
+
+
+<div id = "caAddCategory">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeCategoryBox()"/>
+        </header>
+
+        <form name = "categoriesForm" class = "saEditUserForm" method = "POST" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Category">
+                  <input type = "text" class = "categoryNameInput" placeholder = "Enter category name" ng-model = "categoryResources.categoryName" name = "category" class = "validInput" ng-maxlength = "50" ng-minlength = "5" ng-pattern = "/[a-zA-Z][a-zA-Z ]{4,}/" required category/>
+
+                  <span type = "check" ng-show = "categoriesForm.category.$pending.category" class = "newUserLoadingBox">
+                       <span></span>
+                       <span></span>
+                       <span></span>
+                   </span>
+
+                    <span type = "check" ng-show = "categoriesForm.category.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "categoriesForm.category.$invalid && categoriesForm.category.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "categoriesForm.category.$touched && categoriesForm.category.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "categoriesForm.category.$dirty && categoriesForm.category.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                           <small ng-message = 'categoryInputError' ng-hide = "categoriesForm.category.$error.required" style = "color: #e74c3c">
+
+                               <span>Category already exist</span>
+
+                           </small>
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "closeCategoryBox()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" value = "Save" class = "submitCategoryButton" ng-disabled = "categoriesForm.$invalid" ng-click = "saveCategory()" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "caEditCategory">
+
+    <div class = "editCategoryForm" ng-cloak>
+
+      <header>
+
+          <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "clear(); closeCategoryBox();" ng-hide = "hideCloseButton == true"/>
+
+      </header>
+
+        <form name = "editCategoryForm" novalidate>
+
+            <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-default>
+
+                    <section>
+
+                        <p type = "Update Category:">
+
+                          <input type = "text" placeholder = "Category name" ng-model = "categoryParams.category.categoryName" name = "cat" ng-maxlength = "50" ng-minlength = "5" ng-pattern = "/[a-zA-Z][a-zA-Z ]{4,}/" ng-value = "oneCategory.categoryName" required onecategory/>
+
+
+                          <span type = "loading" ng-show = "editCategoryForm.cat.$pending.onecategory" class = "categoryLoadingBox">
+                               <span></span>
+                               <span></span>
+                               <span></span>
+                          </span>
+
+                          <span type = "check" ng-show = "editCategoryForm.cat.$valid" class = "categoryCheckBox">
+                              <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                          </span>
+
+                          <span type = "ekis" ng-show = "editCategoryForm.cat.$invalid && editCategoryForm.cat.$dirty" class = "categoryEkisBox">
+                              <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                          </span>
+
+                          <div class = "categoryErrorMessage" ng-messages = "editCategoryForm.cat.$dirty && editCategoryForm.cat.$error">
+
+                              <small ng-message = 'maxlength'>
+
+                                  Max 20 characters
+
+                              </small>
+
+                              <small ng-message = 'minlength'>
+
+                                  minimum 6 characters
+
+                              </small>
+
+                              <small ng-message = 'pattern'>
+
+                                  Please enter valid characters
+
+                              </small>
+
+                              <small ng-message = 'categoryInputError' ng-hide = "editCategoryForm.cat.$error.required">
+
+                                  Category already exist
+
+                              </small>
+
+
+                          </div>
+
+                      </p>
+
+                    </section>
+
+                    <footer>
+
+                          <div title = "Cancel">
+
+                              <button ng-click = "closeCategoryBox(); clear();">Cancel</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "next('details2')" ng-disabled = "editCategoryForm.$invalid || disable == true" type = "button" value = "Next"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch2" class = "newUserSwitch" ng-switch-when = "details2">
+
+                    <section>
+
+                        <h1>Are you sure to change {{oldCategory}} name?</h1>
+
+                    </section>
+
+                    <footer>
+
+                          <div ng-click = "next('')" title = "Cancel">
+
+                              <button>Back</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "next('details3'); updateCategory()" ng-disabled = "newUserForm.$invalid" type = "button" value = "Update"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details3">
+
+                    <div class = "updateCategoryLoaderBox">
+
+                        <div class = "showCirlcebox">
+                            <div class="circleLoader">
+                              <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                              </svg>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details4" style = "height: 127%;">
+
+                    <div class = "updateCategorySuccessBox">
+
+                        <div class = "updateCategoryImgBox">
+
+                            <img src = "app-resources/imgs/success.png" />
+
+                        </div>
+
+                        <div class = "updateCategorySuccessMessage">
+
+                            <h1>Successfullt updated</h1>
+
+                        </div>
+
+                    </div>
+                    <footer class = "upCatLastSwitchFooter" ng-click = "closeCategoryBox()">
+                        <span>Close</span>
+                    </footer>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div id = "caDeleteCategory">
+
+    <div class = "editCategoryForm" ng-cloak>
+
+      <header>
+
+          <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeDeleteCategoryBox();" ng-hide = "hideCloseButton == true"/>
+
+      </header>
+
+        <form name = "deleteCategoryForm" novalidate>
+
+            <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+                <div title = "switch2" class = "newUserSwitch" ng-switch-default>
+
+                    <section>
+
+                        <h1>Are you sure to delete category {{categoryParams.category.deleteCategoryName}}?</h1>
+
+                    </section>
+
+                    <footer>
+
+                          <div title = "Cancel">
+
+                              <button ng-click = "closeDeleteCategoryBox(); clearDeleteData();">Cancel</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "nextDeleteLoader('details2'); deleteCategory();"  type = "button" value = "Delete"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details2">
+
+                    <div class = "updateCategoryLoaderBox">
+                        <h1>Please do not refresh or close the browser</h1>
+                        <div class = "showCirlcebox">
+                            <div class="circleLoader">
+                              <svg class="circular" viewBox="25 25 50 50">
+                                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                              </svg>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details4" style = "height: 127%;">
+
+                    <div class = "updateCategorySuccessBox">
+
+                        <div class = "updateCategoryImgBox">
+
+                            <img src = "app-resources/imgs/success.png" />
+
+                        </div>
+
+                        <div class = "updateCategorySuccessMessage">
+
+                            <h1>Successfully deleted</h1>
+
+                        </div>
+
+                    </div>
+                    <footer class = "upCatLastSwitchFooter" ng-click = "closeDeleteCategoryBox(); clearDeleteData();">
+                        <span>Close</span>
+                    </footer>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </div>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer">
+
+    <div class = "myArticleHeader boxShadow">
+
+        <div class = "articleHeaderBox">
+
+            <span ng-click = "showAddCategory()">Create new category?</span>
+
+        </div>
+
+    </div>
+
+    <div class = "myArticleContainer">
+
+        <div class = "headerManageButton">
+            <div class = "mannageButtonBox">
+                <button type = "button" class = "btn btn-default btn-sm" ng-click = "goToManageCategories()">
+                    <span class = "glyphicon glyphicon-list-alt"></span> Manage Article category
+                </button>
+            </div>
+        </div>
+
+       <div class = "countSearchBox">
+
+           <div class = "dataCountBox">
+
+               <span>{{numberOfCategory}} Category</span>
+
+           </div>
+
+           <div class = "searchBox">
+
+               <input type = "text" id = "searchNewArticle" ng-model = "search" placeholder = "Search"/>
+
+           </div>
+
+       </div>
+
+        <div class = "myArticles" ng-repeat = "category in categories | filter: search">
+
+            <div class = "myArticleTitleBox">
+
+                <span class = "caArticleTitle" ng-click = "oneArticle(article.articleId)">{{category.categoryName}}</span>
+
+            </div>
+
+            <div class = "optionBox">
+
+                <div class = "editOption">
+                    <span ng-click = "showEditCategory(category.categoryName)" class = "glyphicon glyphicon-edit"></span>
+                </div>
+
+                <div class = "deleteOption">
+                    <span ng-click = "showDeleteCategoryBox(category.categoryName)" class = "glyphicon glyphicon-trash"></span>
+                </div>
+
+            </div>
+
+
+            <div class = "myArticleDetailsBox">
+
+                <div class = "myArticleCategoryTypeBox">
+
+                    <span>Testing</span>
+
+                </div>
+
+                <div class = "articleDetailsDiv">
+
+                    <!-- <span>Created {{article.localDateCreated.monthOfYear}}/{{article.localDateCreated.dayOfMonth}}/{{article.localDateCreated.year}}</span>
+                    <span>Views 100</span> -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!--
+<div class = "pop-wrapper" id = "pop-wrapper">
+
+    <div class = "editCategoryContainer">
+
+       <div class = "EditCategoryHeader">
+
+            <div class = "editCategoryText">
+
+                <span>Edit category name</span>
+
+            </div>
+
+            <div class = "editCategoryExit">
+
+                <img src = "app-resources/imgs/close.png"/>
+
+            </div>
+
+        </div>
+
+
+            <form name = "editCategoryForm" class = "editCategoryForm" novalidate>
+
+                <div class = "editCategoryBox">
+
+
+                   <div class = "editCategoryinputBox">
+
+                        <input type = "text" placeholder = "Category name" ng-model = "oneCategory.categoryName" name = "cat" ng-maxlength = "50" ng-minlength = "5" ng-pattern = "/[a-zA-Z][a-zA-Z ]{4,}/" ng-value = "oneCategory.categoryName" required onecategory/>
+
+                        <span ng-show = "editCategoryForm.cat.$pending.onecategory" class = "categoryLoadingBox">
+                             <span></span>
+                             <span></span>
+                             <span></span>
+                        </span>
+
+                        <span ng-show = "editCategoryForm.cat.$valid" class = "categoryCheckBox">
+                            <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                        </span>
+
+                        <span ng-show = "editCategoryForm.cat.$invalid && editCategoryForm.cat.$dirty" class = "categoryEkisBox">
+                            <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                        </span>
+
+
+                        <div class = "categoryErrorMessage" ng-messages = "editCategoryForm.cat.$dirty && editCategoryForm.cat.$error">
+
+                            <small ng-message = 'maxlength'>
+
+                                Max 20 characters
+
+                            </small>
+
+                            <small ng-message = 'minlength'>
+
+                                minimum 6 characters
+
+                            </small>
+
+                            <small ng-message = 'pattern'>
+
+                                Please enter valid characters
+
+                            </small>
+
+                            <small ng-message = 'categoryInputError' ng-hide = "editCategoryForm.cat.$error.required">
+
+                                Category already exist
+
+                            </small>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class = "editCategoryButtonBox">
+
+                    <div class = "editCatCancelButton">
+
+                        <span>Cancel</span>
+
+                    </div>
+
+                    <div class = "editCatSubButton">
+
+                        <input type = "submit" value = "Ok" ng-disabled = "editCategoryForm.$invalid" ng-click = "updateCategory()">
+
+                    </div>
+
+                </div>
+
+            </form>
+
+    </div>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "uiViewContainer">
+
+    <div class = "categoriesFormBox">
+
+        <form name = "categoriesForm" method = "POST">
+
+            <div class = "newCategorInputBox">
+
+                <input type = "text" class = "categoryNameInput" placeholder = "Enter category name" ng-model = "categoryResources.categoryName" name = "category" class = "validInput" ng-maxlength = "50" ng-minlength = "5" ng-pattern = "/[a-zA-Z][a-zA-Z ]{4,}/" required category/>
+
+                <span ng-show = "categoriesForm.category.$pending.category" class = "newUserLoadingBox">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                 </span>
+
+                <span ng-show = "categoriesForm.category.$valid" class = "newUserCheckEkisBox">
+                    <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                </span>
+
+                <span ng-show = "categoriesForm.category.$invalid && categoriesForm.category.$dirty" class = "newUserCheckEkisBox">
+                    <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                </span>
+
+
+                <div class = "categoryErrorMessage" ng-messages = "categoriesForm.category.$dirty && categoriesForm.category.$error">
+
+
+
+                    <small ng-message = 'maxlength'>
+
+                        Max 20 characters
+
+                    </small>
+
+                    <small ng-message = 'minlength'>
+
+                        minimum 6 characters
+
+                    </small>
+
+                    <small ng-message = 'pattern'>
+
+                        Please enter valid characters
+
+                    </small>
+
+                    <small ng-message = 'categoryInputError' ng-hide = "categoriesForm.category.$error.required">
+
+                        Cataegory already exist
+
+                    </small>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class = "categoriesButton">
+
+                <span ng-click = "clear()">Clear</span>
+                <input type = "submit" value = "Save" class = "submitCategoryButton" ng-disabled = "categoriesForm.$invalid" ng-click = "saveCategory()"/>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class = "categoryListBox">
+
+        <div class = "categorySearchBox">
+
+            <div class = "categorySearchHolder">
+
+               <input type = "text" id = "searchCategory" ng-model = "search" placeholder = "Search category"/>
+
+            </div>
+
+        </div>
+
+        <div class = "categoryList">
+
+            <ul id = "categoryNameBox">
+
+                <li ng-repeat = "category in categories.categories | filter: search">
+
+                   <div class = "categoryNameBox" ng-click = "getCategory(category.categoryId)">
+
+                       {{category.categoryName}}
+
+                   </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<aside class = "rightSideBar">
+
+</aside> -->

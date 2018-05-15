@@ -1,0 +1,168 @@
+<section id = "caViewPendingArticleLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<div id = "approvedArticle" class = "savingArticleAndFile">
+
+    <section class = "popSubArticleContainer" ng-cloak>
+
+      <div class = "popSubArticleBox">
+
+        <div class = "popSucHeader">
+            <img src="app-resources/imgs/close.png" id = "popSucHeaderImg" ng-click = "backToPendings()">
+        </div>
+        <span><img src = "app-resources/imgs/success.png"/></span>
+        <h1>Successfully Approved</h1>
+
+        <button class = "savedArticleFile" id = "savedArticleFile" ng-click = "backToPendings()">Dismiss</button>
+      </div>
+
+    </section>
+
+</div>
+
+<div id = "rejectdArticle" class = "savingArticleAndFile">
+
+    <section class = "popSubArticleContainer" ng-cloak>
+
+      <div class = "popSubArticleBox">
+
+        <div class = "popSucHeader">
+            <img src="app-resources/imgs/close.png" id = "popSucHeaderImg" ng-click = "backToPendings()">
+        </div>
+        <span><img src = "app-resources/imgs/success.png"/></span>
+        <h1>Message Submitted</h1>
+
+        <button class = "savedArticleFile" id = "savedArticleFile" ng-click = "backToPendings()">Dismiss</button>
+      </div>
+
+    </section>
+
+</div>
+
+<header class = "mainHeader" ng-show = "viewPendingArticle == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer">
+
+    <header class = "backButtonHeader">
+
+        <button type = "button" class = "btn btn-default btn-sm" ng-click = "backToPendings()">
+            <span class = "glyphicon glyphicon-chevron-left"></span> Back to all pendings
+        </button>
+
+    </header>
+
+
+
+    <section class = "onePendingContainer">
+
+        <header class = "pendingActionHeader">
+
+          <button type = "button" class = "btn btn-default btn-sm" ng-click = "approveArticle()">
+              <span class = "glyphicon glyphicon-ok"></span> Approve
+          </button>
+
+          <button type = "button" class = "btn btn-default btn-sm" ng-click = "showRejectionForm()">
+              <span class = "glyphicon glyphicon-remove"></span> Reject
+          </button>
+
+        </header>
+
+        <article class = "rejectionTextAreaContainer" ng-show = "showRejectionForm == true">
+
+            <div class = "rejectionFormBox">
+
+                <form name = "rejectionForm" novalidate>
+
+                    <p type = "Reason of rejection:">
+
+                        <textarea id = "rejectionTextarea" class = "rejectionTextarea"></textarea>
+
+                    </p>
+
+                    <footer class = "rejectionButtonBox">
+
+                        <button type="button" class="btn btn-primary" ng-disabled = "disable == true" ng-click = "rejectArticle()">
+                            <span class = "glyphicon glyphicon-send"></span> Reject
+                        </button>
+
+                    </footer>
+
+
+                </form>
+
+            </div>
+
+        </article>
+
+        <header class = "onePendingTitleHeaderContainer">
+
+            <header>
+
+                <header>
+
+                    <h1>{{article.title}}</h1>
+
+                    <span>{{article.category}}</span>
+
+                    <div>
+
+                        <div>
+                          <img data-ng-src="data:{{userAvatar.fileType}};base64,{{userAvatar.base64}}"
+                            src = "app-resources/imgs/defaultAvatar.png"/>
+                        </div>
+
+                        <div>
+
+                            <span>by</span>
+                            <span>{{empDetails.lastName}} {{empDetails.firstName}}</span>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+          </header>
+
+          <article class = "innerPendingArticle">
+
+
+          </article>
+
+
+        </header>
+
+
+    </section>
+
+</div>

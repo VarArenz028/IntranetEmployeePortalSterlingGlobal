@@ -1,0 +1,619 @@
+<div class = "saEditUsernamePop" id = "saEditUsernamePop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "saEditUsernameForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Username">
+                    <input type = "text" name = "username" ng-model = "username" ng-maxlength = "20" ng-minlength = "6"
+                    ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required eusername/>
+                    <span type = "loading" ng-show = "saEditUsernameForm.username.$pending.eusername">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span type = "check" ng-show = "saEditUsernameForm.username.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "saEditUsernameForm.username.$invalid && saEditUsernameForm.username.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "saEditUsernameForm.username.$touched && saEditUsernameForm.username.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "saEditUsernameForm.username.$dirty && saEditUsernameForm.username.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                           <small ng-message = 'unameInputError' ng-hide = "saEditUsernameForm.username.$error.required" style = "color: #e74c3c">
+
+                               <span>Username already exist</span>
+
+                           </small>
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saEditUsernameForm.$invalid" ng-click = "updateUsername()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+<div id = "saEditPasswordPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "saEditPasswordForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Password">
+                    <input type = "password" name = "password" ng-model = "password" ng-maxlength = "20" ng-minlength = "6"
+                    ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required epassword/>
+                    <span type = "loading" ng-show = "saEditPasswordForm.password.$pending.epassword">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span type = "check" ng-show = "saEditPasswordForm.password.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "saEditPasswordForm.password.$invalid && saEditPasswordForm.password.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "saEditPasswordForm.password.$touched && saEditPasswordForm.password.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "saEditPasswordForm.password.$dirty && saEditPasswordForm.password.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                           <small ng-message = 'passInputError' ng-hide = "saEditPasswordForm.password.$error.required" style = "color: #e74c3c">
+
+                               <span>Password already exist</span>
+
+                           </small>
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saEditPasswordForm.$invalid" ng-click = "updatePassword()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "saEditRolePop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "saEditRoleForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Role">
+
+                    <select ng-model = "role">
+
+                        <option value = "System Admin">System Admin</option>
+                        <option value = "Campaign Admin">Campaign Admin</option>
+                        <option value = "Agent">Agent</option>
+
+                    </select>
+
+                    <div class = "saEditUserErrorBox">
+
+                        <div title = "error" ng-messages = "saEditPasswordForm.password.$dirty && saEditPasswordForm.password.$error">
+
+
+                        </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saEditRoleForm.$invalid" ng-click = "updateRole()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "saEditLastNamePop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "saEditLastnameForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Lasname">
+                    <input type = "text" name = "lastName" ng-model = "lastName" ng-maxlength = "20" ng-minlength = "6"
+                    ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required/>
+
+                    <span type = "check" ng-show = "saEditLastnameForm.lastName.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "saEditLastnameForm.lastName.$invalid && saEditLastnameForm.lastName.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "saEditLastnameForm.lastName.$touched && saEditLastnameForm.lastName.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "saEditLastnameForm.lastName.$dirty && saEditLastnameForm.lastName.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saEditLastnameForm.$invalid" ng-click = "updateLastname()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "saEditFirstNamePop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "saEditFirstnameForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Firstname">
+                    <input type = "text" name = "firstName" ng-model = "firstName" ng-maxlength = "20" ng-minlength = "6"
+                    ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required/>
+
+                    <span type = "check" ng-show = "saEditFirstnameForm.firstName.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "saEditFirstnameForm.firstName.$invalid && saEditFirstnameForm.firstName.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "saEditFirstnameForm.firstName.$touched && saEditFirstnameForm.firstName.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "saEditFirstnameForm.firstName.$dirty && saEditFirstnameForm.firstName.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saEditFirstnameForm.$invalid" ng-click = "updateFirstname()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "saAddAccountPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "saAddAccountForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Account">
+
+                    <select ng-model = "account" name = "account" account>
+
+                        <option ng-repeat = "campaign in campaigns" ng-value = "campaign.campaignName">{{campaign.campaignName}}</option>
+
+                    </select>
+
+                    <div class = "saEditUserErrorBox">
+
+                        <div title = "error" ng-messages = "saAddAccountForm.account.$dirty && saAddAccountForm.account.$error">
+
+                            <small ng-message = 'accountInputError' ng-hide = "saAddAccountForm.account.$error.required" style = "color: #e74c3c">
+
+                                <span>Account already exist</span>
+
+                            </small>
+
+                        </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saAddAccountForm.$invalid" ng-click = "addCampaign()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div class = "wideViewContainerSa">
+
+    <header class = "backButtonHeaderSa">
+
+        <button type = "button" class = "btn btn-default btn-sm" ng-click = "backToUserList()">
+            <span class = "glyphicon glyphicon-chevron-left"></span> Back to user list
+        </button>
+
+    </header>
+
+    <div class = "saContainers">
+
+        <section class = "editUserContainer" ng-if = "user.role == 'System Admin'">
+
+            <header class = "edutUserHeader">
+
+               <h1><span>Account settings</span></h1>
+
+            </header>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Username</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{user.username}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiUsernameBut" ng-click = "showEditusername()">Edit Username</span>
+                </div>
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Password</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiPasswordBut" ng-click = "showEditPassword()">Edit Password</span>
+                </div>
+
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Last name</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{empDetails.lastName}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiUsernameBut" ng-click = "showEditLastname()">Edit Last name</span>
+                </div>
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>First name</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{empDetails.firstName}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiUsernameBut" ng-click = "showEditFirstname()">Edit First name</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class = "editUserContainer" ng-if = "user.role == 'Campaign Admin' || user.role == 'Agent'">
+
+            <header class = "edutUserHeader">
+
+               <h1><span>User settings</span></h1>
+
+            </header>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Username</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{user.username}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiUsernameBut" ng-click = "showEditusername()">Edit Username</span>
+                </div>
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Password</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span ng-click = "showEditPassword()">Edit Password</span>
+                </div>
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Role</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{user.role}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span ng-click = "showEditRole()">Edit Role</span>
+                </div>
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>Last name</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{empDetails.lastName}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiUsernameBut" ng-click = "showEditLastname()">Edit Last name</span>
+                </div>
+
+            </div>
+
+            <div class = "editUserContent">
+
+                <div class = "saEditLabel">
+                    <span>First name</span>
+                </div>
+
+                <div class = "saUserData">
+                    <span>{{empDetails.firstName}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span id = "saEdiUsernameBut" ng-click = "showEditFirstname()">Edit First name</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class = "editUserContainer" ng-if = "user.role == 'Campaign Admin' || user.role == 'Agent'">
+
+            <header class = "edutUserHeader">
+
+               <h1 class = "saAccountLabel">
+
+                 <span>Account settings</span>
+                 <div class = "saAccountAdd"><button ng-click = "showAddAccount()">Add Account</button></div>
+
+               </h1>
+
+            </header>
+
+            <div class = "editUserContent" ng-repeat = "account in accounts">
+
+                <div class = "saEditLabel">
+                    <span>{{account.accountName}}</span>
+                </div>
+
+                <div class = "saEditButton">
+                    <span ng-click = "updateState(account.accountName)">{{account.state}}</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+</div>

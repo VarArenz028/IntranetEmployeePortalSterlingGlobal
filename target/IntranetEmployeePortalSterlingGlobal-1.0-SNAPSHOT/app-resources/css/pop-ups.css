@@ -1,0 +1,456 @@
+/*    Pop up style*/
+
+.pop-wrapper
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 41;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+
+/*    Pop-ups*/
+
+/*    Events form*/
+
+.eventFormHeader:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.eventFormInputBox:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.eventsFormContainer
+{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    position: relative;
+    top: 35px;
+    width: 500px;
+    height: 600px;
+    margin: 0px auto;
+    background: #fff;
+}
+.eventFormHeader
+{
+    height: 30px;
+    padding-top: 10px;
+}
+.eventHeaderText
+{
+    width: 250px;
+    text-align: left;
+    float: left;
+}
+.eventHeaderText span
+{
+    font-size: 145%;
+    font-weight: bold;
+    color: #3F3F3F;
+    margin-left: 10px;
+}
+.eventHeaderExit
+{
+    width: 250px;
+    text-align: right;
+    float: right;
+}
+.eventHeaderExit img
+{
+    width: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.eventFormContainer
+{
+    height: 480px;
+    margin: 45px 0px; 
+}
+.eventFormHolder
+{
+    width: 480px;
+    height: 440px;
+    margin: 0px auto;
+    overflow-y: scroll;
+}
+.eventFormImgBox
+{
+    width: 400px;
+    margin: 0px auto;
+}
+.eventFormImgBox img
+{
+    width: 400px;
+}
+.eventFormBox
+{
+    width: 400px;
+    margin: 0px auto;
+}
+.eventFormInputBox
+{
+    height: 60px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.eventLabelsBox label
+{
+    font-size: 140%;
+    color: #3F3F3F;
+}
+.eventInputs
+{
+    width: 300px;
+}
+.eventInputs input[type = "text"]
+{
+    font-size: 115%;
+    width: 300px;
+    height: 30px;
+    padding: 10px 10px;
+    border: 2px solid #D6DAC2;
+    border-radius: 10px;
+    display: block;
+    outline: none;
+}
+.eventFormTimeBox
+{
+    height: 120px;
+    padding: 10px 0px;
+}
+.eventTimeBox
+{
+    height: 50px;
+    padding: 10px 0px;
+}
+.eventTimeLabel
+{
+    width: 20%;
+    float: left;
+}
+.eventTimeInput
+{
+    width: 35%;
+    margin: 0px 2.5%;
+    text-align: center;
+    float: left;
+}
+.eventFormTextareaBox
+{
+    height: 120px;
+    text-align: left;
+}
+.eventTextarea textarea
+{
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    resize: none;
+}
+.eventFormButtonBox:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.eventFormButtonBox
+{
+    width: 500px;
+    height: 56px;
+    margin-top: 30px;
+}
+.eventCancellButtonBox
+{
+    width: 250px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    background: #F6F7F2;
+    float: left;
+    cursor: pointer;
+}
+.eventSubmitButtonBox
+{
+    width: 250px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    background: #3C3741;
+    float: right;
+    cursor: pointer;
+}
+.eventFormButtonBox span
+{
+    font-size: 140%;
+}
+.eventFormButtonBox input
+{
+    font-size: 140%;
+    color: #fff;
+    background: none;
+    margin-left: 20px;
+    border: none;
+}
+
+/*    Edit Category form style*/
+
+.editCategoryContainer
+{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    position: relative;
+    top: 200px;
+    width: 400px;
+    height: 200px;
+    margin: 0px auto;
+    background: #fff;
+    border-radius: 5px;
+}
+.EditCategoryHeader:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.EditCategoryHeader
+{
+    height: 30px;
+    padding-top: 10px;
+}
+.editCategoryText
+{
+    width: 200px;
+    text-align: left;
+    float: left;
+}
+.editCategoryExit
+{
+    width: 200px;
+    text-align: right;
+    float: right;
+}
+.editCategoryText span
+{
+    font-size: 125%;
+    font-weight: bold;
+    color: #3F3F3F;
+    margin-left: 20px;
+}
+.editCategoryExit img
+{
+    position: relative;
+    right: 20px;
+    width: 25px;
+    padding: 5px;
+    border: 1px solid #F6F7F2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.editCategoryBox
+{
+    width: 350px;
+    height: 90px;
+    margin: 40px auto 0px auto;
+}
+.editCategoryForm
+{
+    height: 90px;
+}
+.editCategoryinputBox
+{
+    position: relative;
+    text-align: left;
+    height: 90px;
+}
+.editCategoryButtonBox:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.editCategoryButtonBox
+{
+    width: 400px;
+    height: 40px;
+}
+.editCatCancelButton
+{
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #F6F7F2;
+    float: left;
+    cursor: pointer;
+}
+.editCatCancelButton span
+{
+    font-size: 120%;
+    color: #3F3F3F;
+    margin-left: 20px;
+}
+.editCatSubButton
+{
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #3C3741;
+    float: right;
+    cursor: pointer;
+}
+.editCatSubButton input
+{
+    font-size: 120%;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+    margin-right: 20px;
+    background: none;
+    border: none;
+}
+
+/*    Question pop up style*/
+
+.questionContainer
+{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    position: relative;
+    top: 150px;
+    width: 650px;
+    margin: 0px auto;
+    background: #fff;
+}
+.questionFormContainer
+{
+    width: 550px;
+    height: 190px;
+    margin: 0px auto;
+}
+.questionFormHeader
+{
+    width: 100%;
+    height: 30px;
+    text-align: right;
+}
+.questionFormHeader img
+{
+    width: 30px;
+    padding: 5px;
+    margin: 10px 10px 0px 0px;
+    border: 1px solid #F6F7F2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.questionInputBox
+{
+    padding-top: 35px;
+}
+.questionInputBox textarea
+{
+    font-size: 180%;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    border-bottom: 2px solid #e2e2e2;
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+}
+.questionButtonBox:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.questionButtonBox
+{
+    width: 100%;
+    height: 50px;
+}
+.questionCancelBox
+{
+    width: 325px;
+    height: 50px;
+    line-height: 50px;
+    background: #F6F7F2;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+.questionSubmitBox
+{
+    width: 325px;
+    height: 50px;
+    line-height: 50px;
+    background: #3C3741;
+    float: right;
+    cursor: pointer;
+}
+.questionCancelBox span
+{
+    font-size: 130%;
+    font-weight: bold;
+    color: #3C3741;
+}
+.questionSubmitBox input
+{
+    font-size: 135%;
+    font-weight: bold;
+    color: #F6F7F2;
+    width: 325px;
+    height: 50px;
+    background: none;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

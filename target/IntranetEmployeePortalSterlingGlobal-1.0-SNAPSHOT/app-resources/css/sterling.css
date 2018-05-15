@@ -1,0 +1,1406 @@
+*
+{
+    font-family: Liberation Sans, sans-serif;
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+}
+html
+{
+    overflow-x: hidden;
+}
+.body
+{
+    width: 100%;
+    height: 100%;
+    background: #F6F7F2;
+    text-align: center;
+}
+.wrapper
+{
+    width: 1200px;
+    margin: 0px auto;
+}
+.homeWrapper
+{
+    width: 1366px;
+    height: 100%;
+    margin: 0px auto;
+}
+.bodyWrapper
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.bodyWrapper
+{
+    width: 1366px;
+    margin: 0px auto;
+}
+
+/*    Login page style*/
+
+
+
+#loginPageContainer:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+#loginPageContainer
+{
+    width: inherit;
+    height: 662px;
+    background-image: url(../imgs/loginBanner.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.loginContainer
+{
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    position: relative;
+    width: 400px;
+    height: 450px;
+    margin: 100px 0px 0px 50px;
+    background: #fff;
+    float: left;
+}
+
+.log-ui-view
+{
+    position: absolute;
+}
+.logView, .campView
+{
+    width: 400px;
+    height: 450px;
+}
+.logInFormWrapper
+{
+    width: 350px;
+    margin: 0px auto;
+}
+.logView.ng-leave
+{
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    transform: translateX(0px);
+    opacity: 1;
+}
+.logView.ng-leave.ng-leave-active
+{
+    transform: translateX(300px);
+    opacity: 0;
+}
+.campView.ng-enter
+{
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    transform: translateX(-300px);
+    opacity: 0;
+}
+.campView.ng-enter.ng-enter-active
+{
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+/*    loading style*/
+
+.logLoadingCon
+{
+    width: 100%;
+    height: 3px;
+}
+.logLoading
+{
+    background: #e74c3c;
+    width: 100%;
+    height: 3px;
+    border-radius: 5px;
+    animation-name: loading;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+/*    loading animation*/
+@keyframes loading
+{
+    0%
+    {
+        transform: translateX(0) scaleX(0);
+        transform-origin: left;
+    }
+    45%
+    {
+        transform: translateX(0) scaleX(1);
+        transform-origin: left;
+    }
+    50%
+    {
+        transform: translateX(0) scaleX(1);
+        transform-origin: right;
+    }
+    100%
+    {
+       transform: translateX(0) scaleX(0);
+        transform-origin: right;
+    }
+}
+
+.userLogHeader
+{
+    margin: 50px 0px;
+}
+#userLogHeadMessage
+{
+    font-size: 170%;
+    color: #3F3F3F;
+}
+#logErrorMessage
+{
+    font-size: 170%;
+    color: #e74c3c;
+    text-align: center;
+    padding: 3px 0px;
+}
+.logInFormContainer
+{
+    width: 350px;
+    margin: 0px auto;
+}
+.group
+{
+    position: relative;
+    margin-bottom: 45px;
+}
+.logInput
+{
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+.logInput:focus
+{
+    outline: none;
+}
+.logCampContainer
+{
+    width: 350px;
+    height: 450px;
+    margin: 0px auto;
+}
+.logCampContainer h1
+{
+    font-size: 170%;
+    color: #3F3F3F;
+    text-align: center;
+    padding-top: 30px;
+}
+.userLogCampNav
+{
+    width: 350px;
+    height: 270px;
+    margin: 13px 0px 13px 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.userLogCampNav li
+{
+    list-style-type: none;
+}
+.userLogCampNav li span
+{
+    font-size: 170%;
+    color: #3F3F3F;
+    padding: 5px 0px;
+    display: block;
+    cursor: pointer;
+}
+
+/* LABEL ======================================= */
+.logLabel
+{
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+}
+
+/* active state */
+.logInput:focus ~ label, .logInput:valid ~ label
+{
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar
+{
+    position:relative; display:block;
+    width: 315px;
+}
+.bar:before, .bar:after
+{
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.bar:before
+{
+    left: 50%;
+}
+.bar:after
+{
+    right: 50%;
+}
+
+/* active state */
+.logInput:focus ~ .bar:before, .logInput:focus ~ .bar:after
+{
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight
+{
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+.logInput:focus ~ .highlight
+{
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter
+{
+    from
+    {
+        background: #5264AE;
+    }
+    to
+    {
+        width: 0;
+        background: transparent;
+    }
+}
+@-moz-keyframes inputHighlighter
+{
+	from
+    {
+        background: #5264AE;
+    }
+    to
+    {
+        width: 0;
+        background: transparent;
+    }
+}
+@keyframes inputHighlighter
+{
+	from
+    {
+        background: #5264AE;
+    }
+    to
+    {
+        width: 0;
+        background: transparent;
+    }
+}
+
+/*    Log-in button style*/
+
+
+#logButtonCon
+{
+    text-align: center;
+}
+#logButtonCon input
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 120%;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 65px;
+    border: none;
+    border-radius: 20px;
+    background: #2980B9;
+    cursor: pointer;
+}
+#logButtonCon input:hover
+{
+    background: #44BBFF;
+}
+#logButtonCon input[disabled = "disabled"], .saCampInputBox button[disabled = "disabled"], .saInputButtonBox button[disabled = "disabled"]
+{
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+/*    Log-in form pop-up button style*/
+
+.logFormFooter
+{
+    height: 97px;
+    line-height: 97px;
+}
+.logFormFooter span
+{
+    font-size: 120%;
+    color: #1ABC9C;
+    cursor: pointer;
+}
+.logFormFooter span:hover
+{
+    text-decoration: underline;
+}
+
+/*    Welcome message style*/
+
+.welcomeMessageContainer
+{
+    width: 750px;
+    float: right;
+    margin-top: 100px;
+}
+.messageBox
+{
+    width: 500px;
+    margin: 0px auto;
+}
+.messageBox p
+{
+    font-size: 500%;
+    font-weight: bold;
+    color: #FFFFF7;
+}
+
+/*   pop-up style*/
+
+.logPopUpBackground
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+.popUpBackground
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+}
+.popUpContainer
+{
+    width: 1000px;
+    margin: 0px auto;
+}
+#popUpPassBox
+{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    width: 450px;
+    height: 250px;
+    margin: 0px auto;
+    z-index: 30;
+    top: -600px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: #FFFFF7;
+    z-index: 31;
+
+}
+span[class = "promptPassInfo"]
+{
+    display: block;
+    width: 450px;
+    text-align: center;
+
+}
+.promptPassInfo img
+{
+    width: 80px;
+    padding: 10px 0px;
+}
+.oopsHeader
+{
+    font-size: 220%;
+    color: #3F3F3F;
+    text-align: center;
+}
+#popUpPassBox > p
+{
+    font-size: 140%;
+    color: #3F3F3F;
+    text-align: center;
+    width: 400px;
+    padding: 15px 5px;
+    margin: 0px auto;
+}
+
+span[class = "dismissButton"]
+{
+    font-size: 120%;
+    color: #FFFFF7;
+    display: block;
+    width: 450px;
+    height: 58px;
+    line-height: 58px;
+    text-align: center;
+    background: #e74c3c;
+    cursor: pointer;
+}
+
+@keyframes drop
+{
+    0%
+    {
+        opacity: 0;
+    }
+    75%
+    {
+        transform: translateY(800px);
+    }
+    100%
+    {
+        transform: translateY(760px);
+        opacity: 1;
+    }
+}
+
+
+/*    System admin ui views animations*/
+
+.saViewsBox.ng-enter, .saViewsBox.ng-enter
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    opacity: 0;
+}
+.saViewsBox.ng-enter.ng-enter-active, .saViewsBox.ng-enter-active
+{
+    opacity: 1;
+}
+
+/*    Sterling side bar*/
+.sterlingSideBar:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.sterlingSideBar
+{
+    position: fixed;
+    float: left;
+    width: 200px;
+    height: 662px;
+    background: #34495E;
+}
+.saLogoCon
+{
+    height: 50px;
+    background: #2C3E50;
+    line-height: 50px;
+}
+.saLogoCon h1
+{
+    color: #F0F1F5;
+    text-align: center;
+}
+.saUserCon
+{
+    height: 40px;
+    padding: 15px 0px;
+    border-bottom: 2px solid #2C3E50;
+}
+.saUserCon span:nth-child(1), .saUserCon span:nth-child(2)
+{
+    font-size: 110%;
+    color: #F0F1F5;
+    display: block;
+
+}
+.saUserCon span:nth-child(1)
+{
+    font-weight: bold;
+}
+.saUserCon span:nth-child(2)
+{
+    text-align: left;
+    font-size: 100%;
+}
+.saSidebarDetails
+{
+    width: 140px;
+    margin: 0px auto;
+}
+.saSidebarDetails span
+{
+    padding: 1px 0px;
+}
+.saMainNav
+{
+    width: 200px;
+}
+.saMainNav li
+{
+    font-size: 105%;
+    color: #F0F1F5;
+    list-style-type: none;
+    padding: 20px 0px;
+    text-align: center;
+    cursor: pointer;
+}
+.saMainNav li:hover
+{
+    background: #1ABC9C;
+}
+.saMainNav li:nth-child(1)
+{
+    background-image: url(../imgs/article.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 30px center;
+}
+.saMainNav li:nth-child(2)
+{
+    background-image: url(../imgs/campaigns.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 30px center;
+}
+.saMainNav li:nth-child(3)
+{
+    background-image: url(../imgs/users.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 30px center;
+}
+.saMainNav li:nth-child(4)
+{
+    background-image: url(../imgs/file.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 30px center;
+}
+.saMainNav li:nth-child(5)
+{
+    background-image: url(../imgs/article.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 30px center;
+}
+.saMainNav li:nth-child(6)
+{
+    background-image: url(../imgs/settings.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left 30px center;
+}
+.saSettings
+{
+    display: none;
+}
+.saSettings a, .saSettings span
+{
+    font-size: 105%;
+    color: #F0F1F5;
+    display: block;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*    views container*/
+/*    Note: use this for all users*/
+
+.viewsContaier:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.viewsContaier
+{
+    width: 1100px;
+    margin: 33px 33px;
+    background: #F6F7F2;
+    float: right;
+}
+.saViewsBox
+{
+    width: 1050px;
+    margin: 0px auto;
+}
+.saContainers:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.saContainers
+{
+    background: #FFFFF7;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+/*    System Admin' campaign template style*/
+
+/*    System admin's dashboard style*/
+.statisticsBox
+{
+    width: 200px;
+    float: left;
+}
+.statisticsHeader
+{
+    width: 200px;
+    text-align: center;
+}
+.statisticsHeader img
+{
+    width: 15px;
+}
+.statisticsHeader span
+{
+    font-size: 115%;
+    font-weight: bold;
+    color: #3F3F3F;
+}
+.statisticsBox p
+{
+    -webkt-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 200px;
+    text-align: center;
+    border-right: 1px solid #D2D7D3;
+}
+.statisticsBox > p:nth-child(5)
+{
+    border-right: 1px solid #D2D7D3;
+}
+.statisticsBox p:hover
+{
+    color: #1ABC9C;
+    cursor: pointer;
+}
+.saPieWrapper:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.saPieWrapper
+{
+    width: 1050px;
+}
+.saPieContainer
+{
+    width: 300px;
+    background: #FFFFF7;
+    padding: 30px 80px;
+    float: left;
+}
+.pie1
+{
+    margin-right: 65px;
+}
+.pie2
+{
+    margin-left: 65px;
+}
+.saPieContainer h2
+{
+    font-size: 125%;
+    color: #3F3F3F;
+    padding: 10px 0px;
+    text-align: center;
+}
+.saHeaderServiceContainer
+{
+    width: 1000px;
+    height: 65px;
+    margin: 0px auto;
+}
+.saHeaderBox
+{
+    width: 450px;
+}
+.saBox
+{
+    float: left;
+}
+.saBox2
+{
+    float: right;
+}
+#saAddButton, #saHideFormButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 130%;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 65px;
+    margin: 10px 0px 10px 10px;
+    border: none;
+    border-radius: 5px;
+    background: #2980B9;
+    cursor: pointer;
+}
+#saAddButton:hover, #saCampFormButton:hover, #saHideFormButton:hover
+{
+    background: #44BBFF;
+}
+#saSearch
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 110%;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 130px;
+    outline: none;
+}
+#popCampaignBox
+{
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    width: 450px;
+    height: 280px;
+    margin: 0px auto;
+    background: #fff;
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    top: -600px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 31;
+    border-radius: 10px;
+}
+.campFormBox
+{
+    width: 400px;
+    margin: 0px auto;
+    padding: 10px 5px;
+    text-align: center;
+}
+.saCampInputBox
+{
+    margin-top: 25px;
+}
+#saCampaignInput
+{
+    font-size: 115%;
+    width: 300px;
+    padding: 10px 10px;
+    border: 2px solid #F6F7F2;
+    border-radius: 10px;
+}
+#saCampaignInput.ng-invalid-maxlength, #saCampaignInput.ng-invalid-minlength, #saCampaignInput.ng-invalid-pattern, .saNewUserInput.ng-invalid-maxlength, .saNewUserInput.ng-invalid-minlength, .saNewUserInput.ng-invalid-pattern, .saNewUserInput.ng-invalid-uname, .saNewUserInput.ng-invalid-pass, .saNewUserInput.ng-touched, .categoryNameInput.ng-invalid-maxlength, .categoryNameInput.ng-invalid-minlength, .categoryNameInput.ng-invalid-pattern
+{
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    border: 2px solid #e74c3c;
+}
+.saFormErrorMessage, .saUserFormErrorMessage
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.saFormErrorMessage small, .saEditUsernameMessages small
+{
+    font-size: 100%;
+    color: #e74c3c;
+    text-align: center;
+}
+#saCampFormButton, #saCampCancelButton
+{
+    font-size: 115%;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 65px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#saCampFormButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    background: #2980B9;
+}
+#saCampFormButton:hover
+{
+    background: #44BBFF;
+}
+#saCampCancelButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    background: #e74c3c;
+}
+#saCampCancelButton:hover
+{
+    background: #EB6361;
+}
+
+/*    Scroll bar style*/
+
+.saDetailsContainer::-webkit-scrollbar, .userLogCampNav::-webkit-scrollbar, .categoryList::-webkit-scrollbar, .eventFormHolder::-webkit-scrollbar, .eventDescBox::-webkit-scrollbar, .questionInputBox textarea::-webkit-scrollbar
+{
+    width: 8px;
+/*    background: #ECF0F1;*/
+    border-radius: 5px;
+}
+.saDetailsContainer::-webkit-scrollbar-thumb, .userLogCampNav::-webkit-scrollbar-thumb, .categoryList::-webkit-scrollbar-thumb, .eventFormHolder::-webkit-scrollbar-thumb, .eventDescBox::-webkit-scrollbar-thumb, .questionInputBox textarea::-webkit-scrollbar-thumb
+{
+    background: #3F3F3F;
+    border-radius: 5px;
+}
+.saDetailsContainer
+{
+    width: 1000px;
+    height: 400px;
+    overflow: hidden;
+    padding: 10px 0px;
+    margin: 15px auto;
+}
+.saDetailsContainer:hover, .userLogCampNav:hover, .categoryList:hover
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.saDetailsTable, .saUserTable
+{
+    width: 1000px;
+    border-collapse: collapse;
+}
+.saDetailsTable th, .saUserHeaderTable th
+{
+    font-size: 140%;
+}
+.saDetailsTable td, .saUserTable td
+{
+    font-size: 135%;
+}
+.saDetailsTable th, .saDetailsTable td
+{
+    color: #3F3F3F;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.saUserHeaderTable tr th:nth-child(5)
+{
+    opacity: 0;
+}
+.saUserHeaderTable, .saUserTable
+{
+    width: 1000px;
+    border-collapse: collapse;
+}
+.saUserHeaderTable th, .saUserTable td
+{
+    width: 28%;
+    color: #3F3F3F;
+    text-align: left;
+    padding: 8px 0px;
+    border-bottom: 1px solid #ddd;
+}
+.saUserTable img, .trDatas img
+{
+    width: 25px;
+    cursor: pointer;
+}
+.saUserHeaderTable th:nth-child(1), .saUserTable td:nth-child(1)
+{
+    width: 5%;
+}
+td[class = "saCampTdButtons"]
+{
+    text-align: center;
+    width: 150px;
+}
+#saCampEditButton, #saCampDeactButton, #userAddCapaignButton, #saRegisterButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 120%;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#saCampEditButton, #userAddCapaignButton, #saRegisterButton
+{
+    background: #1BBC9B;
+    padding: 10px 45px;
+}
+#saCampEditButton:hover, #userAddCapaignButton:hover, #saRegisterButton:hover
+{
+    background: #16A086;
+}
+#saCampDeactButton
+{
+    background: #E35252;
+    padding: 10px 35px;
+    margin-right: 20px;
+}
+#saCampDeactButton:hover
+{
+    background: #CC4949;
+}
+.saNewUserFormContainer:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.saNewUserFormContainer
+{
+    width: 1000px;
+    margin: 25px auto;
+/*
+    position: relative;
+    left: 55px;
+*/
+}
+#saNewUserForm
+{
+    width: 1000px;
+    margin: 0px auto;
+
+}
+.saNewUserFormLeftBox
+{
+    width: 500px;
+    float: left;
+}
+.saNewUserFormRightBox
+{
+    position: relative;
+    bottom: 12px;
+    width: 500px;
+    float: right;
+}
+.saInputBox
+{
+    position: relative;
+    width: 450px;
+    height: 100px;
+}
+.saLabelBox
+{
+    width: 365px;
+    margin: 0px auto;
+    text-align: left;
+}
+.saInputBox label
+{
+    font-size: 140%;
+    font-weight: bold;
+    color: #3F3F3F;
+}
+
+.saNewUserInput, .saNewUserSelect
+{
+    font-size: 120%;
+    width: 350px;
+    padding: 10px 5px;
+    margin: 5px 0px;
+    border: 1px solid #D6DAC2;
+    border-radius: 5px;
+    outline: none;
+}
+.saNewUserSelect
+{
+    position: relative;
+    top: 35px;
+}
+.saNewUserSelect option
+{
+    font-size: 100%;
+    margin: 5px 0px;
+}
+#userAddCapaignButton
+{
+    font-size: 50%;
+    position: relative;
+    top: 35px;
+}
+.saInputBox:nth-child(2)
+{
+    position: relative;
+    top: 15px;
+}
+.saListCampaighHeader
+{
+    margin-top: 40px;
+}
+#saSelectCampLabel
+{
+    padding: 10px 105px;
+    border: 1px solid #D6DAC2;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+.saCampListPanel
+{
+    width: 348px;
+    height: 200px;
+    overflow: hidden;
+    background: #fff;
+    margin-top: 10px;
+    border: 1px solid #D6DAC2;
+    border-radius: 5px;
+}
+.saCampListPanel:hover
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.saCampListPanel li
+{
+    list-style-type: none;
+}
+.saCampListPanel li label
+{
+    cursor: pointer;
+}
+.saInputButtonBox
+{
+    width: 500px;
+    margin-top: 50px;
+}
+.saUserFormErrorMessage
+{
+    text-align: center;
+    width: 350px;
+}
+.saUserFormErrorMessage small
+{
+    font-size: 140%;
+    color: #e74c3c;
+    position: relative;
+    top: 0px;
+    left: 40px;
+}
+.newUserLoadingBox
+{
+    position: absolute;
+    top: 40px;
+    right: -5px;
+    width: 50px;
+    height: 40px;
+}
+.newUserCheckEkisBox
+{
+    position: absolute;
+    top: 30px;
+    right: 0px;
+}
+
+/*    dot dot loading style */
+
+.newUserLoadingBox span
+{
+    width: 8px;
+    height: 8px;
+    background: #3F3F3F;
+    display: inline-block;
+    border-radius: 100%;
+}
+.newUserLoadingBox span:nth-child(1)
+{
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.newUserLoadingBox span:nth-child(2)
+{
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.newUserLoadingBox span:nth-child(3)
+{
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes bounce
+{
+    0%, 50%, 100%
+    {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    25%
+    {
+        -webkit-transform: translateY(-15px);
+        -moz-transform: translateY(-15px);
+        -o-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+}
+
+/*    System admin edit page for user*/
+
+.userInfoContainer:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.userInfoContainer
+{
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(135,117,108,1);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(135,117,108,1);
+    box-shadow: 0px 1px 5px 0px rgba(135,117,108,1);
+    width: 800px;
+    height: 404px;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+.userInfoBox
+{
+    width: 800px;
+    height: 100px;
+    border-bottom: 1px solid #E7E7E7;
+    cursor: pointer;
+}
+.userInfoBox span
+{
+    width: 265px;
+    float: left;
+    text-align: center;
+    line-height: 100px;
+    display: block;
+}
+.userInfoBox span:nth-child(1)
+{
+    font-size: 115%;
+    font-weight: 700;
+    color: #3F3F3F;
+}
+.userInfoBox span:nth-child(2)
+{
+    font-size: 115%;
+    color: #3F3F3F;
+}
+.userInfoBox span:nth-child(3)
+{
+    position: relative;
+    top: 5px;
+}
+.userInfoBox img
+{
+    width: 35px;
+}
+
+/*    System admin use edit pop style*/
+
+#saPopUpUsernameBox, #saPopUpPasswordBox, #saPopUpRoleBox
+{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    width: 500px;
+    height: 250px;
+    margin: 0px auto;
+    z-index: 30;
+    top: -600px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: #FFFFF7;
+    z-index: 31;
+
+}
+#editUserForm
+{
+    height: 220px;
+    margin: 0px;
+}
+.editFormContainer
+{
+    width: 500px;
+    height: 250px;
+}
+.saEditUserInfodesc
+{
+    text-align: center;
+    width: 500px;
+    height: 30px;
+}
+.saEditUserInfodesc h1
+{
+    font-size: 115%;
+    color: #3F3F3F;
+    padding: 10px 10px;
+}
+.saEditInputForm
+{
+    width: 450px;
+    margin: 35px 0px 0px 50px;
+}
+.saEditUserLabel
+{
+    position: relative;
+    right: 0px;
+    width: 350px;
+}
+.saEditUserLabel label
+{
+    font-size: 120%;
+}
+.saEditUsernameMessages, .saEditUsernameMessages
+{
+    width: 350px;
+    height: 45px;
+    text-align: center;
+    margin-left: 5px;
+}
+.saEditUsernameFooter
+{
+    width: 400px;
+    margin: 0px auto;
+    text-align: right;
+}
+.saEditUsernameFooter span
+{
+    font-size: 60%;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.saEditUsernameFooter span:nth-child(2)
+{
+    color: #1BBC9B;
+}
+.saUpdateButton
+{
+    font-size: 120%;
+    color: #1BBC9B;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+.saUpdateButton[disabled = "disabled"], .submitCategoryButton[disabled = "disabled"], .editCatSubButton input[disabled = "disabled"], .questionSubmitBox input[disabled = "disabled"]
+{
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+.roleFormFooter
+{
+    margin-top: 50px;
+}
+/*    general form validation style*/
+
+.saNewUserInput.ng-valid, .validInput.ng-valid, .categoryNameInput.ng-valid
+{
+    border: 2px solid #1ABC9C;
+}

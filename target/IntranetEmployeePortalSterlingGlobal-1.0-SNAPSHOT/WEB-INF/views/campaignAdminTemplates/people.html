@@ -1,0 +1,186 @@
+<section id = "caPeopleLoader" class = "globalPageLoader">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<header class = "mainHeader" ng-show = "showUserList == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "articleViewContainer" ng-show = "showUserList == true">
+
+    <section class = "employeeListContainer">
+
+        <div class = "empListBox">
+
+            <header class = "empListSearchBox">
+
+                <div>
+                    <input type = "text" ng-model = "search" placeholder = "Search Member" />
+                </div>
+
+            </header>
+
+            <div class = "empListContent">
+
+                <ul>
+                    <li ng-repeat = "employee in employees | filter: search">
+
+                        <div class = "empProfAvatar">
+                          <img data-ng-src="data:{{employee.userAvatar.fileType}};base64,{{employee.userAvatar.base64}}"
+                            src = "app-resources/imgs/defaultAvatar.png"/>
+                        </div>
+
+                        <div class = "empName" ng-click = "getEmployeeDetails(employee.empDetailsId)">
+                            <span>{{employee.lastName}} {{employee.firstName}}</span>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+        <div id = "oneEmpLoaderBox" style = "display: none">
+            <div class = "showCirlcebox">
+                <div class="circleLoader">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                  </svg>
+                </div>
+            </div>
+        </div>
+        <div class = "empDetailsBox" id = "empDetailsBox">
+
+
+
+            <header class = "empAvatar">
+
+                <div class = "avatarBackgroundContent">
+
+                  <img ng-if = "selectedEmpDetails.userAvatar.fileType != null" data-ng-src="data:{{selectedEmpDetails.userAvatar.fileType}};base64,{{selectedEmpDetails.userAvatar.base64}}"
+                    src = "app-resources/imgs/defaultAvatar.png" class = "backImg"/>
+
+                    <img ng-if = "selectedEmpDetails.userAvatar.fileType == null"
+                      src = "app-resources/imgs/defaultAvatar.png" class = "backImg"/>
+
+                    <div class = "avatarBackgroundBotton">
+                      <img ng-if = "selectedEmpDetails.userAvatar.fileType != null" data-ng-src="data:{{selectedEmpDetails.userAvatar.fileType}};base64,{{selectedEmpDetails.userAvatar.base64}}"
+                         ng-class = "{campaignBorder: selectedEmpDetails.user.role == 'Campaign Admin', agentBorder: selectedEmpDetails.user.role == 'Agent'}"/>
+
+                        <img ng-if = "selectedEmpDetails.userAvatar.fileType == null" src = "app-resources/imgs/defaultAvatar.png"
+                         ng-class = "{campaignBorder: selectedEmpDetails.user.role == 'Campaign Admin', agentBorder: selectedEmpDetails.user.role == 'Agent'}"/>
+
+                        <div class = "avatarEmpName">
+                            <h2>{{selectedEmpDetails.lastName}} {{selectedEmpDetails.firstName}}</h2>
+                            <span>{{selectedEmpDetails.user.role}}</span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </header>
+
+            <section class = "empPersonalDetailsCon">
+
+                <div class = "empPersonalDetBox">
+
+                    <table>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    {{selectedEmpDetails.email}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Position
+                                </td>
+                                <td>
+                                    {{selectedEmpDetails.position}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Contact Number
+                                </td>
+                                <td>
+                                    {{selectedEmpDetails.contactNumber}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Age
+                                </td>
+                                <td>
+                                    {{selectedEmpDetails.age}}
+                                </td>
+                            </tr>
+
+                            <!-- <tr>
+                                <td>
+                                    Article
+                                </td>
+                                <td>
+                                    sdasdsadasdsadsadsadsa
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Question
+                                </td>
+                                <td>
+                                    sdasdsadasdsadsadsadsa
+                                </td>
+                            </tr> -->
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </section>
+
+</div>

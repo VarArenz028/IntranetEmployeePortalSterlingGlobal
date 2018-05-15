@@ -1,0 +1,86 @@
+<div class = "logLoadingCon">
+
+    <div class = "logLoading" ng-show = "logLoading"></div>
+
+</div>
+
+<div class = "userLogHeader">
+
+  <div class = "logMessageHeaderCon" ng-show = "logHeadMessage">
+
+      <div class = "logInFormWrapper">
+
+           <h1 id = "userLogHeadMessage">User Login</h1>
+
+     </div>
+
+  </div>
+
+  <div class = "logMessageHeaderCon" ng-show = "errorMessage">
+
+      <div class = "logInFormWrapper">
+
+           <h1 id = "logErrorMessage" ng-if = "errorCode == 404">{{validationText}}</h1>
+           <h1 id = "logErrorMessage" ng-if = "errorCode == 403">{{inactiveText}}</h1>
+
+     </div>
+
+  </div>
+
+
+</div>
+
+<div class = "logInFormContainer">
+
+   <form role = "form" name = "logForm" method = "GET" ng-submit = "login()" accept-charset = "UTF-8" novalidate>
+
+       <div class = "group">
+
+          <input type = "text" name = "username" ng-model = "username" class = "logInput" required>
+
+          <span class = "highlight"></span>
+
+          <span class = "bar"></span>
+
+          <label class = "logLabel">Username</label>
+      </div>
+
+      <div class = "group">
+
+          <input type = "password" name = "password" ng-model = "password" class = "logInput" required>
+
+          <span class = "highlight"></span>
+
+          <span class = "bar"></span>
+
+          <label class = "logLabel">Password</label>
+
+    </div>
+
+    <div class = "logInFormWrapper">
+
+        <div id = "logButtonCon">
+
+            <input type = "submit" value = "Sign in" ng-disabled = "disableButton || logForm.$invalid"/>
+
+        </div>
+
+    </div>
+
+  </form>
+
+
+</div>
+
+
+
+
+<div class = "logFormFooter">
+
+     <div class = "logInFormWrapper">
+
+         <span id = "forgotPass">Forgot password?</span>
+
+     </div>
+
+</div>

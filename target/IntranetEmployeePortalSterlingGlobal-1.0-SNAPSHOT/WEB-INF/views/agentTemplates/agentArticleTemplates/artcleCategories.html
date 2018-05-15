@@ -1,0 +1,233 @@
+<div class = "pop-wrapper" id = "pop-wrapper">
+
+    <div class = "editCategoryContainer">
+
+       <div class = "EditCategoryHeader">
+
+            <div class = "editCategoryText">
+
+                <span>Edit category name</span>
+
+            </div>
+
+            <div class = "editCategoryExit">
+
+                <img src = "app-resources/imgs/close.png"/>
+
+            </div>
+
+        </div>
+
+
+            <form name = "editCategoryForm" class = "editCategoryForm" novalidate>
+
+                <div class = "editCategoryBox">
+
+
+                   <div class = "editCategoryinputBox">
+
+                        <input type = "text" placeholder = "Category name" ng-model = "oneCategory.categoryName" name = "cat" ng-maxlength = "50" ng-minlength = "5" ng-pattern = "/[a-zA-Z][a-zA-Z ]{4,}/" ng-value = "oneCategory.categoryName" required onecategory/>
+
+                        <span ng-show = "editCategoryForm.cat.$pending.onecategory" class = "categoryLoadingBox">
+                             <span></span>
+                             <span></span>
+                             <span></span>
+                        </span>
+
+                        <span ng-show = "editCategoryForm.cat.$valid" class = "categoryCheckBox">
+                            <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                        </span>
+
+                        <span ng-show = "editCategoryForm.cat.$invalid && editCategoryForm.cat.$dirty" class = "categoryEkisBox">
+                            <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                        </span>
+
+
+                        <div class = "categoryErrorMessage" ng-messages = "editCategoryForm.cat.$dirty && editCategoryForm.cat.$error">
+
+                            <small ng-message = 'maxlength'>
+
+                                Max 20 characters
+
+                            </small>
+
+                            <small ng-message = 'minlength'>
+
+                                minimum 6 characters
+
+                            </small>
+
+                            <small ng-message = 'pattern'>
+
+                                Please enter valid characters
+
+                            </small>
+
+                            <small ng-message = 'categoryInputError' ng-hide = "editCategoryForm.cat.$error.required">
+
+                                Category already exist
+
+                            </small>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class = "editCategoryButtonBox">
+
+                    <div class = "editCatCancelButton">
+
+                        <span>Cancel</span>
+
+                    </div>
+
+                    <div class = "editCatSubButton">
+
+                        <input type = "submit" value = "Ok" ng-disabled = "editCategoryForm.$invalid" ng-click = "updateCategory()">
+
+                    </div>
+
+                </div>
+
+            </form>
+
+    </div>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "uiViewContainer">
+
+    <div class = "categoriesFormBox">
+
+        <form name = "categoriesForm" method = "POST">
+
+            <div class = "newCategorInputBox">
+
+                <input type = "text" class = "categoryNameInput" placeholder = "Enter category name" ng-model = "categoryResources.categoryName" name = "category" class = "validInput" ng-maxlength = "50" ng-minlength = "5" ng-pattern = "/[a-zA-Z][a-zA-Z ]{4,}/" required category/>
+
+                <span ng-show = "categoriesForm.category.$pending.category" class = "newUserLoadingBox">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                 </span>
+
+                <span ng-show = "categoriesForm.category.$valid" class = "newUserCheckEkisBox">
+                    <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                </span>
+
+                <span ng-show = "categoriesForm.category.$invalid && categoriesForm.category.$dirty" class = "newUserCheckEkisBox">
+                    <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                </span>
+
+
+                <div class = "categoryErrorMessage" ng-messages = "categoriesForm.category.$dirty && categoriesForm.category.$error">
+
+
+
+                    <small ng-message = 'maxlength'>
+
+                        Max 20 characters
+
+                    </small>
+
+                    <small ng-message = 'minlength'>
+
+                        minimum 6 characters
+
+                    </small>
+
+                    <small ng-message = 'pattern'>
+
+                        Please enter valid characters
+
+                    </small>
+
+                    <small ng-message = 'categoryInputError' ng-hide = "categoriesForm.category.$error.required">
+
+                        Cataegory already exist
+
+                    </small>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class = "categoriesButton">
+
+                <span ng-click = "clear()">Clear</span>
+                <input type = "submit" value = "Save" class = "submitCategoryButton" ng-disabled = "categoriesForm.$invalid" ng-click = "saveCategory()"/>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class = "categoryListBox">
+
+        <div class = "categorySearchBox">
+
+            <div class = "categorySearchHolder">
+
+               <input type = "text" id = "searchCategory" ng-model = "search" placeholder = "Search category"/>
+
+            </div>
+
+        </div>
+
+        <div class = "categoryList">
+
+            <ul id = "categoryNameBox">
+
+                <li ng-repeat = "category in categories.categories | filter: search">
+
+                   <div class = "categoryNameBox" ng-click = "getCategory(category.categoryId)">
+
+                       {{category.categoryName}}
+
+                   </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<aside class = "rightSideBar">
+
+</aside>

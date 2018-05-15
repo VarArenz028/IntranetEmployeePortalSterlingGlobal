@@ -1,0 +1,253 @@
+<section id = "newsFeedLoader" class = "globalPageLoader">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<header class = "mainHeader" ng-show = "showNewsFeed == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "uiViewContainer" ng-show = "showNewsFeed == true" ng-cloak>
+
+    <div class = "newsFeedContainer">
+
+        <div class = "allnewsFeedBox" ng-repeat = "newsFeed in newsFeedObjects | orderBy: '-date' | startFrom: (currentPage - 1) * pageSize | limitTo: pageSize ">
+
+            <header class = "newsFeedHeader">
+
+                <div class = "newsFeedIconBox">
+                    <span class = "glyphicon glyphicon-pencil" style = "font-size: 130%;" ng-if = "newsFeed.newsFeedType == 'article'"></span>
+                    <span class = "glyphicon glyphicon-question-sign" style = "font-size: 130%;" ng-if = "newsFeed.newsFeedType == 'question'"></span>
+                    <span class = "glyphicon glyphicon-calendar" style = "font-size: 130%;" ng-if = "newsFeed.newsFeedType == 'event'"></span>
+                    <span class = "fa fa-newspaper-o" style = "font-size: 130%;" ng-if = "newsFeed.newsFeedType == 'news'"></span>
+                </div>
+
+                <div class = "newsFeedTitle">
+                    <span ng-click = "goToDetails(newsFeed.newsFeedId, newsFeed.newsFeedType); addViewForArticle(newsFeed.newsFeedId, newsFeed.newsFeedType)">{{newsFeed.newsFeedTitle}}</span>
+                </div>
+
+            </header>
+
+            <section class = "newsFeedBody">
+
+                <div class = "newsFeedArticleBody">
+
+                    <div class = "articleBodyDetails" ng-if = "newsFeed.newsFeedType == 'article'">
+
+                        <div class = "newsFeedAuthorBox">
+                            <span>Author: {{newsFeed.empName}}</span>
+                        </div>
+
+                        <div class = "newsFeedCategoryBox">
+                            <span>Category: {{newsFeed.articleCategory}}</span>
+                        </div>
+
+                        <div class = "newsFeedArticleDateCreatedBox">
+                            <span>Date created: {{newsFeed.dateCreated | date: 'medium'}}</span>
+                        </div>
+
+                        <div class = "newsFeedArticleViewsBox">
+                            <span>Views {{newsFeed.numberOfView}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class = "articleBodyDetails" ng-if = "newsFeed.newsFeedType == 'question'">
+
+                        <div class = "newsFeedAuthorBox">
+                            <span>Asked by: {{newsFeed.empName}}</span>
+                        </div>
+
+                        <div class = "newsFeedArticleDateCreatedBox">
+                            <span>Date created: {{newsFeed.dateCreated | date: 'medium'}}</span>
+                        </div>
+
+                        <div class = "newsFeedArticleViewsBox">
+                            <span>Answers {{newsFeed.numberOfAnswer}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class = "eventBodyDetails" ng-if = "newsFeed.newsFeedType == 'event'">
+
+                        <div class = "newsFeedEventImgBox">
+
+                            <div class = "newsFeedEventImg">
+
+                              <img data-ng-src="data:{{newsFeed.fileType}};base64,{{newsFeed.base64}}"
+                               ng-if = "newsFeed.fileType != null" />
+
+                               <img src = "app-resources/imgs/sterling.jpg" ng-if = "newsFeed.fileType == null" />
+
+                            </div>
+
+
+                        </div>
+
+                        <div class = "newsEventDetailsBox">
+
+                            <div>
+                                <span>Created by: {{newsFeed.empName}}</span>
+                            </div>
+
+                            <div>
+                                <span>Event date: {{newsFeed.eventDate}}</span>
+                            </div>
+
+                            <div>
+                                <span>Location: {{newsFeed.eventLocation}}</span>
+                            </div>
+
+                            <footer>
+                                <span>Details:</span>
+                                <p>
+                                    {{newsFeed.eventDetails}}
+                                </p>
+                            </footer>
+
+                        </div>
+
+                    </div>
+
+                    <div class = "newsBodyDetails" ng-if = "newsFeed.newsFeedType == 'news'">
+
+                      <div class = "newsFeedEventImgBox">
+
+                          <div class = "newsFeedEventImg">
+
+                              <img data-ng-src="data:{{newsFeed.fileType}};base64,{{newsFeed.base64}}"
+                               ng-if = "newsFeed.fileType != null" />
+
+                               <img src = "app-resources/imgs/sterling.jpg" ng-if = "newsFeed.fileType == null" />
+
+                          </div>
+
+                      </div>
+
+                      <div class = "newsEventDetailsBox">
+
+                          <div>
+                              <span>Created by: {{newsFeed.empName}}</span>
+                          </div>
+
+                          <div>
+                              <span>Date created: {{newsFeed.dateCreated | date: 'medium'}}</span>
+                          </div>
+
+                      </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+        <footer class = "newsFeedpaginationContainer" id = "newsFeedpaginationContainer">
+
+            <ul uib-pagination="" total-items = "newsFeedObjects.length" ng-model = "currentPage" items-per-page = "pageSize" class = "ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+        </footer>
+
+    </div>
+
+</div>
+
+<aside class = "rightSideBar" ng-show = "showNewsFeed == true">
+
+    <section class = "pinToTopContainer" ng-show = "showPinToTop == true">
+
+        <h1>Pin to top</h1>
+
+        <article>
+            <h2>Articles</h2>
+            <div ng-repeat = "pinToTop in pinToTopArticles | limitTo: limitPinToTop | orderBy: '-date'">
+                <span ng-click = "goToDetails(pinToTop.articleId, pinToTop.type); addViewForArticleFromPin(pinToTop.articleId, pinToTop.type)">{{pinToTop.title}}</span>
+                <span>{{pinToTop.category}}</span>
+            </div>
+
+        </article>
+
+    </section>
+
+</aside>
+
+<!-- <div class = "newsFeedBox" ng-repeat = "news in responsed.newsFeed | orderBy: '-date'">
+
+    <header>
+
+        <div>
+
+            <span class = "glyphicon glyphicon-pencil" ng-if = "news.type == 'article'"></span>
+            <span class = "glyphicon glyphicon-question-sign" ng-if = "news.type == 'question'"></span>
+            <img src = "app-resources/imgs/articleWriting.png" class = "newsImg" ng-if = "news.type == 'article'"/>
+            <img src = "app-resources/imgs/newsQuestion.png" class = "newsImg" ng-if = "news.type == 'question'"/>
+
+        </div>
+
+        <div>
+
+            <div><span ng-click = "goToDetails(news.id, news.type); addViewForArticle(news.id, news.type)" title = "{{news.title}}">{{news.title}}</span></div>
+
+        </div>
+
+    </header>
+
+    <section>
+
+        <div>
+
+            <span>Var Arenz Villarino</span>
+            <span>Date created {{news.dateCreated | date:'medium'}}</span>
+
+        </div>
+
+        <footer>
+
+            <div>
+
+              <span>Views 100</span>
+              <span>{{news.category}}</span>
+
+            </div>
+
+            <div>
+
+                <span><img src = "app-resources/imgs/dotdotdot.png"/></span>
+
+            </div>
+
+
+        </footer>
+
+    </section>
+
+</div> -->

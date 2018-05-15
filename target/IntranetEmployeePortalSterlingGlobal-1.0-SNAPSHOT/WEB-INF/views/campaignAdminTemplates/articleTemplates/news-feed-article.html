@@ -1,0 +1,62 @@
+<div class = "uiViewContainer">
+
+  <div class = "myArticleHeader boxShadow">
+
+      <div class = "articleHeaderBox">
+
+          <span ng-click = "article()">Create new article?</span>
+
+      </div>
+
+  </div>
+
+  <section class = "feedsContainer">
+
+      <div class = "feedsBox" ng-repeat = "article in responsed.articles">
+
+          <header>
+              <h1>{{article.title}}</h1>
+          </header>
+
+          <section>
+
+              <span>{{article.category}}</span>
+
+          </section>
+
+          <footer>
+
+              <div><span>{{article.user.username}}</span></div>
+              <div><span>Date Created {{article.dateCreated.monthOfYear}}/{{article.dateCreated.dayOfMonth}}/{{article.dateCreated.year}}</span></div>
+              <div><img src = "app-resources/imgs/dotdotdot.png" /></div>
+
+          </footer>
+
+      </div>
+
+  </section>
+
+
+</div>
+
+<aside class = "rightSideBar">
+
+    <div class = "sideRecentlyAdded">
+
+      <h1>Recently Added</h1>
+
+        <div>
+
+            <li ng-repeat = "recentlyAdded in responsed.articleRecentlyAdded">
+
+                <span ng-click = "">{{recentlyAdded.title}}</span>
+                <span>{{recentlyAdded.category}}</span>
+
+            </li>
+
+        </div>
+
+    </div>
+
+
+</aside>

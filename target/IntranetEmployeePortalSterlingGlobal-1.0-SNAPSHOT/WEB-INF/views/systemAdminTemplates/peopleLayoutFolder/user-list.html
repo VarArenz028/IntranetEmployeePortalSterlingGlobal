@@ -1,0 +1,656 @@
+
+<div class = "newUserListPop" id = "newUserPop">
+
+  <div class = "logLoadingCon">
+
+      <div class = "logLoading" ng-show = "logLoading"></div>
+
+  </div>
+
+  <div class = "newUserForm" ng-cloak>
+
+    <header>
+
+        <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "clearField()"/>
+
+    </header>
+
+      <form name = "newUserForm" method = "POST" novalidate>
+
+          <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+              <div title = "switch" class = "newUserSwitch" ng-switch-default>
+
+                  <section>
+
+                      <p type = "Username:">
+
+                        <input type = "text" name = "username" ng-model = "formParams.user.username" required  ng-minlength = "6" ng-maxlength = "20" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" uname/>
+
+                        <span type = "loading" ng-show = "newUserForm.username.$pending.uname">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+
+                        <span type = "check" ng-show = "newUserForm.username.$valid">
+                            <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                        </span>
+
+                        <span type = "ekis" ng-show = "newUserForm.username.$invalid && newUserForm.username.$dirty">
+                            <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                        </span>
+
+                        <div class ng-messages = "newUserForm.username.$touched && newUserForm.username.$error">
+
+                            <small ng-message = "required">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div ng-messages = "newUserForm.username.$dirty && newUserForm.username.$error">
+
+
+                           <small ng-message = 'maxlength'>
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength'>
+
+                               minimum 6 characters
+
+                           </small>
+
+                           <small ng-message = 'pattern'>
+
+                               Please enter valid characters
+
+                           </small>
+
+                           <small ng-message = 'unameInputError' ng-hide = "newUserForm.username.$error.required">
+
+                               Username already exist
+
+                           </small>
+
+
+                       </div>
+
+                    </p>
+
+                  </section>
+
+                  <section>
+
+                      <p type = "Password:">
+
+                          <input type = "password" name = "password" ng-model = "formParams.user.password" ng-maxlength = "20" ng-minlength = "6" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required pass/>
+
+                          <span type = "loading" ng-show = "newUserForm.password.$pending.pass">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                          </span>
+
+                          <span type = "check" ng-show = "newUserForm.password.$valid">
+                              <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                          </span>
+
+                          <span type = "ekis" ng-show = "newUserForm.password.$invalid && newUserForm.password.$dirty">
+                              <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                          </span>
+
+
+                          <div title = "error" ng-messages = "newUserForm.password.$touched && newUserForm.password.$error">
+
+                              <small ng-message = "required">
+
+                                     Required
+
+                              </small>
+
+                          </div>
+
+                          <div title = "error" ng-messages = "newUserForm.password.$dirty && newUserForm.password.$error">
+
+                             <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                                 Max 20 characters
+
+                             </small>
+
+                             <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                                <span>minimum 6 characters</span>
+
+                             </small>
+
+                             <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                                 Please enter valid characters
+
+                             </small>
+
+                             <small ng-message = 'passInputError' ng-hide = "newUserForm.password.$error.required" style = "color: #e74c3c">
+
+                                 <span>Password already exist</span>
+
+                             </small>
+
+
+                         </div>
+
+                      </p>
+
+                  </section>
+
+                  <footer>
+
+                        <div title = "Cancel">
+
+                            <button>Cancel</button>
+
+                        </div>
+
+                        <div title = "Next">
+
+                            <input ng-click = "next('details2')" ng-disabled = "newUserForm.$invalid" type = "button" value = "Next"/>
+
+                        </div>
+
+                  </footer>
+
+              </div>
+
+              <div title = "switch" class = "newUserSwitch" ng-switch-when = "details2">
+
+                  <section>
+
+                      <p type = "Last name:">
+
+                        <input type = "text" name = "lastname" ng-model = "formParams.employeeDetails.lastName" required  ng-minlength = "5" ng-maxlength = "20" ng-pattern = "/[a-zA-Z0-9\s]+/" required/>
+
+                     </p>
+
+                  </section>
+
+                  <section>
+
+                      <p type = "First name:">
+
+                          <input type = "text" name = "firstname" ng-model = "formParams.employeeDetails.firstName" ng-maxlength = "20" ng-minlength = "5" ng-pattern = "/[a-zA-Z0-9\s]+/" required/>
+
+                      </p>
+
+                  </section>
+
+                  <footer>
+
+                        <div ng-click = "next('')" title = "Cancel">
+
+                            <button>Back</button>
+
+                        </div>
+
+                        <div title = "Next">
+
+                            <input ng-click = "next('details3')" ng-disabled = "newUserForm.$invalid" type = "button" value = "Next"/>
+
+                        </div>
+
+                  </footer>
+
+              </div>
+
+              <div title = "switch" class = "newUserSwitch" ng-switch-when = "details3">
+
+
+                  <section>
+
+                      <p type = "Privilege:">
+
+                        <select ng-model = "formParams.user.role">
+
+                            <option value = "System Admin">System Administrator</option>
+                            <option value = "Campaign Admin">Campaign Administrator</option>
+                            <option value = "Agent">Agent</option>
+
+                        </select>
+
+                      </p>
+
+                  </section>
+
+                  <section>
+
+                      <p type = "Campaign:" ng-hide = "isSysteAdmin == true">
+
+                          <select ng-model = "formParams.campaign">
+
+                              <option ng-repeat = "campaign in campaigns" value = "{{campaign.campaignName}}">{{campaign.campaignName}}</option>
+
+                          </select>
+
+                      </p>
+
+                  </section>
+
+                  <footer>
+
+                        <div ng-click = "next('')" title = "Cancel">
+
+                            <button>Back</button>
+
+                        </div>
+
+                        <div title = "Next">
+
+                            <input ng-click = "next('details4')" ng-disabled = "newUserForm.$invalid" type = "button" value = "Next"/>
+
+                        </div>
+
+                  </footer>
+
+              </div>
+
+              <div title = "switch" class = "newUserSwitch" ng-switch-when = "details4">
+
+                  <h1>User Details</h1>
+
+                  <table>
+
+                    <tr>
+
+                        <td>
+                            Username:
+                        </td>
+
+                        <td>
+                            {{formParams.user.username}}
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Last name:
+                        </td>
+
+                        <td>
+                            {{formParams.employeeDetails.lastName}}
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            First name:
+                        </td>
+
+                        <td>
+                            {{formParams.employeeDetails.firstName}}
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Role:
+                        </td>
+
+                        <td>
+                            {{formParams.user.role}}
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Campaign
+                        </td>
+
+                        <td>
+                            {{formParams.campaign}}
+                        </td>
+
+                    </tr>
+
+                  </table>
+
+                  <footer>
+
+                        <div ng-click = "next('details3')" title = "Cancel">
+
+                            <button>Back</button>
+
+                        </div>
+
+                        <div title = "Next">
+
+                            <input ng-click = "submit()" ng-disabled = "disable" type = "Submit" value = "Submit"/>
+
+                        </div>
+
+                  </footer>
+
+              </div>
+
+              <div title = "switch" class = "newUserSwitch" ng-switch-when = "details5">
+
+                  <h1>Successfully Created</h1>
+
+              </div>
+
+          </section>
+
+      </form>
+
+  </div>
+
+</div>
+<div class = "saContainers">
+
+    <div class = "saHeaderServiceContainer">
+
+           <div class = "saHeaderBox saBox">
+
+                <button id = "saAddButton" ng-click = "addUser()">Add User</button>
+
+           </div>
+
+            <div class = "saHeaderBox saBox2">
+
+                <input type = "text" placeholder = "Search People" ng-model = "search" id = "saSearch"/>
+
+           </div>
+
+   </div>
+
+
+     <div class = "saDetailsContainer">
+
+        <table class = "userTable">
+          <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Date Registered</th>
+            <th>Action</th>
+          </tr>
+           <tr ng-repeat = "user in users | filter: search">
+
+               <td>{{user.username}}</td>
+               <td>{{user.role}}</td>
+               <td>{{user.dateRegistered.monthOfYear}}/{{user.dateRegistered.dayOfMonth}}/{{user.dateRegistered.year}}</td>
+               <td title = "Edit user"><img ng-click = "editUserPage(user.userId)" src = "app-resources/imgs/edit.png"/></td>
+           </tr>
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+<div ui-view = "user-details"></div>
+
+<!-- <div class = "saNewUserFormContainer" ng-show = "showForm == true">
+
+      <form name = "saNewUserForm" id = "saNewUserForm" method = "POST" novalidate>
+
+          <section>
+
+              <div>
+                  <p type = "Username:">
+
+                    <input type = "text" name = "username" ng-model = "userRegistration.username" required  ng-minlength = "6" ng-maxlength = "20" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" uname/>
+
+                    <span ng-show = "saNewUserForm.username.$pending.uname" class = "newUserLoadingBox">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span ng-show = "saNewUserForm.username.$valid" class = "newUserCheckEkisBox">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span ng-show = "saNewUserForm.username.$invalid && saNewUserForm.username.$dirty" class = "newUserCheckEkisBox">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+
+                    <div class = "saUserFormErrorMessage" ng-messages = "saNewUserForm.username.$touched && saNewUserForm.username.$error">
+
+                        <small ng-message = "required">
+
+                               Required
+
+                        </small>
+
+                    </div>
+
+                    <div class = "saUserFormErrorMessage" ng-messages = "saNewUserForm.username.$dirty && saNewUserForm.username.$error">
+
+
+                       <small ng-message = 'maxlength'>
+
+                           Max 20 characters
+
+                       </small>
+
+                       <small ng-message = 'minlength'>
+
+                           minimum 6 characters
+
+                       </small>
+
+                       <small ng-message = 'pattern'>
+
+                           Please enter valid characters
+
+                       </small>
+
+                       <small ng-message = 'unameInputError' ng-hide = "saNewUserForm.username.$error.required">
+
+                           Username already exist
+
+                       </small>
+
+
+                   </div>
+
+                  </p>
+              </div>
+
+          </section>
+
+
+          <div class = "saNewUserFormLeftBox">
+
+              <div class = "saInputBox">
+
+                  <div class = "saLabelBox">
+
+                        <label>Username</label>
+
+                  </div>
+                 <input type = "text" class = "saNewUserInput" name = "username" ng-model = "userRegistration.username" required  ng-minlength = "6" ng-maxlength = "20" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" uname/>
+
+                 <span ng-show = "saNewUserForm.username.$pending.uname" class = "newUserLoadingBox">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                 </span>
+
+                 <span ng-show = "saNewUserForm.username.$valid" class = "newUserCheckEkisBox">
+                     <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                 </span>
+
+                 <span ng-show = "saNewUserForm.username.$invalid && saNewUserForm.username.$dirty" class = "newUserCheckEkisBox">
+                     <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                 </span>
+
+                 <div class = "saUserFormErrorMessage" ng-messages = "saNewUserForm.username.$touched && saNewUserForm.username.$error">
+
+                     <small ng-message = "required">
+
+                            Required
+
+                     </small>
+
+                 </div>
+
+                 <div class = "saUserFormErrorMessage" ng-messages = "saNewUserForm.username.$dirty && saNewUserForm.username.$error">
+
+
+                    <small ng-message = 'maxlength'>
+
+                        Max 20 characters
+
+                    </small>
+
+                    <small ng-message = 'minlength'>
+
+                        minimum 6 characters
+
+                    </small>
+
+                    <small ng-message = 'pattern'>
+
+                        Please enter valid characters
+
+                    </small>
+
+                    <small ng-message = 'unameInputError' ng-hide = "saNewUserForm.username.$error.required">
+
+                        Username already exist
+
+                    </small>
+
+
+                </div>
+
+              </div>
+
+
+
+              <div class = "saInputBox">
+
+                 <div class = "saLabelBox">
+
+                        <label>Password</label>
+
+                  </div>
+                 <input type = "password" class = "saNewUserInput" class = "saNewUserInput" name = "password" ng-model = "userRegistration.password" ng-maxlength = "20" ng-minlength = "6" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required pass/>
+
+                 <span ng-show = "saNewUserForm.password.$pending.pass" class = "newUserLoadingBox">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                 </span>
+
+                 <span ng-show = "saNewUserForm.password.$valid" class = "newUserCheckEkisBox">
+                     <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                 </span>
+
+                 <span ng-show = "saNewUserForm.password.$invalid && saNewUserForm.password.$dirty" class = "newUserCheckEkisBox">
+                     <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                 </span>
+
+
+                 <div class = "saUserFormErrorMessage" ng-messages = "saNewUserForm.password.$touched && saNewUserForm.password.$error">
+
+                     <small ng-message = "required">
+
+                            Required
+
+                     </small>
+
+                 </div>
+
+                 <div class = "saUserFormErrorMessage" ng-messages = "saNewUserForm.password.$dirty && saNewUserForm.password.$error">
+
+
+
+                    <small ng-message = 'maxlength'>
+
+                        Max 20 characters
+
+                    </small>
+
+                    <small ng-message = 'minlength'>
+
+                        minimum 6 characters
+
+                    </small>
+
+                    <small ng-message = 'pattern'>
+
+                        Please enter valid characters
+
+                    </small>
+
+                    <small ng-message = 'passInputError' ng-hide = "saNewUserForm.password.$error.required">
+
+                        Password already exist
+
+                    </small>
+
+
+                </div>
+
+              </div>
+
+
+              <div class = "saInputButtonBox">
+
+                    <button type = "submit" id = "saRegisterButton" ng-disabled = "saNewUserForm.$invalid" ng-click = "addUser()">Register</button>
+
+              </div>
+
+
+          </div>
+
+
+              <div class = "saNewUserFormRightBox">
+
+
+                  <div class = "saInputBox">
+
+                     <select class = "saNewUserSelect" ng-model = "userRegistration.role">
+
+                         <option ng-repeat = "priv in priveleges" value = "{{priv.value}}">{{priv.privelege}}</option>
+
+                     </select>
+
+                  </div>
+
+                 <div class = "saInputBox">
+
+
+                    <select class = "saNewUserSelect" ng-repeat = "detail in details"  ng-model = "userRegistration.campaignsId">
+
+                       <option value="">Choose campaign</option>
+                       <option ng-repeat = "camp in detail.campaigns" value = "{{camp.campaignId}}">{{camp.campaignName}}</option>
+
+                     </select>
+
+
+                 </div>
+
+
+              </div>
+
+
+      </form>
+
+</div> -->

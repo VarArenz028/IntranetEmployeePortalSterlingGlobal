@@ -1,0 +1,282 @@
+<section id = "caAllArticleLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<div id = "caDeleteArticle">
+
+    <div class = "editCategoryForm" ng-cloak>
+
+      <header>
+
+          <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeDeletePop();" ng-hide = "hideCloseButton == true"/>
+
+      </header>
+
+        <form name = "deleteCategoryForm" novalidate>
+
+            <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+                <div title = "switch2" class = "newUserSwitch" ng-switch-default>
+
+                    <section>
+
+                        <h1>Are you sure to delete Article {{title}}?</h1>
+
+                    </section>
+
+                    <footer>
+
+                          <div title = "Cancel">
+
+                              <button ng-click = "closeDeletePop2();">Cancel</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "inactiveArticle();"  type = "button" value = "Delete"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details2" style = "height: 100%;">
+
+                    <div class = "updateCategorySuccessBox">
+
+                        <div class = "updateCategoryImgBox">
+
+                            <img src = "app-resources/imgs/success.png" />
+
+                        </div>
+
+                        <div class = "updateCategorySuccessMessage">
+
+                            <h1>Successfully deleted</h1>
+
+                        </div>
+
+                    </div>
+                    <footer class = "upCatLastSwitchFooter" ng-click = "closeDeletePop();">
+                        <span>Close</span>
+                    </footer>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </div>
+
+</div>
+
+<header class = "mainHeader" ng-show = "showAllArticle == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+<div class = "wideViewContainer" ng-show = "showAllArticle == true">
+
+    <section id = "articleListContainer" class = "itemListContainer">
+        <article class = "articleListBox">
+            <h1><span>List of Article</span></h1>
+
+            <header class = "itemListHeader">
+
+                <section class = "sortContainer sortBox">
+
+                    <div class = "selectCatBox rightSorBox">
+
+                        <select class = "selectCategory" ng-model = "articleCategory" ng-change = "selectedCategory()">
+
+                            <option ng-repeat = "category in responsed.categories" ng-value = "category.categoryName">
+                                {{category.categoryName}}
+                            </option>
+
+
+                        </select>
+
+                    </div>
+
+                </section>
+
+                <section class = "sortContainer sortBox2">
+
+                    <div class = "searchListBox rightSorBox2">
+
+                        <input type = "text" placeholder = "Search an Article" ng-model = "search"/>
+
+                    </div>
+
+                </section>
+
+            </header>
+
+            <table>
+                <thead>
+                    <tr>
+
+                          <th class = "thArticleTitle" ng-click = "singleSort('title')">
+                            Title
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend('title'), 'caret-up':sortAscend('title')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh" ng-click = "singleSort('category')">
+                            Category
+                            <span class="caret-blank"
+                                ng-class="{'caret-down':sortDescend('category'), 'caret-up':sortAscend('category')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh" ng-click = "singleSort('dateCreated')">
+                            Date Created
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend('dateCreated'), 'caret-up':sortAscend('dateCreated')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh">
+                            <img src = "app-resources/imgs/delete.png" class = "listDeleteImg" />
+                          </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+
+                    <tr ng-repeat = "article in articles | startFrom: (currentPage - 1) * pageSize | limitTo: pageSize | orderBy:[filterSort, sortType] | filter: search" class = "articleTableRow">
+                      <td class = "tdArticleTitle" ng-click = "selectArticle(article.articleId)">
+                          {{article.title}}
+                      </td>
+
+                      <td class = "articleListTd" ng-click = "selectArticle(article.articleId)">
+                          {{article.category}}
+                      </td>
+
+                      <td class = "articleListTd" ng-click = "selectArticle(article.articleId)">
+                          {{article.dateCreated | date:'shortDate'}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          <img src = "app-resources/imgs/delete.png" ng-click = "showArticleDeletePop(article.articleId, article.title)" />
+                      </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </article>
+
+    </section>
+
+    <footer class = "paginationContainer" style = "margin-top: 3%;">
+
+        <ul uib-pagination="" total-items="articles.length" ng-model="currentPage" items-per-page="pageSize" class="ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+    </footer>
+
+    <section class = "aArticleOneArticleContainer">
+
+      <section id = "oneArticleFromAllArticle">
+
+        <div class = "showCirlcebox">
+            <div class="circleLoader">
+              <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+              </svg>
+            </div>
+        </div>
+
+      </section>
+
+
+        <div class = "aArticleOneBox">
+
+            <header class = "aHeader">
+
+                <div class = "aHeaderButton">
+
+                  <button type = "button" id = "aPinButton"  class = "btn btn-default btn-sm">
+                      <span class = "glyphicon glyphicon-trash"></span> Delete
+                  </button>
+
+                </div>
+
+                <div class = "aHeaderButton">
+
+                    <!-- <button id = "aPinButton" ng-show = "showPinButton == true" ng-click = "pinArticle(oneArticle.article.articleId)">Pin</button> -->
+
+                    <button type = "button" id = "aPinButton"  class = "btn btn-default btn-sm" ng-show = "showPinButton == true" ng-click = "pinArticle(oneArticle.article.articleId)">
+                        <span class = "glyphicon glyphicon-pushpin"></span> Pin
+                    </button>
+                    <button id = "aUnPinButton" type = "button" class = "btn btn-default btn-sm" ng-show = "showUnPinButton == true" ng-click = "pinArticle(oneArticle.article.articleId)">
+                        <span class = "glyphicon glyphicon-remove"></span> Unpin
+                    </button>
+
+                    <!-- <button id = "aUnPinButton" ng-show = "showUnPinButton == true" ng-click = "pinArticle(oneArticle.article.articleId)">Unpin</button> -->
+
+
+                </div>
+            </header>
+
+            <header class = "aHeader2">
+
+                <section>
+                    <h1>{{oneArticle.article.title}}</h1>
+                </section>
+
+                <footer>
+
+                    <div>
+
+                        <span>{{oneArticle.article.category}}</span>
+
+                    </div>
+
+                    <div>
+                        <span>{{oneArticle.article.dateString}}</span>
+                    </div>
+
+                </footer>
+
+            </header>
+
+            <article class = "aArticleCon">
+
+            </article>
+
+        </div>
+
+    </section>
+
+</div>

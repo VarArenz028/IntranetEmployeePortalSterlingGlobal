@@ -1,0 +1,110 @@
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer">
+
+    <section id = "questionListContainer" class = "itemListContainer">
+        <article class = "articleListBox">
+
+            <h1><span>Question List</span></h1>
+
+            <header class = "itemListHeader">
+
+                <section class = "sortContainer sortBox2">
+
+
+                    <div class = "searchListBoxQuestion rightSorBox2 questionSearch">
+
+                        <input type = "text" placeholder = "Search questions" ng-model = "search"/>
+
+                    </div>
+
+                </section>
+
+            </header>
+
+            <table>
+                <thead>
+                    <tr>
+
+                          <th class = "thArticleTitle" ng-click = "singleSort('title')">
+                            Question
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend('title'), 'caret-up':sortAscend('title')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh">
+                            Asked By
+                          </th>
+
+                          <th class = "articleListTh" ng-click = "singleSort('dateCreated')">
+                            Date Asked
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend('dateCreated'), 'caret-up':sortAscend('dateCreated')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh">
+                            <img src = "app-resources/imgs/delete.png" class = "listDeleteImg" />
+                          </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr ng-repeat = "quetion in questions | startFrom: (currentPage - 1) * pageSize
+                    | limitTo: pageSize | orderBy:[filterSort, sortType] | filter: search" class = "articleTableRow">
+                        <td class = "tdArticleTitle" ng-click = "goToQuestion(quetion.questionId)">
+                            {{quetion.title}}
+                        </td>
+
+                        <td class = "articleListTd" ng-click = "goToQuestion(quetion.questionId)">
+                            {{quetion.employeeDetails.lastName}} {{quetion.employeeDetails.firstName}}
+                        </td>
+
+                        <td class = "articleListTd" ng-click = "goToQuestion(quetion.questionId)">
+                            {{quetion.dateCreated | date:'shortDate'}}
+                        </td>
+
+                        <td class = "articleListTd">
+                            <img src = "app-resources/imgs/delete.png" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </article>
+
+        <footer class = "paginationContainer">
+
+            <ul uib-pagination="" total-items="questions.length" ng-model="currentPage" items-per-page="pageSize" class="ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+        </footer>
+
+
+    </section>
+
+</div>

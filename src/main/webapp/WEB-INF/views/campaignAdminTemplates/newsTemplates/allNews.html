@@ -1,0 +1,199 @@
+<section id = "caAllNewsLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+
+<div id = "caDeleteNews">
+
+    <div class = "editCategoryForm" ng-cloak>
+
+      <header>
+
+          <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeDeleteNewsPop();" ng-hide = "hideCloseButton == true"/>
+
+      </header>
+
+        <form novalidate>
+
+            <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+                <div title = "switch2" class = "newUserSwitch" ng-switch-default>
+
+                    <section>
+
+                        <h1>Are you sure to delete this news?</h1>
+
+                    </section>
+
+                    <footer>
+
+                          <div title = "Cancel">
+
+                              <button ng-click = "closeDeleteNewsPop();">Cancel</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "inactiveNews();"  type = "button" value = "Delete"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details2" style = "height: 100%;">
+
+                    <div class = "updateCategorySuccessBox">
+
+                        <div class = "updateCategoryImgBox">
+
+                            <img src = "app-resources/imgs/success.png" />
+
+                        </div>
+
+                        <div class = "updateCategorySuccessMessage">
+
+                            <h1>Successfully deleted</h1>
+
+                        </div>
+
+                    </div>
+                    <footer class = "upCatLastSwitchFooter" ng-click = "closeDeleteNewsPop();">
+                        <span>Close</span>
+                    </footer>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<section id = "caCreatingDraftNewsLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<header class = "mainHeader" ng-show = "showAllNews == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer" id = "allNews" ng-show = "showAllNews == true">
+    <div class = "createNewsHeader">
+
+        <div class = "createNewsHeaderBox">
+
+            <span ng-click = "createNews()">Add New?</span>
+
+        </div>
+
+    </div>
+    <section class = "allNewsContainer">
+
+        <div class = "allNewsBox">
+
+            <div class = "newsBox" ng-repeat = "n in news | startFrom: (currentPage - 1) * pageSize | limitTo: pageSize | orderBy: '-date'">
+
+                <div class = "newsImgBox">
+
+                    <img data-ng-src = "data:{{n.fileType}};base64,{{n.base64}}"  ng-if = "n.fileType !== null" />
+                    <img src = "app-resources/imgs/sterling.jpg" ng-if = "n.fileType === null" />
+                    <div class = "newsImgOpacityBox">
+
+                    </div>
+                </div>
+
+                <div class = "newsShowContent">
+
+                    <header class = "newsShortTitleHeader">
+                      <div class = "newsTitle">
+                          <h1>{{n.newsTitle}}</h1>
+                      </div>
+
+                      <div class = "newsOptionsBox">
+
+                          <div class = "deleteNewsBox">
+                              <span class = "glyphicon glyphicon-edit" title = "Edit"></span>
+                          </div>
+
+                          <div class = "deleteNewsBox">
+                              <span class = "glyphicon glyphicon-trash" title = "Delete" ng-click = "showDeleteNewsPop(n.newsId)"></span>
+                          </div>
+
+                      </div>
+
+                      <div class = "newsDateCreatedBox">
+                          <span>{{n.dateCreated | date: 'medium'}}</span>
+                      </div>
+                    </header>
+
+                    <div class = "newsShortDesc">
+
+                        <p>
+
+                            {{n.content}}
+
+                        </p>
+
+                        <footer class = "newsShortDescFooter">
+
+                            <span ng-click = "oneNews(n.newsId)">Read more...</span>
+
+                        </footer>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class = "paginationContainer">
+
+            <ul uib-pagination = "" total-items = "news.length" ng-model = "currentPage" items-per-page = "pageSize" class = "ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+        </footer>
+
+    </section>
+</div>

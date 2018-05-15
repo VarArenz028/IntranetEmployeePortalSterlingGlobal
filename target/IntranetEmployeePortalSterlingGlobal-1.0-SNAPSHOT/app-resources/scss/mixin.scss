@@ -1,0 +1,2050 @@
+
+// clear floating elemts
+
+@mixin clear
+{
+    &::after
+    {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+// Custom scroll style
+
+@mixin customScroll
+{
+    &::-webkit-scrollbar
+    {
+        width: 8px;
+    /*    background: #ECF0F1;*/
+        border-radius: 5px;
+    }
+    &::-moz-scrollbar
+    {
+        width: 8px;
+    /*    background: #ECF0F1;*/
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+        background: #3F3F3F;
+        border-radius: 5px;
+    }
+    &::-moz-scrollbar-thumb
+    {
+        background: #3F3F3F;
+        border-radius: 5px;
+    }
+}
+
+@mixin sideBarContent
+{
+    position: fixed;
+    top: 0px;
+    width: 15%;
+    height: 100%;
+    background: $sideBarColor;
+    opacity: 1;
+    nav
+    {
+        width: 100%;
+        div
+        {
+            width: 100%;
+            height: 450px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            ul
+            {
+                padding: 0px;
+                li
+                {
+                    @include customTransition;
+                    color: #fff;
+                    width: 100%;
+                    list-style-type: none;
+                    text-align: center;
+                    line-height: 34px;
+                    cursor: pointer;
+                    opacity: 0.5;
+                    &:hover
+                    {
+                        opacity: 1 !important;
+                    }
+                }
+            }
+            &::-webkit-scrollbar
+            {
+                width: 8px;
+                border-radius: 5px;
+            }
+            &::-webkit-scrollbar-thumb
+            {
+                background: #1BBC9B;
+                border-radius: 5px;
+                z-index: 32;
+            }
+        }
+    }
+
+}
+
+@mixin savingArticlePopUp
+{
+    @include popUpBackground;
+    .popSubArticleContainer
+    {
+        .popSubArticleBox
+        {
+            @include boxShadow2;
+            position: fixed;
+            width: 40%;
+            height: 250px;
+            margin: 0px 30%;
+            z-index: 101;
+            top: 25%;
+            right: 0px;
+            left: 0px;
+            bottom: 0px;
+            background: #FFFFF7;
+            h1
+            {
+                @include popH1;
+            }
+            .subArticleCirBox
+            {
+                position: relative;
+            }
+            .popSucHeader
+            {
+                @include popExitHeader;
+            }
+            span
+            {
+                display: block;
+                width: 100%;
+                height: 100px;
+                text-align: center;
+                img
+                {
+                    width: 80px;
+                    padding: 10px 0px;
+                }
+            }
+            #savedArticleFile
+            {
+                font-size: 120%;
+                font-weight: bold;
+                color: #fff;
+                display: block;
+                width: 100%;
+                height: 58px;
+                line-height: 58px;
+                background: $primaryViolet;
+                text-align: center;
+                border: none;
+                cursor: pointer;
+            }
+            .savedArticleFile
+            {
+                margin-top: 20px;
+            }
+        }
+        .popSubArticleBox.ng-animate
+        {
+            @include customTransition;
+        }
+        .popSubArticleBox.ng-leave
+        {
+            opacity: 1;
+        }
+        .popSubArticleBox.ng-leave.ng-leave-active
+        {
+            opacity: 0;
+        }
+
+    }
+}
+
+@mixin listDesign
+{
+
+}
+
+@mixin popExitHeader
+{
+    width: 100%;
+    height: 30px;
+    text-align: right;
+    img
+    {
+        width: 30px;
+        padding: 5px;
+        margin: 10px 10px 0px 0px;
+        border: 1px solid #F6F7F2;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+@mixin saPopExitHeaderEditUser
+{
+    width: 100%;
+    height: 40px;
+    text-align: right;
+    .caEditUserEkis
+    {
+        width: 25px;
+    }
+    .saEditUserEkis
+    {
+        width: 3%;
+    }
+    img
+    {
+        padding: 5px;
+        margin: 10px 10px 0px 0px;
+        border: 1px solid #F6F7F2;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+@mixin popH1
+{
+    font-size: 160%;
+    font-weight: bold;
+    color: $primaryGreen;
+}
+
+@mixin dropAnimationMixin
+{
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    z-index: 33;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+}
+
+@mixin customSearchBar
+{
+    @include customTransition;
+    font-size: 110%;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    padding: 10px 5px;
+    outline: none;
+    &:focus
+    {
+        border-bottom: 1px solid #1ABC9C;
+    }
+}
+
+@mixin customSearchBar2
+{
+    @include customTransition;
+    font-size: 110%;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    padding: 10px 5px;
+    outline: none;
+    &:focus
+    {
+        border-bottom: 1px solid #1ABC9C;
+    }
+}
+
+@mixin customTransition
+{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+@mixin linearTransition
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+@mixin transitionFive
+{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+@mixin boxShadow
+{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(199,199,199,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(199,199,199,1);
+    box-shadow: 0px 2px 5px 0px rgba(199,199,199,1);
+}
+
+@mixin boxShadow2
+{
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(219,219,219,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(219,219,219,1);
+    box-shadow: 0px 0px 5px 0px rgba(219,219,219,1);
+}
+
+@mixin popShadowBox
+{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+    box-shadow: 0px 2px 5px 0px rgba(41,41,41,1);
+}
+
+@mixin sideBarAys
+{
+    font-size: 90%;
+    color: #DED7E6;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    &:hover
+    {
+        color: #DED7E6;
+        text-decoration: underline;
+    }
+}
+@mixin sideBarOptions($rows)
+{
+    height: 0px;
+    overflow: hidden;
+    @if $rows == 2
+    {
+        &.twoRowDisplay
+        {
+            height: 68px;
+        }
+    }
+    @if $rows == 3
+    {
+        &.threeRowDisplay
+        {
+            height: 102px;
+            overflow: none !important;
+        }
+    }
+    @if $rows == 4
+    {
+        &.fourRowDisplay
+        {
+            height: 136px;
+        }
+    }
+    @if $rows == 5
+    {
+        &.fiveRowDisplay
+        {
+            height: 168px;
+            overflow: none !important;
+        }
+    }
+    @if $rows == 6
+    {
+        &.sixRowDisplay
+        {
+            height: 200px;
+        }
+    }
+}
+@mixin disable
+{
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+@mixin loadingBox
+{
+    position: absolute;
+    span
+    {
+        width: 8px;
+        height: 8px;
+        background: #3F3F3F;
+        display: inline-block;
+        border-radius: 100%;
+    }
+    span:nth-child(1)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    span:nth-child(2)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    span:nth-child(3)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+@mixin check
+{
+    position: absolute;
+}
+@mixin ekis
+{
+    position: absolute;
+}
+@keyframes bounce
+{
+    0%, 50%, 100%
+    {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    25%
+    {
+        -webkit-transform: translateY(-15px);
+        -moz-transform: translateY(-15px);
+        -o-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+}
+
+@mixin errorMessage
+{
+    width: 100%;
+    text-align: center;
+    small
+    {
+        font-size: 140%;
+        color: $errorColor;
+    }
+}
+
+@mixin textInput
+{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    font-family: "Montserrat", sans-serif;
+    transition: all 0.3s;
+    border-bottom: 2px solid #bebed2;
+    &:focus
+    {
+        border-bottom: 2px solid #78788c;
+    }
+}
+@mixin textInput2
+{
+    width: 100%;
+    padding: 5px;
+    background: none;
+    outline: none;
+    border: none;
+    border: 1px solid $secondaryDarkColor;
+}
+@mixin button
+{
+    font-size: 140%;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+@mixin buttonDesign2
+{
+    color: #fff;
+    background: #2980B9;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+@mixin buttonDesign3
+{
+    color: #fff;
+    background: $primaryGreen;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+@mixin buttonDesign4
+{
+    color: #fff;
+    background: $secondaryBlue;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+@mixin buttonDesign5
+{
+    color: #fff;
+    background: $secondaryRed;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+@mixin saEditingUserPop
+{
+      width: 30%;
+      height: 200px;
+      margin: 150px 35% 0px 35%;
+      background: #fff;
+      header
+      {
+          @include saPopExitHeaderEditUser;
+      }
+      .saEditUsernameForm
+      {
+          width: 90%;
+          margin: 0px 5%;
+          height: 190px;
+          p:before
+          {
+              color: $secondaryDarkColor;
+              content: attr(type);
+          }
+          p
+          {
+              width: 80%;
+              margin: 0px 10%;
+              text-align: left;
+              input
+              {
+                  @include textInput2;
+              }
+          }
+      }
+}
+
+@mixin popButtonLeft
+{
+    background: #F6F7F2;
+    text-align: center;
+    cursor: pointer;
+    button
+    {
+        font-weight: bold;
+        color: #3C3741;
+        width: 100%;
+        height: 100%;
+        background: #F6F7F2;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+}
+@mixin popButtonRight
+{
+    background: #3C3741;
+    cursor: pointer;
+    input
+    {
+        font-weight: bold;
+        color: #F6F7F2;
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
+@mixin gridDesign($cols, $mgn)
+{
+
+}
+@mixin usersGrid($cols, $mgn)
+{
+    ul
+    {
+        @include clear;
+    }
+    li
+    {
+        @include customTransition;
+        width: ((100% - ($cols * 3)) / $cols);
+        padding: 5px 0px;
+        margin: 15px $mgn;
+        list-style-type: none;
+        float: left;
+        cursor: pointer;
+        @include clear;
+    }
+    .userImgBox
+    {
+        width: 30%;
+        float: left;
+    }
+    .empNameBox
+    {
+        width: 70%;
+        text-align: left;
+        float: right;
+        span
+        {
+            font-size: 125%;
+            font-weight: 800;
+            color: $secondaryDarkColor;
+        }
+    }
+    img
+    {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center right;
+        object-position: center right;
+    }
+}
+@mixin generalInputDesign
+{
+    width: 80%;
+    margin: 0px 10%;
+    text-align: left;
+    input
+    {
+        @include textInput2;
+    }
+    &:before
+    {
+        color: $secondaryDarkColor;
+        content: attr(type);
+    }
+}
+@mixin newsFeeds
+{
+    header
+    {
+        @include clear;
+        width: 100%;
+        div:nth-child(1)
+        {
+            width: 10%;
+            float: left;
+            .newsImg
+            {
+                width: 35%;
+            }
+
+        }
+        div:nth-child(2)
+        {
+            width: 90%;
+            float: right;
+            div
+            {
+                width: 100%;
+                text-align: left;
+                margin: 0px;
+                span
+                {
+                    @include customTransition;
+                    font-size: 130%;
+                    font-weight: bold;
+                    color: $secondaryDarkColor;
+                    cursor: pointer;
+                    &:hover
+                    {
+                        color: $primaryGreen;
+                    }
+                }
+
+            }
+        }
+    }
+    section
+    {
+        width: 80%;
+        margin: 0px 10%;
+        text-align: left;
+        div:nth-child(1)
+        {
+            span:nth-child(1)
+            {
+                margin-right: 5px;
+            }
+            span
+            {
+                color: $secondaryGreey;
+            }
+        }
+        footer
+        {
+            @include clear;
+            div:nth-child(1)
+            {
+                width: 80%;
+                float: left;
+                span:nth-child(2)
+                {
+                    cursor: pointer;
+                    &:hover
+                    {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            div:nth-child(2)
+            {
+                width: 20%;
+                text-align: right;
+                float: right;
+                span
+                {
+                    cursor: pointer;
+                    img
+                    {
+                        width: 25%;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@mixin newsFeedArticle
+{
+    header
+    {
+        h1
+        {
+            font-size: 250%;
+            font-weight: bold;
+            color: $secondaryDarkColor;
+            text-align: center;
+            margin: 10px 0px 15px 0px;
+        }
+        span
+        {
+            font-size: 170%;
+            color: $secondaryDarkColor;
+            text-align: center;
+        }
+        div
+        {
+            @include clear;
+            width: 100%;
+            height: 100px;
+            div
+            {
+                float: left;
+            }
+            div:nth-child(1)
+            {
+                width: 100px;
+                height: 100px;
+                float: left;
+                img
+                {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    -o-object-position: center right;
+                    object-position: center right;
+                }
+            }
+            div:nth-child(2)
+            {
+                width: 50%;
+                height: 100px;
+                line-height: 100px;
+                text-align: left;
+                span
+                {
+                    font-size: 130%;
+                    color: $secondaryGreey;
+                    padding-left: 10px;
+                    display: inline-block;
+                }
+                span:nth-child(1)
+                {
+                    font-weight: bold;
+                    font-style: italic;
+                }
+                span:nth-child(2)
+                {
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+
+        }
+    }
+}
+
+@mixin newsFeed
+{
+    header
+    {
+        width: 80%;
+        margin: 0px 10%;
+        h1
+        {
+            @include customTransition;
+            font-size: 155%;
+            font-weight: bold;
+            color: $secondaryDarkColor;
+            text-align: left;
+            cursor: pointer;
+            &:hover
+            {
+                color: #1BBC9B;
+            }
+        }
+    }
+    section
+    {
+        width: 80%;
+        margin: 0px 10%;
+        span
+        {
+            color: $secondaryGreey;
+            text-align: left;
+            display: block;
+            cursor: pointer;
+            &:hover
+            {
+                text-decoration: underline;
+            }
+        }
+    }
+    footer
+    {
+        @include clear;
+        width: 80%;
+        padding-bottom: 15px;
+        margin: 0px 10%;
+        border-bottom: 1px solid $primaryGrey;
+        div:nth-child(1)
+        {
+            color: $secondaryDarkColor;
+            width: 100%;
+            text-align: left;
+        }
+        div:nth-child(2)
+        {
+            color: $secondaryDarkColor;
+            width: 50%;
+            text-align: left;
+            float: left;
+        }
+        div:nth-child(3)
+        {
+            width: 50%;
+            text-align: right;
+            float: right;
+            img
+            {
+                width: 20px;
+                padding-bottom: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@mixin myOneArticle
+{
+    header
+    {
+        width: 100%;
+        margin-bottom: 30px;
+        h1
+        {
+            font-size: 300%;
+            color: $secondaryDarkColor;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        span
+        {
+            display: block;
+            font-size: 180%;
+            text-align: center;
+        }
+    }
+}
+
+@mixin rightSideBar
+{
+    h1
+    {
+        font-size: 130%;
+        color: $secondaryDarkColor;
+        text-align: left;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $primaryGrey;
+    }
+    div
+    {
+        li
+        {
+            text-align: left;
+            list-style-type: none;
+            padding: 5px 0px;
+            span
+            {
+                display: block;
+            }
+            span:nth-child(1)
+            {
+                color: $primaryGreen;
+                cursor: pointer;
+                &:hover
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+@mixin pop
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 40;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+
+@mixin pop2
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+}
+
+@mixin pop-design2($desc)
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 100;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+    section
+    {
+        div
+        {
+            -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            animation-name: drop;
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+            animation-timing-function: linear;
+            position: fixed;
+            width: 35%;
+            height: 250px;
+            margin: 0px 35.5%;
+            z-index: 100;
+            top: -600px;
+            right: 0px;
+            left: 0px;
+            bottom: 0px;
+            background: #FFFFF7;
+            z-index: 31;
+            span
+            {
+                display: block;
+                width: 100%;
+                text-align: center;
+                img
+                {
+                    width: 80px;
+                    padding: 10px 0px;
+                }
+            }
+            button
+            {
+                font-size: 120%;
+                color: #FFFFF7;
+                display: block;
+                width: 100%;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                border: none;
+                cursor: pointer;
+                @if $desc == 'error'
+                {
+                    background: $errorColor;
+                }
+                @if $desc == 'success'
+                {
+                    background: $primaryGreen;
+                }
+            }
+            h2
+            {
+                font-size: 220%;
+                color: #3F3F3F;
+                text-align: center;
+                margin: 0px;
+            }
+            p
+            {
+                font-size: 140%;
+                color: #3F3F3F;
+                text-align: center;
+                width: 100%;
+                padding: 15px 5px;
+                margin: 0px auto;
+            }
+        }
+    }
+}
+
+@mixin popUpBackground
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 100;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+
+@mixin info-pop-up
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+    section
+    {
+        width: 1000px;
+        margin: 0px auto;
+        div
+        {
+            -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+            animation-name: drop;
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+            animation-timing-function: linear;
+            position: fixed;
+            width: 450px;
+            height: 278px;
+            margin: 0px auto;
+            z-index: 30;
+            top: -600px;
+            right: 0px;
+            left: 0px;
+            bottom: 0px;
+            background: #FFFFF7;
+            z-index: 31;
+            span
+            {
+                display: block;
+                width: 450px;
+                text-align: center;
+                img
+                {
+                    width: 80px;
+                    padding: 10px 0px;
+                }
+            }
+            .dismissPop
+            {
+                background: $primaryViolet;
+            }
+            button
+            {
+                font-size: 120%;
+                color: #FFFFF7;
+                display: block;
+                width: 450px;
+                height: 58px;
+                line-height: 58px;
+                text-align: center;
+                border: none;
+                cursor: pointer;
+            }
+            h2
+            {
+                font-size: 220%;
+                color: #3F3F3F;
+                text-align: center;
+            }
+            p
+            {
+                font-size: 140%;
+                color: #3F3F3F;
+                text-align: center;
+                width: 400px;
+                padding: 15px 5px;
+                margin: 0px auto;
+            }
+        }
+    }
+}
+
+@mixin userGridLayout($cols, $mgn)
+{
+    .empInfoBox
+    {
+        @include boxShadow2;
+        width: ((100% - ($cols * 3)) / $cols);
+        height: 309px;
+        background: #fff;
+        float: left;
+        margin: 20px $mgn;
+        cursor: default;
+        .userProfileImgCon
+        {
+            width: 300px;
+            text-align: center;
+            padding-top: 30px;
+            img
+            {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                -o-object-fit: cover;
+                object-fit: cover;
+                -o-object-position: center right;
+                object-position: center right;
+            }
+            h1
+            {
+                font-size: 140%;
+                color: $secondaryDarkColor;
+                padding: 10px 0px;
+            }
+        }
+        .userContributesBox
+        {
+            width: 300px;
+            height: 50px;
+            line-height: 25px;
+            @include clear;
+            ul
+            {
+                width: 280px;
+                margin: 0px auto;
+            }
+            li
+            {
+                list-style-type: none;
+                width: 93px;
+                float: left;
+            }
+            h6
+            {
+                font-size: 135%;
+                font-weight: 800;
+                color: $secondaryDarkColor;
+            }
+        }
+        .usersViewProfileButton
+        {
+            @include customTransition;
+            font-size: 135%;
+            color: $secondaryDarkColor;
+            text-align: center;
+            height: 50px;
+            margin-top: 28px;
+            line-height: 48px;
+            cursor: pointer;
+            p
+            {
+                font-size: 105%;
+                display: inline-block;
+            }
+            &:hover
+            {
+                color: $commonButTextClr;
+                background: #2980B9;
+            }
+        }
+    }
+}
+@mixin userInfoSideBar
+{
+  .sideUserImgContainer
+  {
+        width: 400px;
+        max-height: 300px;
+        overflow: hidden;
+        img
+        {
+            width: 100%;
+        }
+  }
+
+}
+
+@mixin primaryUserListHeaderSearch
+{
+
+    .numberOfEmpBox
+    {
+        width: 500px;
+        height: 65px;
+        line-height: 50px;
+        float: left;
+        span
+        {
+            font-size: 150%;
+            font-weight: bold;
+            color: $secondaryDarkColor;
+        }
+    }
+    .userListSearchBox
+    {
+        width: 500px;
+        height: 65px;
+        line-height: 20px;
+        float: right;
+        input
+        {
+            @include customSearchBar;
+        }
+    }
+}
+
+@mixin fileInput
+{
+    input
+    {
+        position: absolute;
+        width: 410px;
+        height: 40px;
+        filter: alpha(opacity = 0);
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+@mixin inputMask
+{
+    input
+    {
+        width: 300px;
+        height: 40px;
+        padding: 10px 20px;
+        float: left;
+    }
+    a
+    {
+        color: #fff;
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        background: $primaryGreen;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        float: right;
+    }
+    img
+    {
+        width: 20%;
+        margin-right: 5px;
+    }
+}
+@mixin inputMask2
+{
+    input
+    {
+        width: 300px;
+        height: 40px;
+        padding: 10px 20px;
+        float: left;
+    }
+    a
+    {
+        color: #fff;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        background: $primaryGreen;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        float: right;
+    }
+    img
+    {
+        width: 20%;
+        margin-right: 5px;
+    }
+}
+@mixin articleComment
+{
+    @include clear;
+    div:nth-child(1)
+    {
+        width: 10%;
+        text-align: center;
+        margin-left: 10%;
+        float: left;
+        img
+        {
+            @include userPicture;
+            width: 100%;
+            height: 60px;
+        }
+
+    }
+    div:nth-child(2)
+    {
+        width: 80%;
+        float: right;
+        form
+        {
+            article
+            {
+                width: 90%;
+                margin: 0px 5%;
+                textarea
+                {
+                    @include articleCommentTextarea;
+                }
+                div
+                {
+                    height: 30px;
+                }
+            }
+            div
+            {
+                width: 90%;
+                text-align: left;
+                margin-right: 5%;
+                input
+                {
+                    @include buttonDesign2;
+                    font-weight: bold;
+                    padding: 5px 50px;
+                }
+            }
+        }
+    }
+}
+
+@mixin articleCommentTextarea
+{
+    font-size: 100%;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    border: 2px solid #e2e2e2;
+    resize: none;
+    outline: none;
+}
+
+@mixin userPicture
+{
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center right;
+    object-position: center right;
+}
+
+@mixin userPicture2
+{
+    border-radius: 10%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center right;
+    object-position: center right;
+}
+@mixin contentPicture
+{
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center right;
+    object-position: center right;
+}
+@mixin oneQuestionHeader
+{
+    header
+    {
+        padding: 10px 30px;
+        text-align: left;
+        h1
+        {
+            font-size: 210%;
+            font-weight: bold;
+        }
+        .qHeader, .qHeader2
+        {
+            padding: 5px 0px;
+        }
+        .qHeader
+        {
+            @include clear;
+            .qEmpDetails
+            {
+                float: left;
+                margin: 0px 10px 0px 5px;
+                span
+                {
+                    margin-right: 5px;
+                }
+                span:nth-child(1)
+                {
+                    color: $secondaryGreey;
+                }
+                span:nth-child(2), span:nth-child(3)
+                {
+                    color: $secondaryDarkColor;
+                }
+            }
+        }
+        .qHeader2
+        {
+            @include clear;
+            div
+            {
+                float: left;
+                margin: 0px 10px 0px 5px;
+                margin-right: 10px;
+            }
+            div
+            {
+                button
+                {
+                    @include buttonDesign3;
+                    padding: 5px 20px 5px 15px;
+                    i
+                    {
+                        background-image: url(../imgs/pencil.png);
+                        background-size: 15px;
+                        background-position: left center;
+                        background-repeat: no-repeat;
+                        padding: 0px 10px;
+                    }
+                }
+            }
+            div:nth-child(2)
+            {
+                margin-top: 5px;
+                span
+                {
+                    color: $secondaryDarkColor;
+                }
+            }
+        }
+    }
+
+}
+
+@mixin itemList($cols)
+{
+    h1
+    {
+        width: 90%;
+        margin: 15px 5%;
+        text-align: left;
+        span
+        {
+            font-size: 70%;
+            font-weight: bold;
+            color: $secondaryDarkColor;
+        }
+    }
+    table
+    {
+        width: 100.1%;
+        thead
+        {
+            background: $secondaryRed;
+            tr
+            {
+                th
+                {
+                    font-size: 110%;
+                    font-weight: normal;
+                    color: #fff;
+                    padding: 10px 5px;
+                    text-align: center;
+                    cursor: pointer;
+
+                }
+                .thArticleTitle
+                {
+                    width: 40%;
+                    .listArrow
+                    {
+                        width: 3%;
+                        margin-left: 5px;
+                    }
+                }
+                .articleListTh
+                {
+                    width: (60% / ($cols - 1));
+                    .listArrow
+                    {
+                        width: 9%;
+                        margin-left: 5px;
+                    }
+                    .listDeleteImg
+                    {
+                        width: 15%;
+                    }
+                }
+
+            }
+        }
+        tbody
+        {
+            position: relative;
+            tr
+            {
+                border-bottom: 1px solid $primaryGrey;
+                cursor: pointer;
+                td
+                {
+                    font-size: 110%;
+                    color: $secondaryDarkColor;
+                    padding: 10px 5px;
+                    text-align: center;
+                }
+                .tdArticleTitle
+                {
+                    width: 40%;
+                }
+                .articleListTd
+                {
+                    width: (60% / ($cols - 1));
+                    img
+                    {
+                        width: 15%;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+}
+@mixin statsHeader($cols)
+{
+    .statsHeader
+    {
+        @include clear;
+        @include boxShadow2;
+        width: 100%;
+        padding: 10px 0px;
+        margin-top: 50px;
+        background: #fff;
+        @if $cols == 4
+        {
+            .statsBox
+            {
+                @include clear;
+                width: (60% / $cols);
+                margin: 0px 5%;
+                float: left;
+                cursor: pointer;
+                .statsHead
+                {
+                    @include clear;
+                    width: 100%;
+                    .statsIconBox, .statsValue
+                    {
+                        width: 45%;
+                        padding: 10px 0px;
+                        margin: 0px 2.5%;
+                        float: left;
+                        img
+                        {
+                            width: 65%;
+                        }
+                    }
+                    .statsValue
+                    {
+                        span
+                        {
+                            font-size: 250%;
+                            color: #fff;
+                        }
+                    }
+                }
+                .statsDesc
+                {
+                    width: 80%;
+                    padding-bottom: 5px;
+                    margin: 0px 10%;
+                    display: block;
+                    span
+                    {
+                        font-size: 100%;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        @if $cols == 5
+        {
+            .statsBox
+            {
+                @include clear;
+                width: (50% / $cols);
+                margin: 0px 5%;
+                float: left;
+                cursor: pointer;
+                .statsHead
+                {
+                    @include clear;
+                    width: 100%;
+                    .statsIconBox, .statsValue
+                    {
+                        width: 45%;
+                        padding: 10px 0px;
+                        margin: 0px 2.5%;
+                        float: left;
+                        img
+                        {
+                            width: 65%;
+                        }
+                    }
+                    .statsValue
+                    {
+                        span
+                        {
+                            font-size: 250%;
+                            color: #fff;
+                        }
+                    }
+                }
+                .statsDesc
+                {
+                    width: 80%;
+                    padding-bottom: 5px;
+                    margin: 0px 10%;
+                    display: block;
+                    span
+                    {
+                        font-size: 100%;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .userStats
+        {
+            background: $secondaryGreen;
+        }
+        .articleStats
+        {
+            background: $secondaryBlue;
+        }
+        .categoryStats
+        {
+            background: $primaryOrange;
+        }
+        .questionStats
+        {
+            background: $primaryViolet;
+        }
+        .pendingStats
+        {
+            background: $secondaryRed;
+        }
+    }
+}
+
+@mixin dashboardDesign
+{
+    .dashboardBox
+    {
+        @include boxShadow2;
+        width: 30%;
+        height: 350px;
+        padding: 15px 0px;
+        background: #fff;
+        float: left;
+        .dashbaordHeader
+        {
+            width: 90%;
+            margin: 0px 5%;
+            border-bottom: 1px solid $primaryGrey;
+            div
+            {
+                padding: 5px 0px;
+                text-align: left;
+                span
+                {
+                    font-size: 140%;
+                    color: $secondaryDarkColor;
+                }
+                input
+                {
+                    @include customSearchBar;
+                }
+            }
+        }
+        .dashConPageStats
+        {
+            @include customScroll;
+            overflow-y: scroll;
+            height: 270px;
+        }
+        .dashboardContent
+        {
+            width: 90%;
+            margin: 0px 5%;
+            .dashContentBox
+            {
+                width: 90%;
+                height: 250px;
+                margin: 0px 5%;
+                .dashboardTable
+                {
+                    width: 100%;
+                    border: collapse;
+                    thead
+                    {
+                        th
+                        {
+                            color: $secondaryDarkColor;
+                            padding: 0px;
+                        }
+                    }
+                    tbody
+                    {
+                        tr
+                        {
+                            height: 45px;
+                            text-align: left;
+                            td
+                            {
+                                color: $secondaryDarkColor;
+                            }
+                            td:nth-child(1)
+                            {
+                                cursor: pointer;
+                                &:hover
+                                {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .pageStatsBox
+                {
+                    text-align: left;
+                    padding: 10px 0px;
+                    h1, h2
+                    {
+                        margin: 0px
+                    }
+                    h1
+                    {
+                        font-size: 150%;
+                        font-weight: bold;
+                        color: $secondaryDarkColor;
+                    }
+                    span
+                    {
+                        font-size: 110%;
+                        color: $secondaryGreey;
+                        padding: 10px 0px;
+                        display: block;
+                    }
+                }
+            }
+        }
+        .dashboardTableFooter
+        {
+            width: 100%;
+            height: 50px;
+            div
+            {
+                padding: 5px 0px;
+                text-align: left;
+                span
+                {
+                    font-size: 120%;
+                    color: $secondaryGreen;
+                    cursor: pointer;
+                    &:hover
+                    {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+    .dashboardViewAllAuthor
+    {
+        margin: 10px 35% 40px 35%;
+        .dashbaordHeader
+        {
+            border-bottom: none;
+        }
+
+    }
+    .dashboardMiddle
+    {
+        margin: 0px 5%;
+    }
+}
+
+// @mixin pieContainerDesign
+// {
+//     .pieBox
+//     {
+//         @include boxShadow2;
+//         .caPieHeader
+//         {
+//             width: 90%;
+//             padding: 10px 0px;
+//             margin: 0px 5%;
+//             border-bottom: 1px solid $secondaryGreey;
+//             div
+//             {
+//                 @include clear;
+//                 width: 100%;
+//                 span
+//                 {
+//                     display: block;
+//                 }
+//                 span:nth-child(1)
+//                 {
+//                     font-size: 165%;
+//                     color: $secondaryGreey;
+//                     text-align: left;
+//                     width: 50%;
+//                     float: left;
+//                 }
+//                 span:nth-child(2)
+//                 {
+//                     width: 50%;
+//                     text-align: right;
+//                     float: right;
+//                     img
+//                     {
+//                         width: 15%;
+//                         cursor: pointer;
+//                     }
+//                 }
+//                 margin: 0px;
+//             }
+//         }
+//         width: 45%;
+//         background: #fff;
+//         .pieContent
+//         {
+//             width: 80%;
+//             padding: 10px 0px;
+//             margin: 10px 10%;
+//         }
+//     }
+//     .pieArticle
+//     {
+//         margin-right: 5%;
+//     }
+//     .pieCategory
+//     {
+//         margin-left: 5%;
+//     }
+//     .pieStatsBox
+//     {
+//         width: 30%;
+//         margin-left: 5%;
+//     }
+//     .pieBox, .pieStatsBox
+//     {
+//
+//         float: left;
+//     }
+// }
+
+@mixin oneArticleDesign
+{
+    width: 100%;
+    .aHeader
+    {
+        @include clear;
+        width: 100%;
+        .aHeaderButton
+        {
+            width: 13%;
+            float: right;
+            margin-right: 20px;
+            #aPinButton
+            {
+                @include buttonDesign3;
+                font-weight: bold;
+                padding: 5px 40px !important;
+            }
+           #aUnPinButton
+           {
+               @include buttonDesign3;
+               font-weight: bold;
+               padding: 5px 32px !important;
+           }
+            #aDeleteButton
+            {
+                @include buttonDesign5;
+                font-weight: bold;
+                padding: 5px 30px;
+            }
+        }
+    }
+    .aHeader2
+    {
+        width: 90%;
+        margin: 0px 5%;
+        section
+        {
+            width: 100%;
+            h1
+            {
+                font-size: 250%;
+                color: $secondaryDarkColor;
+                text-align: left;
+            }
+        }
+        footer
+        {
+            @include clear;
+            width: 40%;
+            div
+            {
+                float: left;
+                span
+                {
+                    font-size: 120%;
+                    color: $secondaryGreey;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .aArticleCon
+    {
+        width: 90%;
+        margin: 20px 5%;
+    }
+}
+
+@mixin feedSideBar
+{
+    width: 90%;
+    margin: 0px 5%;
+    h1
+    {
+        font-size: 150%;
+        font-weight: bold;
+        color: $primaryGreen;
+        text-align: left;
+        margin: 0px;
+    }
+    article
+    {
+        h2
+        {
+          font-size: 130%;
+          font-weight: bold;
+          color: $secondaryDarkColor;
+          text-align: left;
+          margin: 5px 0px;
+        }
+        div
+        {
+            span
+            {
+                text-align: left;
+                display: block;
+            }
+            span:nth-child(1)
+            {
+                color: $secondaryDarkColor;
+                cursor: pointer;
+                &:hover
+                {
+                    text-decoration: underline;
+                }
+            }
+            span:nth-child(2)
+            {
+                color: $secondaryGreey;
+            }
+        }
+    }
+}
+
+@keyframes drop
+{
+    0%
+    {
+        opacity: 0;
+    }
+    75%
+    {
+        transform: translateY(800px);
+    }
+    100%
+    {
+        transform: translateY(760px);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,425 @@
+<section id = "caDashAllAuthors" style = "display: none;">
+
+    <div class = "dashAllAuthorsPopContainer">
+        <header class = "eventCloseHeader">
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "hideAllAuthorTable()"/>
+        </header>
+
+
+        <section id = "loadAllAuthor">
+
+            <div class = "showCirlcebox">
+                <div class="circleLoader">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                  </svg>
+                </div>
+            </div>
+
+        </section>
+
+        <div class = "listOfAuthorsBox" ng-show = "showAllAuthorTable == true">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Employee Name
+                        </th>
+
+                        <th>
+                            Number of Article
+                        </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr ng-repeat = "a in allAuthor">
+                        <td>
+                            {{a.name}}
+                        </td>
+                        <td>
+                            {{a.numberOfArticle}}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id = "caDashboardLoader" class = "globalPageLoader">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<header class = "mainHeader" ng-show = "showDashboard == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer" ng-show = "showDashboard == true">
+
+    <div class = "agentDashboardContainer">
+
+        <header class = "statsHeader">
+
+          <section class = "statsBox userStats">
+
+                  <div class = "statsHead">
+                      <div class = "statsIconBox">
+                        <img src = "app-resources/imgs/dashUsers2.png" />
+                      </div>
+
+                      <div class = "statsValue">
+                          <span>{{campaignStatistics.numberOfUser}}</span>
+                      </div>
+                  </div>
+
+                  <div class = "statsDesc">
+                      <span>Users</span>
+                  </div>
+
+          </section>
+
+            <section class = "statsBox articleStats">
+
+                    <div class = "statsHead">
+                        <div class = "statsIconBox">
+                          <img src = "app-resources/imgs/dashArticles.png" />
+                        </div>
+
+                        <div class = "statsValue">
+                            <span>{{campaignStatistics.numberOfArticle}}</span>
+                        </div>
+                    </div>
+
+                    <div class = "statsDesc">
+                        <span>Articles</span>
+                    </div>
+
+            </section>
+
+            <section class = "statsBox categoryStats">
+
+                    <div class = "statsHead">
+                        <div class = "statsIconBox">
+                          <img src = "app-resources/imgs/dashQuestion.png" />
+                        </div>
+
+                        <div class = "statsValue">
+                            <span>{{campaignStatistics.numberOfQuestion}}</span>
+                        </div>
+                    </div>
+
+                    <div class = "statsDesc">
+                        <span>Questions</span>
+                    </div>
+
+            </section>
+
+            <section class = "statsBox questionStats">
+
+                    <div class = "statsHead">
+                        <div class = "statsIconBox">
+                          <img src = "app-resources/imgs/dashCategory.png" />
+                        </div>
+
+                        <div class = "statsValue">
+                            <span>{{campaignStatistics.numberOfCategory}}</span>
+                        </div>
+                    </div>
+
+                    <div class = "statsDesc">
+                        <span>Categories</span>
+                    </div>
+
+            </section>
+
+        </header>
+
+        <section class = "statisticsBodyContainer">
+
+            <div class = "dashboardBox">
+
+                <header class = "dashbaordHeader">
+                    <div>
+                        <span>Article Statistics</span>
+                    </div>
+                </header>
+
+                <div class = "dashboardContent">
+                    <div class = "dashContentBox">
+                        <canvas id="pie" class="chart chart-pie"
+                        chart-data="categoryDatas" chart-labels="categoryLabels" chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class = "dashboardBox dashboardMiddle">
+
+                <header class = "dashbaordHeader">
+                    <div>
+                        <span>Top Contributor</span>
+                    </div>
+                </header>
+
+                <div class = "dashboardContent">
+                    <div class = "dashContentBox">
+
+                        <table class = "dashboardTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+
+                                    <th>
+                                        Articles
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ng-repeat = "author in contributers">
+                                    <td>
+                                        {{author.name}}
+                                    </td>
+
+                                    <td>
+                                        {{author.numberOfArticle}}
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+
+
+                    </div>
+
+                    <footer class = "dashboardTableFooter">
+                        <div>
+                            <span ng-click = "showAllAuthorTable()">View All</span>
+                        </div>
+                    </footer>
+
+                </div>
+
+            </div>
+
+            <div class = "dashboardBox">
+
+                <header class = "dashbaordHeader">
+                    <div>
+                        <span>Most View Article</span>
+                    </div>
+                </header>
+
+                <div class = "dashboardContent dashConPageStats">
+                    <div class = "dashContentBox">
+
+                        <div class = "pageStatsBox">
+                            <table class = "dashboardTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Article Name
+                                        </th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat = "articleMostView in articlesMostView">
+                                        <td ng-click = "goToArticleSelected(articleMostView.articleId)">
+                                            {{articleMostView.articleName}}
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class = "dashboardBox" style = "margin-top: 3%;">
+
+                <header class = "dashbaordHeader">
+                    <div>
+                        <span>Recently Added</span>
+                    </div>
+                </header>
+
+                <div class = "dashboardContent dashConPageStats">
+                    <div class = "dashContentBox">
+
+                        <div class = "pageStatsBox">
+                            <table class = "dashboardTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Article Name
+                                        </th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat = "articleRecently in articlesRecentlyAdded">
+                                        <td ng-click = "goToArticleSelected(articleRecently.articleId)">
+                                            {{articleRecently.articleName}}
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class = "dashboardBox" style = "margin: 3% 0px 0px 5%;">
+
+                <header class = "dashbaordHeader">
+                    <div>
+                        <span>Recently Revised</span>
+                    </div>
+                </header>
+
+                <div class = "dashboardContent dashConPageStats">
+                    <div class = "dashContentBox">
+
+                        <div class = "pageStatsBox">
+                            <table class = "dashboardTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Article Name
+                                        </th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr ng-repeat = "articleRecentlyRevised in articleRecentlyReviseds">
+                                        <td ng-click = "goToArticleSelected(articleRecently.articleId)">
+                                            {{articleRecentlyRevised.title}}
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class = "statisticsBodyContainer" ng-show = "showAllAuthor == true">
+
+            <div class = "dashboardBox dashboardViewAllAuthor">
+
+                <header class = "dashbaordHeader">
+                    <div>
+                        <input type = "text" placeholder = "Search" ng-model = "search">
+                    </div>
+                </header>
+
+                <div class = "dashboardContent dashConPageStats">
+                    <div class = "dashContentBox">
+
+                        <table class = "dashboardTable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+
+                                    <th>
+                                        Articles
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr ng-repeat = "author in allAuthors | filter: search">
+                                    <td>
+                                        {{author.name}}
+                                    </td>
+
+                                    <td>
+                                        {{author.numberOfArticle}}
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <footer class = "dashboardTableFooter">
+                            <div>
+                                <span ng-click = "hideAllAuthorTable()">Hide</span>
+                            </div>
+                        </footer>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>

@@ -1,0 +1,180 @@
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "pop-wrapper" id = "pop-wrapper">
+
+    <div class = "questionContainer">
+
+      <section id = "afterSubmitQuestion" class = "afterSubmitQuestion" ng-hide = "hideAfterSub == true">
+
+          <div class = "showCirlcebox">
+              <h1>Submitting your question</h1>
+              <div class="circleLoader myQuestionCircleLoader">
+                <svg class="circular" viewBox="25 25 50 50">
+                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                </svg>
+              </div>
+          </div>
+
+      </section>
+
+      <section class = "qSuccessSubmitBox" ng-show = "showQsuccessBox == true">
+        <div class="questionFormHeader">
+            <img src="app-resources/imgs/close.png">
+        </div>
+        <span class = "qSuccImg"><img src = "app-resources/imgs/success.png"/></span>
+          <h1>Successfully Submitted</h1>
+          <footer class = "qSuccFooter">
+              <span>Dismiss</span>
+          </footer>
+      </section>
+
+      <div class = "questionBox" ng-hide = "hideQuestionBox == true">
+
+        <div class = "questionFormHeader">
+
+            <img src = "app-resources/imgs/close.png"/>
+
+        </div>
+
+         <form name = "questionForm" method = "POST">
+
+             <div class = "questionFormContainer">
+
+
+                 <div class = "questionInputBox">
+
+                     <textarea placeholder = "Start your question" ng-model = "question.title" name = "questionArea" questlength>
+                     </textarea>
+
+                 </div>
+
+                 <div class = "questionErrorMessage" ng-messages = "questionForm.questionArea.$dirty && questionForm.questionArea.$error">
+
+
+
+                     <small ng-message = 'questMaxLength'>
+
+                         Max 150 characters
+
+                     </small>
+
+                     <small ng-message = 'questMinLength'>
+
+                         minimum 10 characters
+
+                     </small>
+
+                 </div>
+
+             </div>
+
+
+             <div class = "questionButtonBox">
+
+                 <div class = "questionCancelBox">
+
+                     <span>Cancel</span>
+
+                 </div>
+
+                 <div class = "questionSubmitBox">
+
+                     <input type = "submit" ng-disabled = "questionForm.$invalid" ng-click = "submit()" value = "Add question"/>
+
+                 </div>
+
+             </div>
+
+         </form>
+
+      </div>
+
+    </div>
+
+</div>
+
+<div class = "uiViewContainer">
+
+    <div class = "questionHeader">
+
+        <div class = "questionHeaderBox">
+
+            <span>What is your question?</span>
+
+        </div>
+
+    </div>
+
+    <div class = "myQuestionsContainer boxShadow">
+
+       <div class = "countSearchBox">
+
+           <div class = "dataCountBox">
+
+               <span>{{responsed.sizeOfUserQuestions}} Questions</span>
+
+           </div>
+
+           <div class = "searchBox">
+
+               <input type = "text" id = "searchNewArticle" ng-model = "search" placeholder = "Search your questions"/>
+
+           </div>
+
+       </div>
+
+        <div class = "myQuestion" ng-repeat = "myQuestions in responsed.myQuestions | orderBy: '-date' | filter: search">
+
+            <div class = "myQuestionTitleBox">
+
+                <span>{{myQuestions.title}}</span>
+
+            </div>
+
+            <div class = "myQuestionDetailsBox">
+
+                <div class = "questionDetailsDiv">
+                    <span>Asked {{myQuestions.localDateAsked.monthOfYear}}-{{myQuestions.localDateAsked.dayOfYear}}-{{myQuestions.localDateAsked.year}}</span>
+                    <span>5 answers</span>
+
+                </div>
+
+                <div class = "questionDetailsSettings">
+
+                    <img src = "app-resources/imgs/dotdotdot.png"/>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<aside class = "rightSideBar">
+
+</aside>

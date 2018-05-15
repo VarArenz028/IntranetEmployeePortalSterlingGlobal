@@ -1,0 +1,208 @@
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer">
+
+    <section id = "articleListContainer" class = "itemListContainer">
+        <article class = "articleListBox">
+            <h1><span>List of Article</span></h1>
+
+            <header class = "itemListHeader">
+
+                <section class = "sortContainer sortBox">
+
+                    <div class = "selectCatBox rightSorBox">
+
+                        <select class = "selectCategory" ng-model = "articleCategory">
+                            <option ng-value = "allArticle" selected="selected">
+                              All article
+                            </option>
+                            <option ng-repeat = "category in responsed.categories" ng-value = "category.categoryName">
+                                {{category.categoryName}}
+                            </option>
+
+
+                        </select>
+
+                    </div>
+
+                </section>
+
+                <section class = "sortContainer sortBox2">
+
+                    <div class = "searchListBox rightSorBox2">
+
+                        <input type = "text" placeholder = "Search an Article" ng-model = "search"/>
+
+                    </div>
+
+                </section>
+
+            </header>
+
+            <table>
+                <thead>
+                    <tr>
+
+                          <th class = "thArticleTitle" ng-click = "singleSort('title')">
+                            Title
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend('title'), 'caret-up':sortAscend('title')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh" ng-click = "singleSort('category')" >
+                            Category
+                            <span class="caret-blank"
+                                ng-class="{'caret-down':sortDescend('category'), 'caret-up':sortAscend('category')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh" ng-click = "singleSort('dateCreated')">
+                            Date Created
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend('dateCreated'), 'caret-up':sortAscend('dateCreated')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh">
+                            Date Modified
+                            <span class="caret-blank"
+                                  ng-class="{'caret-down':sortDescend(''), 'caret-up':sortAscend('')}">
+                            </span>
+                          </th>
+
+                          <th class = "articleListTh">
+                            <img src = "app-resources/imgs/delete.png" class = "listDeleteImg" />
+                          </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr ng-repeat = "article in articles | startFrom: (currentPage - 1) * pageSize | limitTo: pageSize | orderBy:[filterSort, sortType] | filter: search"
+                  ng-show = "articleCategory == allArticle" ng-click = "selectArticle(article.articleId)" class = "articleTableRow">
+                      <td class = "tdArticleTitle">
+                          {{article.title}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          {{article.category}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          {{article.dateCreated | date:'shortDate'}}
+                      </td>
+                      <td class = "articleListTd">
+                          {{article.dateCreated | date:'shortDate'}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          <img src = "app-resources/imgs/delete.png" />
+                      </td>
+                  </tr>
+                    <tr ng-repeat = "article in articles | startFrom: (currentPage - 1) * pageSize | limitTo: pageSize | orderBy:[filterSort, sortType] | filter: search"
+                     ng-if = "articleCategory == article.category" ng-click = "selectArticle(article.articleId)" class = "articleTableRow">
+                      <td class = "tdArticleTitle">
+                          {{article.title}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          {{article.category}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          {{article.dateCreated | date:'shortDate'}}
+                      </td>
+                      <td class = "articleListTd">
+                          {{article.dateCreated | date:'shortDate'}}
+                      </td>
+
+                      <td class = "articleListTd">
+                          <img src = "app-resources/imgs/delete.png" />
+                      </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </article>
+
+        <footer class = "paginationContainer">
+
+            <ul uib-pagination="" total-items="articles.length" ng-model="currentPage" items-per-page="pageSize" class="ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+        </footer>
+
+    </section>
+
+
+
+    <section class = "aArticleOneArticleContainer">
+
+      <section id = "oneArticleFromAllArticle">
+
+        <div class = "showCirlcebox">
+            <div class="circleLoader">
+              <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+              </svg>
+            </div>
+        </div>
+
+      </section>
+
+
+        <div class = "aArticleOneBox">
+
+            <header class = "aHeader2">
+
+                <section>
+                    <h1>{{oneArticle.article.title}}</h1>
+                </section>
+
+                <footer>
+
+                    <div>
+
+                        <span>{{oneArticle.article.category}}</span>
+
+                    </div>
+
+                    <div>
+                        <span>{{oneArticle.article.dateString}}</span>
+                    </div>
+
+                </footer>
+
+            </header>
+
+            <article class = "aArticleCon">
+
+            </article>
+
+        </div>
+
+    </section>
+
+</div>

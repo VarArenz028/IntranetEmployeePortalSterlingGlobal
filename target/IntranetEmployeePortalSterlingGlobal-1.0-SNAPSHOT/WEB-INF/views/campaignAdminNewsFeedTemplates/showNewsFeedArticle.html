@@ -1,0 +1,265 @@
+
+<section id = "newsFeedArticleLoader" class = "globalPageLoader">
+
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+</section>
+
+<div id = "caDeleteCommentArticleNews">
+
+    <div class = "editCategoryForm" ng-cloak>
+
+      <header>
+
+          <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeDeletePopComment();" ng-hide = "hideCloseButton == true"/>
+
+      </header>
+
+        <form novalidate>
+
+            <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+                <div title = "switch2" class = "newUserSwitch" ng-switch-default>
+
+                    <section>
+
+                        <h1>Are you sure to delete this comment?</h1>
+
+                    </section>
+
+                    <footer>
+
+                          <div title = "Cancel">
+
+                              <button ng-click = "closeDeletePopComment();">Cancel</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "inactiveComment();"  type = "button" value = "Delete"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details2" style = "height: 100%;">
+
+                    <div class = "updateCategorySuccessBox">
+
+                        <div class = "updateCategoryImgBox">
+
+                            <img src = "app-resources/imgs/success.png" />
+
+                        </div>
+
+                        <div class = "updateCategorySuccessMessage">
+
+                            <h1>Successfully deleted</h1>
+
+                        </div>
+
+                    </div>
+                    <footer class = "upCatLastSwitchFooter" ng-click = "closeDeletePopComment();">
+                        <span>Close</span>
+                    </footer>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </div>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+
+<div class = "articleViewContainer" ng-show = "showNewsFeedArticle == true">
+
+    <header class = "backButtonHeader" style = "margin-bottom: 2%;">
+
+        <button type = "button" class = "btn btn-default btn-sm" ng-click = "backToNewsFeed()">
+            <span class = "glyphicon glyphicon-chevron-left"></span> Back to News Feed
+        </button>
+
+    </header>
+
+    <section class = "oneArticleContainer">
+
+        <section class = "newsFeedOneArticleBox">
+
+            <header class = "titleHeaderContainer">
+
+                <header>
+
+                    <h1>{{oneArticle.article.title}}</h1>
+
+                    <span>{{oneArticle.article.category}}</span>
+
+                    <div>
+
+                        <div>
+                          <img data-ng-src="data:{{authorAvatar.fileType}};base64,{{authorAvatar.base64}}"
+                            src = "app-resources/imgs/defaultAvatar.png"/>
+                        </div>
+
+                        <div>
+
+                            <span>by</span>
+                            <span>{{authorName}}</span>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+            </header>
+
+
+            <article class = "innerArticle">
+
+
+            </article>
+            <footer class = "oneArticleDownloadFooter" ng-hide = "hideDownloadButton == true">
+                <div class = "downloadButtonBox">
+                    <button type = "button" class = "btn btn-default btn-sm" ng-click = "downloadFile()">
+                        <span class = "glyphicon glyphicon-download-alt"></span> Download {{articleDocument.fileName}}
+                    </button>
+                </div>
+            </footer>
+        </section>
+
+    </section>
+
+    <section class = "commentsContainer">
+
+      <section>
+
+          <div>
+
+            <img data-ng-src="data:{{currentUserAvatar.fileType}};base64,{{currentUserAvatar.base64}}"
+              src = "app-resources/imgs/defaultAvatar.png"/>
+
+          </div>
+
+          <div>
+
+              <form name = "commentForm" method = "POST" novalidate>
+
+                  <article>
+
+                      <textarea placeholder = "Write a comment" name = "comment" ng-model = "myComment" ></textarea>
+                      <div>
+
+                      </div>
+                  </article>
+
+                  <div>
+
+                      <input ng-click = "submitComment()" type = "submit" value = "Submit" />
+
+                  </div>
+
+              </form>
+
+          </div>
+
+      </section>
+
+      <section>
+
+          <!-- <h1>Related Articles</h1> -->
+
+      </section>
+
+    </section>
+
+    <section class = "articleCommentsContainer">
+
+        <section class = "articleComments">
+
+            <section ng-repeat = "empComment in comments | orderBy: '-date'">
+
+                <header>
+
+                    <div>
+
+                      <img data-ng-src="data:{{empComment.employeeDetails.userAvatar.fileType}};base64,{{empComment.employeeDetails.userAvatar.base64}}"
+                        src = "app-resources/imgs/defaultAvatar.png"/>
+
+                    </div>
+
+                    <div>
+                        <h3><span>{{empComment.employeeDetails.lastName}}</span><span>{{empComment.employeeDetails.firstName}}</span></h3>
+                        <span>{{empComment.employeeDetails.position}}</span>
+                        <span>{{empComment.dateCommented | date:'medium'}}</span>
+                    </div>
+
+
+                    <div>
+                        <span class = "glyphicon glyphicon-edit" style = "padding-right: 15px;" title = "Edit"></span>
+                        <span class = "glyphicon glyphicon-trash" title = "Delete" ng-click = "showDeleteCommentPop(empComment.commentId)"></span>
+                    </div>
+
+                </header>
+
+                <div title = "comment">
+
+                    <p>
+
+                          {{empComment.comment}}
+
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section class = "oneArticleRecentlyAdded">
+
+            <!-- <h1>Recently Added</h1> -->
+
+        </section>
+
+    </section>
+
+
+</div>

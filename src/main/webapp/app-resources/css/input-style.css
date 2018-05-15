@@ -1,0 +1,29 @@
+.editCategoryinputBox input
+{
+    font-size: 115%;
+    width: 298px;
+    height: 30px;
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 1px solid #D6DAC2;
+    display: block;
+    outline: none;
+}
+#searchCategory, #searchNewArticle
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 110%;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    padding: 10px 5px;
+    outline: none;
+}
+#saSearch:focus, #searchCategory:focus, #searchNewArticle:focus
+{
+    border-bottom: 2px solid #1ABC9C;
+}

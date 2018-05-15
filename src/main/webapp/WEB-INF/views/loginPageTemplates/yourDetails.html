@@ -1,0 +1,427 @@
+<div class = "logLoadingCon">
+
+    <div class = "logLoading" ng-show = "logLoading"></div>
+
+</div>
+
+
+<section class = "welcomeDetailsContainer" ng-cloak>
+
+    <div class = "empDetailsForm">
+
+        <form name = "newUserDetails" method = "POST" novalidate>
+
+            <div class = "detailsSwitchContainer" ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+              <div class = "detailsSwitch details" ng-switch-default>
+
+                    <h1>Update your details</h1>
+                    <div class = "detailsBoxLeft">
+
+                        <p type = "Email:">
+
+                            <input type = "email" name = "email" ng-model = "formParams.employeeDetails.email" ng-pattern = "/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" required/>
+                            <section ng-messages = "newUserDetails.email.$dirty && newUserDetails.email.$error" id = "ydEmail">
+
+                                <small ng-message = 'pattern'>
+
+                                    Enter a valid email
+
+                                </small>
+
+                            </section>
+
+                        </p>
+
+                        <p type = "Position:">
+
+                            <input type = "text" name = "position" ng-model = "formParams.employeeDetails.position" ng-pattern = "/[a-zA-Z0-9\s]+/" required/>
+                            <section ng-messages = "newUserDetails.position.$dirty && newUserDetails.position.$error" id = "ydPosition">
+
+                                <small ng-message = 'pattern'>
+
+                                    Please enter valid characters
+
+                                </small>
+
+                            </section>
+
+                        </p>
+
+                        <p type = "Contact:">
+
+                            <input type = "number" name = "contactNumber" ng-model = "formParams.employeeDetails.contactNumber" ng-pattern = "/[\+()]*(?:\d[\s\-\.()xX]*){10,14}/" required/>
+                            <section ng-messages = "newUserDetails.contactNumber.$dirty && newUserDetails.contactNumber.$error" id = "ydContactError">
+
+                                <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                                    Enter a valid phone number
+
+                                </small>
+
+                            </section>
+
+                        </p>
+
+                        <p type = "Age:">
+
+                            <input type = "number" name = "age" ng-model = "formParams.employeeDetails.age" ng-min = "18" ng-max = "99" required/>
+                            <section ng-messages = "newUserDetails.age.$dirty && newUserDetails.age.$error" id = "ydAge">
+
+                                <small ng-message = 'min'>
+
+                                    Minimum age is 18
+
+                                </small>
+
+                                <small ng-message = 'max'>
+
+                                    Maximum age is 99
+
+                                </small>
+
+                            </section>
+
+                        </p>
+
+                    </div>
+
+                    <div class = "detailsBoxRight">
+
+                        <p type = "Password:">
+
+                            <input type = "password" name = "password" ng-model = "formParams.user.password" ng-maxlength = "20" ng-minlength = "6" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required pass/>
+
+                            <span ng-show = "newUserDetails.password.$pending.pass" type = "load">
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                            </span>
+
+                            <span ng-show = "newUserDetails.password.$valid" type = "valid">
+                                <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                            </span>
+
+                            <span ng-show = "newUserDetails.password.$invalid && newUserDetails.password.$dirty" type = "invalid">
+                                <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                            </span>
+
+                            <section ng-messages = "newUserDetails.password.$dirty && newUserDetails.password.$error" id = "errorMessage">
+
+
+                               <small ng-message = 'maxlength'>
+
+                                   Max 20 characters
+
+                               </small>
+
+                               <small ng-message = 'minlength'>
+
+                                   minimum 6 characters
+
+                               </small>
+
+                               <small ng-message = 'pattern'>
+
+                                   Please enter valid characters
+
+                               </small>
+
+                               <small ng-message = 'unameInputError' ng-hide = "newUserDetails.password.$error.required">
+
+                                   Password already exist
+
+                               </small>
+
+
+                           </section>
+
+                        </p>
+
+                        <p type = "Gender">
+
+                            <div class = "detailsGenderBox">
+
+                              <div class = "radio">
+                                <input id = "radio-1" ng-model = "formParams.employeeDetails.gender" name = "radio" type = "radio" value = "Male" checked>
+                                <label for = "radio-1" class = "radio-label">Male</label>
+                              </div>
+
+                              <div class = "radio">
+                                <input id = "radio-2" ng-model = "formParams.employeeDetails.gender" name = "radio" value = "Female" type = "radio">
+                                <label  for = "radio-2" class = "radio-label">Female</label>
+                              </div>
+
+                            </div>
+
+
+                        </p>
+
+
+                    </div>
+
+                    <div>
+
+                        <button type = "clear">Clear</button>
+                        <input ng-click = "next('details2')" ng-disabled = "newUserDetails.$invalid" type = "button" value = "Next"/>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class = "detailsSwitch" ng-switch-when = "details2">
+
+                    <h1>Profile Image</h1>
+
+                    <article>
+
+                        <img data-ng-src="data:{{formParams.userAvatar.filetype}};base64,{{formParams.userAvatar.base64}}"  src = "app-resources/imgs/defaultAvatar.png" title = "Your picture" />
+                        <!-- <img src = "app-resources/imgs/defaultAvatar.png" title = "Your picture"/> -->
+
+                    </article>
+
+                    <section title = "Upload">
+
+                        <div>
+
+                          <input type = "file" ng-model = "formParams.userAvatar" base-sixty-four-input/>
+
+                        </div>
+
+                        <div>
+
+                            <input type = "button" value = "Upload" />
+
+                        </div>
+
+                    </section>
+
+                    <div>
+
+                        <button type = "back" ng-click = "next('details')">Back</button>
+                        <input ng-click = "next('details3')" type = "button" ng-disabled = "newUserDetails.$invalid || disableButton" value = "Next"/>
+
+                    </div>
+
+                </div>
+
+                <div class = "detailsSwitch" ng-switch-when = "details3">
+
+                    <h1>Your details</h1>
+
+                    <div title = "Your picture">
+
+                        <img data-ng-src="data:{{formParams.userAvatar.filetype}};base64,{{formParams.userAvatar.base64}}" />
+
+                    </div>
+
+                    <table>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    {{formParams.employeeDetails.email}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Position
+                                </td>
+                                <td>
+                                    {{formParams.employeeDetails.position}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Gender
+                                </td>
+                                <td>
+                                    {{formParams.employeeDetails.gender}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Address
+                                </td>
+                                <td>
+                                    {{formParams.employeeDetails.contactNumber}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Age
+                                </td>
+                                <td>
+                                    {{formParams.employeeDetails.age}}
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <div style = "margin-top: 25px;">
+
+                        <input type = "button" value = "Back" ng-disabled = "newUserDetails.$invalid || disableButton" ng-click = "next('details3')" />
+                        <input ng-click = "submit('details5')" type = "button" ng-disabled = "newUserDetails.$invalid || disableButton" value = "Submit"/>
+
+                    </div>
+
+
+                </div>
+
+                <div class = "detailsSwitch" ng-switch-when = "details5">
+
+                    <div class = "proceedBox">
+
+                        <img src = "app-resources/imgs/winkSmiley.png" />
+                        <h1>Thank you</h1>
+                        <p style = "text-align: center;">
+                            Your details is successfully submitted
+                        </p>
+                        <div>
+
+                            <button ng-click = "proceed()" title = "proceed" type = "button">Proceed</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class = "detailsSwitch" ng-switch-when = "details2">
+
+    <h1>Update your username and password</h1>
+
+    <p type = "Username:">
+
+        <input type = "text" name = "username" ng-model = "formParams.user.username" ng-minlength = "6" ng-maxlength = "20" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required uname />
+
+        <span ng-show = "newUserDetails.username.$pending.uname" type = "load">
+             <span></span>
+             <span></span>
+             <span></span>
+        </span>
+
+        <span ng-show = "newUserDetails.username.$valid" type = "valid">
+            <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+        </span>
+
+        <span ng-show = "newUserDetails.username.$invalid && newUserDetails.username.$dirty" type = "invalid">
+            <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+        </span>
+
+        <section ng-messages = "newUserDetails.username.$dirty && newUserDetails.username.$error" id = "errorMessage">
+
+
+           <small ng-message = 'maxlength'>
+
+               Max 20 characters
+
+           </small>
+
+           <small ng-message = 'minlength'>
+
+               minimum 6 characters
+
+           </small>
+
+           <small ng-message = 'pattern'>
+
+               Please enter valid characters
+
+           </small>
+
+           <small ng-message = 'unameInputError' ng-hide = "newUserDetails.username.$error.required">
+
+               Username already exist
+
+           </small>
+
+
+       </section>
+
+    </p>
+
+    <p type = "Password:">
+
+        <input type = "password" name = "password" ng-model = "formParams.user.password" ng-maxlength = "20" ng-minlength = "6" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required pass/>
+
+        <span ng-show = "newUserDetails.password.$pending.pass" type = "load">
+             <span></span>
+             <span></span>
+             <span></span>
+        </span>
+
+        <span ng-show = "newUserDetails.password.$valid" type = "valid">
+            <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+        </span>
+
+        <span ng-show = "newUserDetails.password.$invalid && newUserDetails.password.$dirty" type = "invalid">
+            <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+        </span>
+
+        <section ng-messages = "newUserDetails.password.$dirty && newUserDetails.password.$error" id = "errorMessage">
+
+
+           <small ng-message = 'maxlength'>
+
+               Max 20 characters
+
+           </small>
+
+           <small ng-message = 'minlength'>
+
+               minimum 6 characters
+
+           </small>
+
+           <small ng-message = 'pattern'>
+
+               Please enter valid characters
+
+           </small>
+
+           <small ng-message = 'unameInputError' ng-hide = "newUserDetails.password.$error.required">
+
+               Password already exist
+
+           </small>
+
+
+       </section>
+
+    </p>
+
+    <div>
+
+        <button type = "Back" ng-click = "next('')">Back</button>
+        <input ng-click = "next('details3')" type = "button" ng-disabled = "newUserDetails.$invalid" value = "Next"/>
+
+    </div>
+
+</div> -->

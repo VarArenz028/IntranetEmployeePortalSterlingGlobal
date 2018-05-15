@@ -1,0 +1,6224 @@
+// First of all so what sa Naming ^_^
+// I created this system ALONE :)
+
+@import "reset";
+@import "variables";
+@import "mixin";
+@import "scroll";
+@import "input-styles";
+@import "validations-and-errors";
+@import "pop-up";
+@import "CustomKeyframes";
+
+/*    Login page style*/
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
+{
+    display: none !important;
+}
+
+#loginPageContainer
+{
+    width: inherit;
+    height: 662px;
+    background-image: url(../imgs/loginBanner.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    @include clear;
+}
+.loginContainer
+{
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    position: relative;
+    width: 400px;
+    height: 450px;
+    margin: 100px 0px 0px 50px;
+    background: #fff;
+    float: left;
+}
+.log-ui-view
+{
+    position: absolute;
+}
+.logView, .campView
+{
+    width: 400px;
+    height: 450px;
+}
+.logInFormWrapper
+{
+    width: 350px;
+    margin: 0px auto;
+    text-align: left;
+}
+.logView.ng-leave
+{
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    transform: translateX(0px);
+    opacity: 1;
+}
+.logView.ng-leave.ng-leave-active
+{
+    transform: translateX(300px);
+    opacity: 0;
+}
+.campView.ng-enter
+{
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    transform: translateX(-300px);
+    opacity: 0;
+}
+.campView.ng-enter.ng-enter-active
+{
+    transform: translateX(0px);
+    opacity: 1;
+}
+.logPageAnimation
+{
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+.logPageAnimation.ng-leave
+{
+    opacity: 1;
+}
+.logPageAnimation.ng-leave.ng-leave-active
+{
+    opacity: 0;
+}
+.welcomeDetailsContainer
+{
+    @include boxShadow2;
+    position: relative;
+    width: 80%;
+    margin: 50px 10% 0px 10%;
+    background: #fff;
+}
+.detailsSwitch
+{
+    @include clear;
+}
+.detailsBoxLeft
+{
+    width: 50%;
+    float: left;
+}
+$color1: #f4f4f4;
+$color2: #3197EE;
+.detailsGenderBox
+{
+    width: 70%;
+    margin: 0px 15%;
+}
+.radio
+{
+    width: 100%;
+    text-align: left;
+    margin: 5px 0px;
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    + .radio-label {
+      &:before {
+        content: '';
+        background: $color1;
+        border-radius: 100%;
+        border: 1px solid darken($color1, 25%);
+        display: inline-block;
+        width: 1.4em;
+        height: 1.4em;
+        position: relative;
+        top: -0.2em;
+        margin-right: 1em;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center;
+        transition: all 250ms ease;
+      }
+    }
+    &:checked {
+      + .radio-label {
+        &:before {
+          background-color: $color2;
+          box-shadow: inset 0 0 0 4px $color1;
+        }
+      }
+    }
+    &:focus {
+      + .radio-label {
+        &:before {
+          outline: none;
+          border-color: $color2;
+        }
+      }
+    }
+    &:disabled {
+      + .radio-label {
+        &:before {
+          box-shadow: inset 0 0 0 4px $color1;
+          border-color: darken($color1, 25%);
+          background: darken($color1, 25%);
+        }
+      }
+    }
+    + .radio-label {
+      &:empty {
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+.detailsBoxRight
+{
+    width: 50%;
+    float: right;
+}
+.empDetailsForm
+{
+    width: 90%;
+    height: 500px;
+    margin: 0px 5%;
+    h1
+    {
+        font-size: 150%;
+        color: $secondaryDarkColor;
+    }
+    form
+    {
+        height: 500px;
+        padding: 10px 0px;
+
+        p:before
+        {
+            content: attr(type);
+            color: #5a5a5a;
+        }
+        p
+        {
+            font-size: 110%;
+            color: $secondaryDarkColor;
+            text-align: left;
+            position: relative;
+            width: 70%;
+            margin: 10px 15%;
+
+            input
+            {
+                @include textInput;
+            }
+
+            span[type = "load"]
+            {
+                @include loadingBox;
+                top: 30px;
+                right: -60px;
+                width: 50px;
+                height: 40px;
+            }
+            span[type = "valid"]
+            {
+                position: absolute;
+                top: 25px;
+                right: -40px;
+            }
+            span[type = "invalid"]
+            {
+                position: absolute;
+                top: 25px;
+                right: -40px;
+            }
+        }
+        div
+        {
+            input[type = "button"], button[title = "proceed"]
+            {
+                @include button;
+                padding: 10px 30px;
+                margin-right: 5px;
+                background: $primaryGreen;
+            }
+            button[type = "clear"], input[value = "Back"], button[type = "Back"],
+            {
+                @include button;
+                padding: 10px 30px;
+                margin-left: 5px;
+                background: $secondaryBlue;
+            }
+            input[disabled = "disabled"]
+            {
+                opacity: 0.5;
+                cursor: not-allowed !important;
+            }
+            section[title = "Upload"]
+            {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                margin: 25px 0px;
+                div
+                {
+                    width: 20%;
+                    height: 50px;
+                    margin: 0px 40%;
+                }
+                div:nth-child(1)
+                {
+                    position: absolute;
+                    overflow: hidden;
+                    input
+                    {
+                        width: 100%;
+                        height: 45px;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+                div:nth-child(2)
+                {
+                    input
+                    {
+                        @include button;
+                        width: 100%;
+                        padding: 10px 20px;
+                        background: $primaryOrange;
+                    }
+                }
+            }
+            article
+            {
+                width: 40%;
+                height: 240px;
+                margin: 0px 30%;
+                img[title = "Your picture"]
+                {
+                    width: 65%;
+                    height: 100%;
+                    border-radius: 50%;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    -o-object-position: center right;
+                    object-position: center right;
+                }
+            }
+            div[title = "Your picture"]
+            {
+                width: 50%;
+                height: 150px;
+                margin: 0px 25%;
+                img
+                {
+                    width: 33%;
+                    height: 100%;
+                    border-radius: 50%;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    -o-object-position: center right;
+                    object-position: center right;
+                }
+            }
+            table
+            {
+                width: 40%;
+                margin: 20px 30% 0px 30%;
+                tr
+                {
+                    height: 30px;
+                    td:nth-child(1)
+                    {
+                        font-weight: bold;
+                        text-align: left;
+                    }
+                    td:nth-child(2)
+                    {
+                        text-align: right;
+                    }
+                    td
+                    {
+                        font-size: 120%;
+                        color: $secondaryDarkColor;
+                    }
+                }
+            }
+        }
+    }
+
+}
+.proceedBox
+{
+    text-align: center;
+    margin-top: 50px;
+}
+#errorMessage, #ydContactError, #ydEmail, #ydPosition, #ydAge
+{
+    @include errorMessage;
+    height: 30px;
+}
+.yourDetailsError
+{
+    @include errorMessage;
+    height: 16px;
+}
+.detailsSwitchContainer
+{
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+
+}
+.detailsSwitch.ng-animate
+{
+    @include transitionFive;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+/* hide leaving slide  */
+/* show */
+.detailsSwitchng-leave
+{
+    transform: translateX(0px);
+}
+/* hide */
+.forward .detailsSwitch.ng-leave.ng-leave-active
+{
+    transform: translateX(-750px);
+}
+.backward .detailsSwitch.ng-leave.ng-leave-active
+{
+    transform: translateX(-750px);
+}
+/* show entering slide  */
+/* hide */
+.forward .detailsSwitch.ng-enter
+{
+    transform: translateX(750px);
+}
+.backward .detailsSwitch.ng-enter
+{
+    transform: translateX(-750px);
+}
+/* show */
+.detailsSwitch.ng-enter.ng-enter-active
+{
+    transform: translateX(0px);
+}
+
+/*    loading style*/
+
+.logLoadingCon
+{
+    width: 100%;
+    height: 3px;
+    z-index: 41;
+}
+.logLoading
+{
+    background: $secondaryGreen;
+    // background: #e74c3c;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    animation-name: loading;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    z-index: 41;
+}
+
+.userLogHeader
+{
+    margin: 50px 0px;
+}
+#userLogHeadMessage
+{
+    font-size: 170%;
+    color: #3F3F3F;
+}
+#logErrorMessage
+{
+    font-size: 170%;
+    color: #e74c3c;
+    text-align: center;
+    padding: 3px 0px;
+}
+.logInFormContainer
+{
+    width: 350px;
+    margin: 0px auto;
+}
+.group
+{
+    position: relative;
+    margin-bottom: 45px;
+}
+.logInput
+{
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+.logInput:focus
+{
+    outline: none;
+}
+.logCampContainer
+{
+    width: 350px;
+    height: 450px;
+    margin: 0px auto;
+    h1
+    {
+        font-size: 170%;
+        color: #3F3F3F;
+        text-align: center;
+        padding-top: 30px;
+    }
+}
+.userLogCampNav
+{
+    width: 350px;
+    height: 270px;
+    text-align: left;
+    margin: 13px 0px 13px 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    li
+    {
+        list-style-type: none;
+    }
+    span
+    {
+        @include customTransition;
+        font-size: 170%;
+        color: #3F3F3F;
+        padding: 5px 0px;
+        display: block;
+        cursor: pointer;
+        &:hover
+        {
+            color: $secondaryRed;
+        }
+    }
+}
+
+/* LABEL ======================================= */
+.logLabel
+{
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+}
+
+/* active state */
+.logInput:focus ~ label, .logInput:valid ~ label
+{
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar
+{
+    position:relative; display:block;
+    width: 315px;
+}
+.bar:before, .bar:after
+{
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.bar:before
+{
+    left: 50%;
+}
+.bar:after
+{
+    right: 50%;
+}
+
+/* active state */
+.logInput:focus ~ .bar:before, .logInput:focus ~ .bar:after
+{
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight
+{
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+.logInput:focus ~ .highlight
+{
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/*    Log-in form pop-up button style*/
+
+.logFormFooter
+{
+    height: 97px;
+    line-height: 97px;
+    span
+    {
+        font-size: 120%;
+        color: #1ABC9C;
+        cursor: pointer;
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+/*    Welcome message style*/
+
+.welcomeMessageContainer
+{
+    width: 750px;
+    float: right;
+    margin-top: 100px;
+}
+.messageBox
+{
+    width: 500px;
+    margin: 0px auto;
+    p
+    {
+        font-size: 500%;
+        font-weight: bold;
+        color: #FFFFF7;
+        text-align: left;
+    }
+}
+
+/*    Sterling side bar*/
+
+.sterlingSideBar
+{
+    @include clear;
+    @include sideBarContent;
+}
+.saSideBar
+{
+    ul
+    {
+        li:nth-child(1)
+        {
+            background-image: url(../imgs/overview.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(2)
+        {
+            background-image: url(../imgs/campaigns.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(3)
+        {
+            background-image: url(../imgs/users.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(4)
+        {
+            background-image: url(../imgs/logout.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+    }
+}
+.saLogoCon
+{
+    height: 50px;
+    line-height: 50px;
+    h1
+    {
+        color: #F0F1F5;
+        text-align: center;
+    }
+}
+.saUserCon
+{
+    height: 70px;
+    border-bottom: 2px solid #2C3E50;
+    span:nth-child(1), .saUserCon span:nth-child(2)
+    {
+        font-size: 110%;
+        color: #F0F1F5;
+        display: block;
+    }
+    .saUserCon span:nth-child(1)
+    {
+        font-weight: bold;
+    }
+    .saUserCon span:nth-child(2)
+    {
+        text-align: left;
+        font-size: 100%;
+    }
+}
+
+.saSidebarDetails
+{
+    width: 140px;
+    margin: 0px auto;
+    span
+    {
+        color: #fff;
+        padding: 1px 0px;
+    }
+}
+
+.saMainNav
+{
+    width: 200px;
+    li
+    {
+        font-size: 105%;
+        color: #F0F1F5;
+        list-style-type: none;
+        padding: 20px 0px;
+        text-align: center;
+        cursor: pointer;
+        &:hover
+        {
+            background: #1ABC9C;
+        }
+        li:nth-child(1)
+        {
+            background-image: url(../imgs/article.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(2)
+        {
+            background-image: url(../imgs/campaigns.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(3)
+        {
+            background-image: url(../imgs/users.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(4)
+        {
+            background-image: url(../imgs/file.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(5)
+        {
+            background-image: url(../imgs/article.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+        li:nth-child(6)
+        {
+            background-image: url(../imgs/settings.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: left 30px center;
+        }
+    }
+}
+
+.saSettings
+{
+    display: none;
+    a, span
+    {
+        font-size: 105%;
+        color: #F0F1F5;
+        display: block;
+        padding: 10px 0px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+/*    views container*/
+/*    Note: use this for all users*/
+
+
+.viewsContaier
+{
+    width: 85%;
+    margin: 33px 0px;
+    background: #F6F7F2;
+    float: right;
+    @include clear;
+}
+.saViewsBox
+{
+    width: 1050px;
+    margin: 0px auto;
+}
+.saContainers
+{
+    @include boxShadow2;
+    background: $whiteBackground;
+    padding: 10px;
+    margin-bottom: 25px;
+    @include clear;
+}
+.edutUserHeader
+{
+    width: 50%;
+    padding-bottom: 10px;
+    h1
+    {
+        font-size: 160%;
+        color: $secondaryDarkColor;
+        text-align: left;
+        padding: 0px 0px 10px 10px;
+        margin: 0px;
+        border-bottom: 1px solid $primaryGrey;
+        span
+        {
+            font-size: 140%;
+        }
+        .saAccountAdd
+        {
+            margin: 5px 0px;
+            button
+            {
+                @include buttonDesign2;
+                padding: 5px 10px;
+            }
+        }
+    }
+}
+.editUserContainer
+{
+    @include clear;
+    width: 80%;
+    margin: 50px 10%;
+    .editUserContent
+    {
+        @include clear;
+        width: 50%;
+        padding-bottom: 10px;
+        margin: 10px 0px 20px 10px;
+        border-bottom: 1px solid $primaryGrey;
+        .saEditLabel
+        {
+            width: 50%;
+            float: left;
+            span
+            {
+                font-size: 120%;
+                font-weight: bold;
+                color: $secondaryDarkColor;
+            }
+        }
+        .saUserData
+        {
+            width: 50%;
+            float: right;
+        }
+        .saEditButton
+        {
+            width: 50%;
+            float: right;
+            span
+            {
+                color: $secondaryBlue;
+                cursor: pointer;
+                &:hover
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+        div
+        {
+            padding: 5px 0px;
+            text-align: left;
+        }
+
+    }
+}
+.input-group-addon, .input-group-btn
+{
+    width: 0% !important;
+}
+#loadAllAuthor
+{
+    position: relative;
+}
+#caDashAllAuthors
+{
+    @include pop;
+    .dashAllAuthorsPopContainer
+    {
+        width: 30%;
+        height: 400px;
+        margin: 100px 35% 0px 35%;
+        background: #fff;
+        z-index: 37;
+        .eventCloseHeader
+        {
+            @include saPopExitHeaderEditUser;
+        }
+        .listOfAuthorsBox
+        {
+            @include customScroll;
+            width: 90%;
+            height: 300px;
+            margin: 0px 5%;
+            overflow-y: scroll;
+            table
+            {
+                width: 100%;
+                thead
+                {
+                    tr
+                    {
+                        th
+                        {
+                            color: $secondaryDarkColor;
+                            text-align: center;
+                        }
+                        th:nth-child(1)
+                        {
+                            width: 50%;
+                        }
+                        th:nth-child(2)
+                        {
+                            width: 50%;
+                        }
+                    }
+                }
+                tbody
+                {
+                    tr
+                    {
+                        height: 40px;
+                        td
+                        {
+                            text-align: center;
+                        }
+                        td:nth-child(1)
+                        {
+                            width: 50%;
+                        }
+                        td:nth-child(2)
+                        {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#eventPopUp
+{
+    @include pop;
+    .eventPopContainer
+    {
+        width: 40%;
+        height: 530px;
+        margin: 20px 30% 0px 30%;
+        background: #fff;
+        z-index: 37;
+        .eventCloseHeader
+        {
+            @include saPopExitHeaderEditUser;
+        }
+        .eventFormCon
+        {
+            width: 100%;
+            height: 460px;
+
+            .eventFormInputPopBox
+            {
+                @include customScroll;
+                height: 460px;
+                overflow-y: scroll;
+                .eventInputsContent
+                {
+                    height: 600px;
+                    .eventImgBoxPop
+                    {
+                        height: 170px;
+                        .eventFormHeaderPop
+                        {
+                            width: 90%;
+                            height: 40px;
+                            overflow: hidden;
+                            margin: 0px 5%;
+                        }
+                        .eventImgPop
+                        {
+                            width: 90%;
+                            height: 130px;
+                            margin: 0px 5%;
+                            overflow: hidden;
+                            img
+                            {
+                                width: 60%;
+                            }
+                        }
+                    }
+                    .eventInputBox
+                    {
+                        width: 90%;
+                        height: 90px;
+                        margin: 0px 5%;
+                        p:before
+                        {
+                            color: $secondaryDarkColor;
+                            content: attr(type);
+                        }
+                        p
+                        {
+                            width: 50%;
+                            text-align: left;
+                            .eventInputType
+                            {
+                                @include textInput;
+                            }
+
+                        }
+                        .eventDetails
+                        {
+                            width: 100%;
+                            .eventFormTextarea
+                            {
+                                @include customScroll;
+                                font-size: 100%;
+                                width: 100%;
+                                padding: 10px;
+                                border: none;
+                                border: 1px solid $primaryGrey;
+                                box-sizing: border-box;
+                                resize: none;
+                                outline: none;
+                            }
+                        }
+
+                    }
+                }
+                }
+
+            .eventFormFooter
+            {
+                @include clear;
+                width: 100%;
+                height: 50px;
+                .eventFormCancelButton
+                {
+                    @include popButtonLeft;
+                    width: 50%;
+                    height: 50px;
+                    float: left;
+                }
+                .eventFormSubmit
+                {
+                    @include popButtonRight;
+                    width: 50%;
+                    height: 50px;
+                    float: right;
+                }
+            }
+        }
+
+
+    }
+}
+#saEditUsernamePop, #saEditPasswordPop,
+#saEditLastNamePop, #saEditFirstNamePop,
+#saEditRolePop, #saAddAccountPop,#caEditUsernamePop,
+#caEditPasswordPop, #caEditPositionPop,
+#caEditEmailPop, #caEditContactNumPop,
+#caEditContactNumPop, #caEditGenderPop,
+#saAddCampaign, #saEditCampaign, #caAddCategory,
+#caDeleteCategory, #caDeleteArticle, #caDeleteQuestion,
+#caDeleteCommentArticleNews, #caDeleteNews
+{
+    @include pop;
+    .editUserDetailsPopCon
+    {
+        width: 30%;
+        height: 200px;
+        margin: 150px 35% 0px 35%;
+        background: #fff;
+        z-index: 36;
+        header
+        {
+            @include saPopExitHeaderEditUser
+        }
+        .saEditUserForm
+        {
+            height: 160px;
+            .editInputBox
+            {
+                .saFormErrorMessage
+                {
+                    height: 20px;
+                    padding: 10px 0px;
+                }
+                position: relative;
+                width: 90%;
+                margin: 0px 5%;
+                span[type = "loading"]
+                {
+                    @include loadingBox;
+                    top: 20px;
+                    right: -35px;
+                }
+                span[type = "check"]
+                {
+                    @include check;
+                    top: 20px;
+                    right: -35px
+                }
+                span[type = "ekis"]
+                {
+                    @include ekis;
+                    top: 20px;
+                    right: -35px
+                }
+            }
+            p:before
+            {
+                color: $secondaryDarkColor;
+                content: attr(type);
+            }
+            p
+            {
+                position: relative;
+                width: 80%;
+                margin: 0px 10%;
+                text-align: left;
+                input
+                {
+                    @include textInput;
+                }
+            }
+            select
+            {
+                width: 100%;
+                padding: 5px 0px;
+                margin: 5px 0px
+            }
+            .saEditUserErrorBox
+            {
+                height: 30px;
+                line-height: 30px;
+                div[title = "error"]
+                {
+                    @include errorMessage;
+
+                }
+            }
+            .caGenderFooter
+            {
+                margin-top: 35px;
+            }
+            .addCampaignFooter
+            {
+                margin-top: 13%;
+            }
+            footer
+            {
+                @include clear;
+                width: 100%;
+                height: 50px;
+                margin-top: 26px;
+                div:nth-child(1)
+                {
+                    @include popButtonLeft;
+                    width: 50%;
+                    height: 50px;
+                    float: left;
+                }
+                div:nth-child(2)
+                {
+                    @include popButtonRight;
+                    width: 50%;
+                    height: 50px;
+                    float: right;
+                }
+                input[disabled = "disabled"]
+                {
+                    @include disable;
+                }
+            }
+        }
+    }
+}
+
+#caEditAvatar
+{
+    @include pop;
+    .editAvatarPopBox
+    {
+        @include boxShadow2;
+        width: 30%;
+        height: 400px;
+        margin: 100px 35% 0px 35%;
+        background: #fff;
+        z-index: 36;
+        .editAvatarHeader
+        {
+            @include saPopExitHeaderEditUser
+        }
+        .avatarPopContainer
+        {
+            width: 100%;
+
+            .uploadAvatarForm
+            {
+                .avatarPopBox
+                {
+                    width: 75%;
+                    height: 220px;
+                    margin: 0px 12.5%;
+                    img
+                    {
+                        @include userPicture;
+                        width: 80%;
+                        height: 220px;
+                    }
+                }
+                .avatarUploadInputBox
+                {
+                    position: relative;
+                    width: 100%;
+                    height: 50px;
+                    margin: 15px 0px;
+                    .avatarUploadButton
+                    {
+                        width: 60%;
+                        margin: 0px 35%;
+                    }
+                }
+                .updateAvatarPopButton
+                {
+                    @include clear;
+                    width: 100%;
+                    height: 50px;
+                    margin-top: 30px;
+                    .avatarCancelButton, .avatarSubmitButton
+                    {
+                        height: 50px;
+                    }
+                    .avatarCancelButton
+                    {
+                        @include popButtonLeft;
+                        width: 50%;
+                        float: left;
+                    }
+                    .avatarSubmitButton
+                    {
+                        @include popButtonRight;
+                        width: 50%;
+                        float: right;
+                    }
+                }
+            }
+
+        }
+    }
+}
+/*    System Admin' campaign template style*/
+
+/*    System admin's dashboard style*/
+.statisticsBox
+{
+    width: 200px;
+    float: left;
+    p
+    {
+        -webkt-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        width: 200px;
+        text-align: center;
+        border-right: 1px solid #D2D7D3;
+    }
+}
+.statisticsHeader
+{
+    width: 200px;
+    text-align: center;
+    img
+    {
+        width: 15px;
+    }
+    span
+    {
+        font-size: 115%;
+        font-weight: bold;
+        color: #3F3F3F;
+    }
+}
+
+.statisticsBox > p:nth-child(5)
+{
+    border-right: 1px solid #D2D7D3;
+    &p:hover
+    {
+        color: #1ABC9C;
+        cursor: pointer;
+    }
+}
+
+.saPieWrapper
+{
+    width: 1050px;
+    @include clear;
+}
+.saPieContainer
+{
+    width: 300px;
+    background: $whiteBackground;
+    padding: 30px 80px;
+    float: left;
+    h2
+    {
+        font-size: 125%;
+        color: $secondaryDarkColor;
+        padding: 10px 0px;
+        text-align: center;
+    }
+}
+.pie1
+{
+    margin-right: 65px;
+}
+.pie2
+{
+    margin-left: 65px;
+}
+.saHeaderServiceContainer
+{
+    width: 1000px;
+    height: 65px;
+    margin: 0px auto;
+}
+.saHeaderBox
+{
+    width: 450px;
+}
+.saBox
+{
+    margin-top: 10px;
+    float: left;
+}
+.saBox2
+{
+    float: right;
+}
+#saAddButton
+{
+    @include buttonDesign2;
+    font-size: 110%;
+    padding: 10px 30px;
+}
+#saHideFormButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 130%;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 65px;
+    margin: 10px 0px 10px 10px;
+    border: none;
+    border-radius: 5px;
+    background: #2980B9;
+    cursor: pointer;
+}
+#saCampFormButton:hover, #saHideFormButton:hover
+{
+    background: #44BBFF;
+}
+
+.saDetailsContainer
+{
+    width: 1000px;
+    height: 400px;
+    overflow: hidden;
+    padding: 10px 0px;
+    margin: 15px auto;
+    @include customScroll;
+    &:hover
+    {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+.userLogCampNav:hover, .categoryList:hover
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.saDetailsTable, .saUserTable
+{
+    width: 1000px;
+    border-collapse: collapse;
+    th
+    {
+        font-size: 140%;
+    }
+    td
+    {
+        font-size: 135%;
+    }
+    th, td
+    {
+        color: #3F3F3F;
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+.saUserHeaderTable
+{
+    th
+    {
+        width: 28%;
+        color: #3F3F3F;
+        text-align: left;
+        padding: 8px 0px;
+        border-bottom: 1px solid #ddd;
+    }
+    th:nth-child(5)
+    {
+        opacity: 0;
+    }
+    th:nth-child(1)
+    {
+        width: 5%;
+    }
+}
+.userTable
+{
+    width: 100%;
+    border-collapse: collapse;
+    th
+    {
+        font-size: 120%;
+        width: (100% / 4);
+    }
+    th:nth-child(4)
+    {
+        opacity: 0;
+    }
+    tr
+    {
+        border-bottom: 1px solid #ddd;
+        td
+        {
+            font-size: 110%;
+            color: #3F3F3F;
+            padding: 8px;
+            text-align: center;
+            img
+            {
+                width: 30px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+.saUserHeaderTable, .saUserTable
+{
+    width: 1000px;
+    border-collapse: collapse;
+}
+.saUserTable
+{
+    td
+    {
+        width: 28%;
+        color: #3F3F3F;
+        text-align: left;
+        padding: 8px 0px;
+        border-bottom: 1px solid #ddd;
+    }
+    img
+    {
+        width: 25px;
+        cursor: pointer;
+    }
+    td:nth-child(1)
+    {
+        width: 5%;
+    }
+}
+.trDatas
+{
+    img
+    {
+        width: 25px;
+        cursor: pointer;
+    }
+}
+
+td[class = "saCampTdButtons"]
+{
+    text-align: center;
+    width: 150px;
+}
+#saCampEditButton, #saCampDeactButton, #userAddCapaignButton, #saRegisterButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 120%;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#saCampEditButton, #userAddCapaignButton, #saRegisterButton
+{
+    background: #1BBC9B;
+    padding: 10px 45px;
+}
+#saCampEditButton:hover, #userAddCapaignButton:hover, #saRegisterButton:hover
+{
+    background: #16A086;
+}
+#saCampDeactButton
+{
+    background: #E35252;
+    padding: 10px 35px;
+    margin-right: 20px;
+}
+#saCampDeactButton:hover
+{
+    background: #CC4949;
+}
+.saNewUserFormContainer
+{
+    width: 90%;
+    margin: 25px 5%;
+    @include clear;
+}
+#saNewUserForm
+{
+    width: 1000px;
+    margin: 0px auto;
+    section
+    {
+        @include clear;
+        div:nth-child(1)
+        {
+            float: left;
+            p:before
+            {
+                color: $secondaryDarkColor;
+                content: attr(type);
+            }
+            p
+            {
+                width: 80%;
+                margin: 0px 10%;
+                text-align: left;
+                input
+                {
+                    @include textInput2;
+                }
+            }
+        }
+    }
+
+}
+.saNewUserFormLeftBox
+{
+    width: 500px;
+    float: left;
+}
+.saNewUserFormRightBox
+{
+    position: relative;
+    bottom: 12px;
+    width: 500px;
+    float: right;
+}
+.saInputBox
+{
+    position: relative;
+    width: 450px;
+    height: 100px;
+}
+.saLabelBox
+{
+    width: 365px;
+    margin: 0px auto;
+    text-align: left;
+    label
+    {
+        font-size: 140%;
+        font-weight: bold;
+        color: #3F3F3F;
+    }
+}
+.saNewUserInput, .saNewUserSelect
+{
+    font-size: 120%;
+    width: 350px;
+    padding: 10px 5px;
+    margin: 5px 0px;
+    border: 1px solid #D6DAC2;
+    border-radius: 5px;
+    outline: none;
+}
+.saNewUserSelect
+{
+    position: relative;
+    top: 35px;
+    option
+    {
+        font-size: 100%;
+        margin: 5px 0px;
+    }
+}
+#userAddCapaignButton
+{
+    font-size: 50%;
+    position: relative;
+    top: 35px;
+}
+.saInputBox:nth-child(2)
+{
+    position: relative;
+    top: 15px;
+}
+.saListCampaighHeader
+{
+    margin-top: 40px;
+}
+.mainHeader
+{
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    .mainHeaderBox
+    {
+        @include clear;
+        width: 90%;
+        padding: 8px 0px;
+        margin: 0px 5%;
+        .searchContainer
+        {
+            @include clear;
+            width: 80%;
+            float: left;
+            .wideSearchForm
+            {
+                @include clear;
+                width: 100%;
+                .searchBox
+                {
+                    width: 85%;
+                    float: left;
+                }
+                .wideSearchButton
+                {
+                    width: 15%;
+                    text-align: left;
+                    float: left;
+                }
+            }
+        }
+        .notificationBox
+        {
+            width: 20%;
+            float: left;
+        }
+    }
+}
+#saSelectCampLabel
+{
+    padding: 10px 105px;
+    border: 1px solid #D6DAC2;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+.saCampListPanel
+{
+    width: 348px;
+    height: 200px;
+    overflow: hidden;
+    background: #fff;
+    margin-top: 10px;
+    border: 1px solid #D6DAC2;
+    border-radius: 5px;
+    li
+    {
+        list-style-type: none;
+    }
+    label
+    {
+        cursor: pointer;
+    }
+}
+.saCampListPanel:hover
+{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.saInputButtonBox
+{
+    width: 500px;
+    margin-top: 50px;
+}
+.saUserFormErrorMessage
+{
+    text-align: center;
+    width: 350px;
+    small
+    {
+        font-size: 140%;
+        color: #e74c3c;
+        position: relative;
+        top: 0px;
+        left: 40px;
+    }
+}
+
+/*    dot dot loading style */
+
+.newCategoryLoadingBox
+{
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 50px;
+    height: 40px;
+    span
+    {
+        width: 8px;
+        height: 8px;
+        background: #3F3F3F;
+        display: inline-block;
+        border-radius: 100%;
+    }
+    span:nth-child(1)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    span:nth-child(2)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    span:nth-child(3)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+.newUserLoadingBox
+{
+    position: absolute;
+    top: 40px;
+    right: -5px;
+    width: 50px;
+    height: 40px;
+    span
+    {
+        width: 8px;
+        height: 8px;
+        background: #3F3F3F;
+        display: inline-block;
+        border-radius: 100%;
+    }
+    span:nth-child(1)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    span:nth-child(2)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    span:nth-child(3)
+    {
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+.newUserCheckEkisBox
+{
+    position: absolute;
+    top: 30px;
+    right: 0px;
+}
+
+/*    System admin edit page for user*/
+
+.userInfoContainer:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.userInfoContainer
+{
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(135,117,108,1);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(135,117,108,1);
+    box-shadow: 0px 1px 5px 0px rgba(135,117,108,1);
+    width: 800px;
+    height: 404px;
+    margin: 30px auto;
+    border-radius: 5px;
+    @include clear;
+}
+.userInfoBox
+{
+    width: 800px;
+    height: 100px;
+    border-bottom: 1px solid #E7E7E7;
+    cursor: pointer;
+    span
+    {
+        width: 265px;
+        float: left;
+        text-align: center;
+        line-height: 100px;
+        display: block;
+    }
+    span:nth-child(1)
+    {
+        font-size: 115%;
+        font-weight: 700;
+        color: #3F3F3F;
+    }
+    span:nth-child(2)
+    {
+        font-size: 115%;
+        color: #3F3F3F;
+    }
+    span:nth-child(3)
+    {
+        position: relative;
+        top: 5px;
+    }
+    img
+    {
+        width: 35px;
+    }
+}
+
+/*    System admin use edit pop style*/
+
+#saPopUpUsernameBox, #saPopUpPasswordBox, #saPopUpRoleBox
+{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    width: 500px;
+    height: 250px;
+    margin: 0px auto;
+    z-index: 30;
+    top: -600px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: #FFFFF7;
+    z-index: 31;
+
+}
+#editUserForm
+{
+    height: 220px;
+    margin: 0px;
+}
+.editFormContainer
+{
+    width: 500px;
+    height: 250px;
+}
+.saEditUserInfodesc
+{
+    text-align: center;
+    width: 500px;
+    height: 30px;
+}
+.saEditUserInfodesc h1
+{
+    font-size: 115%;
+    color: $secondaryDarkColor;
+    padding: 10px 10px;
+}
+.saEditInputForm
+{
+    width: 450px;
+    margin: 35px 0px 0px 50px;
+}
+.saEditUserLabel
+{
+    position: relative;
+    right: 0px;
+    width: 350px;
+    label
+    {
+        font-size: 120%;
+    }
+}
+.saEditUsernameMessages, .saEditUsernameMessages
+{
+    width: 350px;
+    height: 45px;
+    text-align: center;
+    margin-left: 5px;
+}
+.saEditUsernameFooter
+{
+    width: 400px;
+    margin: 0px auto;
+    text-align: right;
+    span
+    {
+      font-size: 60%;
+      padding-right: 10px;
+      cursor: pointer;
+    }
+    span:nth-child(2)
+    {
+        color: #1BBC9B;
+    }
+}
+.saUpdateButton
+{
+    font-size: 120%;
+    color: #1BBC9B;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+.saUpdateButton[disabled = "disabled"], .submitCategoryButton[disabled = "disabled"], .editCatSubButton input[disabled = "disabled"], .questionSubmitBox input[disabled = "disabled"]
+{
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+.roleFormFooter
+{
+    margin-top: 50px;
+}
+/*    general form validation style*/
+
+.saNewUserInput.ng-valid, .validInput.ng-valid, .categoryNameInput.ng-valid
+{
+    border: 2px solid #1ABC9C;
+}
+
+    // Campaign admin style
+
+.agentDashboardContainer
+{
+    @include statsHeader(4);
+    width: 95%;
+    margin: 0px 2.5%;
+}
+.dashboardContainer
+{
+    @include statsHeader(5);
+    width: 95%;
+    margin: 0px 2.5%;
+}
+.statisticsBodyContainer
+{
+    @include clear;
+    @include dashboardDesign;
+    width: 100%;
+    margin: 15px 0px;
+}
+// .pieContainer
+// {
+//     @include clear;
+//     @include pieContainerDesign;
+//     width: 100%;
+//     margin: 20px 0px;
+// }
+.backButtonHeaderSa
+{
+    width: 90%;
+    margin: 10px 5%;
+    text-align: left;
+}
+.backButtonHeader
+{
+    width: 90%;
+    margin: 10px 5%;
+    text-align: left;
+}
+.oneNewsContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    padding: 45px 0px;
+    margin: 15px 5%;
+    background: #fff;
+    .oneNewsTitleHeader
+    {
+        width: 100%;
+        padding-bottom: 3%;
+        h1
+        {
+            font-size: 250%;
+            color: $secondaryDarkColor;
+            width: 85%;
+            margin: 0px 7.5%;
+            text-align: left;
+        }
+    }
+    .newsArticle
+    {
+        color: $secondaryDarkColor;
+        width: 85%;
+        padding: 5px;
+        margin: 10px 7.5%;
+    }
+}
+.createNewsContainer
+{
+    @include boxShadow2;
+    width: 95%;
+    margin: 0px 2.5%;
+    background: #fff;
+    .newsFormContainer
+    {
+        width: 90%;
+        padding: 20px 0px;
+        margin: 0px 5%;
+        .newsTitleInputContainer
+        {
+            width: 100%;
+            .newsTitleInputBox
+            {
+                width: 45%;
+                padding: 20px 0px;
+                input
+                {
+                    width: 100%;
+                    padding: 5px 10px;
+                }
+            }
+        }
+        .newsFrontImage
+        {
+            width: 100%;
+            .newsFromImgageBox
+            {
+                width: 40%;
+                img
+                {
+                    width: 100%;
+                }
+            }
+            .UploadFrontImage
+            {
+                position: relative;
+                width: 40%;
+                height: 50px;
+                margin: 25px 0px;
+                div
+                {
+                    width: 40%;
+                    height: 50px;
+                    margin: 0px 30%;
+                }
+                div:nth-child(1)
+                {
+                    position: absolute;
+                    overflow: hidden;
+                    width: 40%;
+                    input
+                    {
+                        width: 100%;
+                        height: 45px;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+                div:nth-child(2)
+                {
+                    input
+                    {
+                        @include button;
+                        width: 100%;
+                        padding: 10px 20px;
+                        background: $primaryOrange;
+                    }
+                }
+            }
+        }
+        .newsSummernoteBox
+        {
+            width: 100%;
+            .newsTextareaBox
+            {
+                width: 100%;
+                padding: 10px 5px;
+            }
+        }
+    }
+
+}
+.allNewsContainer
+{
+    @include boxShadow2;
+    width: 95%;
+    margin: 0px 2.5%;
+    background: #fff;
+    .allNewsBox
+    {
+        width: 100%;
+        padding: 20px 0px;
+        .newsBox
+        {
+            @include clear;
+            width: 100%;
+            padding: 15px 0px;
+            .newsImgBox
+            {
+                position: relative;
+                width: 55%;
+                height: 280px;
+                overflow: hidden;
+                margin: 0px 2.5%;
+                float: left;
+                img
+                {
+                    @include contentPicture;
+                    width: 100%;
+                }
+                .newsImgOpacityBox
+                {
+                    position: absolute;
+                    top: 0px;
+                    width: 100%;
+                    height: 100%;
+                    background: $secondaryDarkColor;
+                    opacity: 0.3;
+                }
+            }
+            .newsShowContent
+            {
+                width: 40%;
+                padding: 10px 0px;
+                float: left;
+                .newsShortTitleHeader
+                {
+                    @include clear;
+                    width: 100%;
+                    margin: 15px 0px;
+                    .newsTitle
+                    {
+                        width: 80%;
+                        float: left;
+                        h1
+                        {
+                            font-size: 150%;
+                            color: $secondaryDarkColor;
+                            text-align: left;
+                            margin: 0px;
+                        }
+                    }
+                    .newsOptionsBox
+                    {
+                        @include clear;
+                        width: 20%;
+                        float: left;
+                        .deleteNewsBox
+                        {
+                            width: 50%;
+                            float: left;
+                            span
+                            {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .newsDateCreatedBox
+                    {
+                        width: 100%;
+                        float: left;
+                        span
+                        {
+                            color: $secondaryGreey;
+                            text-align: left;
+                            display: block;
+                        }
+                    }
+                    h1
+                    {
+                        font-size: 150%;
+                        color: $secondaryDarkColor;
+                        text-align: left;
+                        margin: 0px;
+                    }
+                    span
+                    {
+                        color: $secondaryGreey;
+                        text-align: left;
+                        display: block;
+                    }
+                }
+                .newsShortDesc
+                {
+                    width: 100%;
+                    p
+                    {
+                        color: $secondaryDarkColor;
+                        word-wrap: break-word;
+                        text-align: left;
+                        padding-right: 60px;
+                    }
+                }
+                .newsShortDescFooter
+                {
+                    width: 100%;
+                    padding: 10px 0px;
+                    text-align: left;
+                    span
+                    {
+                        font-size: 110%;
+                        color: $secondaryGreen;
+                        cursor: pointer;
+                        &:hover
+                        {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.clear
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.boxShadow
+{
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(199,199,199,1);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(199,199,199,1);
+    box-shadow: 0px 2px 5px 0px rgba(199,199,199,1);
+}
+.sideBar
+{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: fixed;
+    top: 0px;
+    float: left;
+    width: 15%;
+    height: 100%;
+    background: $sideBarColor;
+    opacity: 1;
+}
+.sideBar.hideSideBar
+{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 0px !important;
+    overflow: hidden;
+    opacity: 0;
+}
+.campaignNameBox
+{
+    text-align: center;
+    h1
+    {
+        font-size: 115%;
+        color: #E7E7E7;
+        padding: 10px 0px;
+    }
+}
+.profileImgCon
+{
+    width: 100%;
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #3F3F3F;
+    #caSideNavLoader
+    {
+        .profileImgLoaderCon
+        {
+            position: relative;
+            height: 80px;
+            .showCirlcebox
+            {
+                padding: 0px;
+                .circleLoader
+                {
+                    bottom: 15px;
+                    .circular
+                    {
+                        width: 50%;
+                    }
+                }
+            }
+
+        }
+    }
+    img
+    {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center right;
+        object-position: center right;
+    }
+    span
+    {
+        font-size: 116%;
+        color: $sideBarTextClr;
+        display: block;
+    }
+}
+.sideBarRoleBox
+{
+    width: 100%;
+    span
+    {
+        color: #fff;
+    }
+}
+.profileImgCon span
+{
+    font-size: 100%;
+    color: $sideBarTextClr;
+    display: block;
+}
+.pageNavBox
+{
+    width: 100%;
+    height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    ul
+    {
+        padding: 0px;
+    }
+    &::-webkit-scrollbar
+    {
+        width: 8px;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+        background: #1BBC9B;
+        border-radius: 5px;
+        z-index: 32;
+    }
+}
+.pageNavCaAdmin
+{
+    width: 100%;
+    li
+    {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        color: #fff;
+        width: 100%;
+        list-style-type: none;
+        text-align: center;
+        line-height: 34px;
+        cursor: pointer;
+        opacity: 0.5;
+        &:hover
+        {
+            opacity: 1 !important;
+        }
+    }
+    li:nth-child(1)
+    {
+        background-image: url(../imgs/newsFeed.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(2)
+    {
+        background-image: url(../imgs/overview.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(3)
+    {
+        background-image: url(../imgs/article.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(5)
+    {
+        background-image: url(../imgs/announcements.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(7)
+    {
+        background-image: url(../imgs/events.png);
+        background-repeat: no-repeat;
+        background-size: 35px;
+        background-position: left 23px center;
+    }
+    li:nth-child(8)
+    {
+        background-image: url(../imgs/qAndA.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(10)
+    {
+        background-image: url(../imgs/users.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(11)
+    {
+        background-image: url(../imgs/profile.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(12)
+    {
+        background-image: url(../imgs/logout.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li span
+    {
+        @include customTransition;
+        font-size: 95%;
+        font-weight: 100;
+        padding: 5px 0px;
+        color: $commonButTextClr;
+        text-decoration: none;
+    }
+}
+.pageNav
+{
+    width: 100%;
+    li
+    {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        color: #fff;
+        width: 100%;
+        list-style-type: none;
+        text-align: center;
+        line-height: 34px;
+        cursor: pointer;
+        opacity: 0.5;
+        &:hover
+        {
+            opacity: 1 !important;
+        }
+    }
+    li:nth-child(1)
+    {
+        background-image: url(../imgs/newsFeed.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(2)
+    {
+        background-image: url(../imgs/overview.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(3)
+    {
+        background-image: url(../imgs/article.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(5)
+    {
+        background-image: url(../imgs/announcements.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(6)
+    {
+        background-image: url(../imgs/events.png);
+        background-repeat: no-repeat;
+        background-size: 35px;
+        background-position: left 23px center;
+    }
+    li:nth-child(7)
+    {
+        background-image: url(../imgs/qAndA.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(9)
+    {
+        background-image: url(../imgs/users.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(10)
+    {
+        background-image: url(../imgs/profile.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li:nth-child(11)
+    {
+        background-image: url(../imgs/logout.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: left 30px center;
+    }
+    li span
+    {
+        @include customTransition;
+        font-size: 95%;
+        font-weight: 100;
+        padding: 5px 0px;
+        color: $commonButTextClr;
+        text-decoration: none;
+    }
+}
+.headersSection
+{
+    @include clear;
+}
+.header
+{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 85%;
+    height: 50px;
+    background: #FFFFF7;
+    float: right;
+    display: block;
+    -webkit0-box-shadow: 0 5px 5px -5px #333;
+    -moz-box-shadow: 0 5px 5px -5px #333;
+    -o-box-shadow: 0 5px 5px -5px #333;
+    box-shadow: 0 5px 5px -5px #333;
+    z-index: 40;
+    @include clear;
+}
+.header.fullWitdh
+{
+    width: 100%;
+}
+.headerNav
+{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: 1149px;
+    height: 50px;
+    margin: 0px auto;
+}
+#navBar
+{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    float: left;
+    margin: 10px 0px 0px 15px;
+}
+.headerNav.wrapper
+{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 1200px !important;
+    margin: 0px auto !important;
+}
+.smartSearchBox
+{
+    width: 450px;
+}
+.wideSearchContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    margin: 0px 5%;
+    background: #fff;
+    .searchHeader
+    {
+        width: 60%;
+        padding: 10px 0px;
+        margin: 0px 35% 0px 5%;
+        ul
+        {
+            @include clear;
+            height: 40px;
+            padding: 0px;
+            margin: 0px;
+            li
+            {
+                @include customTransition;
+                width: (100% / 5);
+                height: 40px;
+                line-height: 40px;
+                list-style-type: none;
+                float: left;
+                cursor: pointer;
+                &:hover
+                {
+                    background: darken(#fff, 5);
+                }
+                .searchType
+                {
+                    font-size: 130%;
+                    font-weight: bold;
+                    color: $secondaryDarkColor;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+    .searchedTitleBox
+    {
+        width: 90%;
+        margin: 10px 5%;
+        text-align: left;
+        h1
+        {
+            font-size: 170%;
+            color: $secondaryDarkColor;
+        }
+    }
+    .searchedListContainer
+    {
+        width: 90%;
+        padding: 15px 0px;
+        margin: 10px 5%;
+        .searchedResultBox
+        {
+            width: 100%;
+            .searchedResultHeader
+            {
+                @include clear;
+                width: 100%;
+                .searchedResultIcon
+                {
+                    width: 5%;
+                    float: left;
+                }
+                .searchedResultTitle
+                {
+                    width: 95%;
+                    text-align: left;
+                    float: left;
+                    span
+                    {
+                        font-size: 130%;
+                        font-weight: bold;
+                        color: $secondaryDarkColor;
+                        word-wrap: break-word;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .searchResultFooter
+            {
+                width: 100%;
+                padding-bottom: 10px;
+                border-bottom: 1px solid $primaryGrey;
+                div
+                {
+                    text-align: left;
+                    span
+                    {
+                        color: $secondaryGreey;
+                    }
+                }
+            }
+        }
+    }
+}
+.smartSearchContainer
+{
+    width: 450px;
+    height: 50px;
+    float: left;
+    margin-left: 20px;
+    @include clear;
+}
+.smartSearch
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 115%;
+    color: #3F3F3F;
+    width: 500px;
+    border: none;
+    border: 2px solid #F6F7F2;
+    border-radius: 10px;
+    outline: none;
+    padding: 5px 5px;
+    margin: 7px 0px;
+}
+.search-page-background
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    -webkit-clip-path: polygon(15% 0, 15% 7.5%, 100% 7.5%, 100% 100%, 0 100%, 0 59%, 0 0);
+    clip-path: polygon(15% 0, 15% 7.5%, 100% 7.5%, 100% 100%, 0 100%, 0 59%, 0 0);
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+.search-page-background.search-page-backgroundEvent
+{
+    -webkit-clip-path: polygon(0% 0, 0% 7.5%, 100% 7.5%, 100% 100%, 0 100%, 0 59%, 0 0);
+    clip-path: polygon(0% 0, 0% 7.5%, 100% 7.5%, 100% 100%, 0 100%, 0 59%, 0 0);
+}
+
+/*    Template container and ui-views style*/
+
+.tempsContainer
+{
+    @include customTransition;
+    width: 85%;
+    margin-left: 15%;
+    // float: right;
+}
+.tempsContainer.tempEvent
+{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin: 0px auto;
+}
+.tempsBox
+{
+    // position: relative;
+    // top: 28px;
+}
+.tempsBox.tempWrapper
+{
+    @include customTransition;
+    width: 1200px;
+    margin: 15px auto;
+}
+.uiContainer
+{
+    // margin: 20px 0px;
+    @include clear;
+}
+.uiContainer.uiContainerEvent
+{
+    margin: 20px 0px 100px 85px;
+}
+.ui-views
+{
+    @include customTransition;
+    @include clear;
+    // margin: 0px 35px;
+    // float: left;
+}
+.ui-views-desktop
+{
+    @include customTransition;
+    @include clear;
+    width: 100%;
+}
+.ui-views.ui-viewsEvent
+{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin: 0px 0px 100px 0px;
+}
+.ui-views.ng-leave
+{
+    @include linearTransition;
+    opacity: 1;
+}
+.ui-views.ng-leave.ng-leave-active
+{
+    opacity: 0;
+}
+// .ui-views.ng-leave
+// {
+//     -webkit-transition: all 0.5s ease;
+//     -moz-transition: all 0.5s ease;
+//     -o-transition: all 0.5s ease;
+//     transition: all 0.5s ease;
+//     opacity: 1;
+// }
+// .ui-views.ng-leave.ng-leave-active
+// {
+//     opacity: 0;
+// }
+.uiViewContainer
+{
+    width: 66%;
+    margin: 0px 3%;
+    float: left;
+}
+
+#caDashboardLoader, #caNewsFeedQuestionLoader,
+#caPeopleLoader, #caCreatingDraftNewsLoader,
+#caEventLoader, #caAllNewsLoader, #caOneNewsLoader,
+#aNewsFeedLoader, #caSearchLoader, #caMyProfileLoader,
+#caAllArticleLoader, #caMyArticleLoader,
+#caPendingArticleLoader, #caShowArticleLoader,
+#caViewPendingArticleLoader, #aMyArticlesLoader,
+#newsFeedLoader
+{
+    position: relative;
+    height: 160px;
+    margin-top: 15%;
+}
+.globalPageLoader
+{
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+.newsFeedContainer
+{
+    @include boxShadow2;
+    width: 100%;
+    padding: 35px 0px;
+    margin: 45px 0px;
+    background: #fff;
+    .allnewsFeedBox
+    {
+        width: 90%;
+        padding: 15px 5px;
+        margin: 0px 5%;
+        border-bottom: 1px solid $primaryGrey;
+        .newsFeedHeader
+        {
+            @include clear;
+            width: 100%;
+            .newsFeedIconBox
+            {
+                width: 10%;
+                float: left;
+            }
+            .newsFeedTitle
+            {
+                width: 90%;
+                text-align: left;
+                float: left;
+                span
+                {
+                    @include customTransition;
+                    font-size: 130%;
+                    font-weight: bold;
+                    color: $secondaryDarkColor;
+                    word-wrap: break-word;
+                    cursor: pointer;
+                    &:hover
+                    {
+                        color: $secondaryGreen;
+                    }
+                }
+            }
+        }
+        .newsFeedBody
+        {
+            width: 100%;
+            .newsFeedArticleBody, .newsEventDetailsBox
+            {
+                width: 92%;
+                margin: 0px 4%;
+                div
+                {
+                    text-align: left;
+                    span
+                    {
+                        color: $secondaryGreey;
+                    }
+                }
+            }
+            .newsEventDetailsBox
+            {
+                footer
+                {
+                    width: 40%;
+                    span
+                    {
+                        font-weight: bold;
+                    }
+                    p
+                    {
+                        color: $secondaryDarkColor;
+                        width: 100%;
+                        word-wrap: break-word;
+                    }
+                }
+            }
+            .eventBodyDetails, .newsBodyDetails
+            {
+                .newsFeedEventImgBox
+                {
+                    width: 80%;
+                    height: 200px;
+                    overflow: hidden;
+                    .newsFeedEventImg
+                    {
+                        overflow: hidden;
+                        img
+                        {
+                            width: 75%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.newsFeedBox
+{
+    @include newsFeeds;
+    width: 80%;
+    padding: 5px;
+    margin: 0px 10%;
+    border-bottom: 1px solid $primaryGrey;
+}
+#answeredPopBackground
+{
+    @include pop-design2('error');
+}
+#answeredPopBackground2
+{
+    @include pop-design2('success');
+}
+.wideViewContainerSa
+{
+    width: 100%;
+}
+.articleViewContainer, .questionViewContainer, .wideViewContainer
+{
+    width: 100%;
+    margin: 35px 0px;
+}
+.usersListViewContainer
+{
+    width: 1079px;
+    @include clear;
+}
+.uiUserListContainer
+{
+    width: 1000px;
+    margin: 0px auto;
+    @include clear;
+}
+.userListHeaderSearch
+{
+    @include primaryUserListHeaderSearch;
+    @include boxShadow2;
+    width: 1000px;
+    height: 65px;
+    margin: 30px 0px 5px 0px;
+    background: #fff;
+    @include clear;
+}
+.userListBox
+{
+    width: 650px;
+    background: #fff;
+    padding: 20px 0px;
+    margin: 45px 0px;
+    float: left;;
+    ul
+    {
+        @include usersGrid(2, 1%);
+    }
+}
+.useListheader
+{
+  margin-bottom: 20px;
+    input
+    {
+        @include customSearchBar;
+    }
+}
+.userInfoSideBar
+{
+    width: 400px;
+    height: 500px;
+    float: right;
+    margin: 45px 0px;
+}
+.userSideFixBox
+{
+    position: fixed;
+    width: 400px;
+    height: 500px;
+    background: #fff;
+    @include userInfoSideBar;
+}
+.uiViewBox
+{
+    width: 739px;
+    @include clear;
+}
+.rightSideBar
+{
+    @include customTransition;
+    @include boxShadow2;
+    position: fixed;
+    right: 15px;
+    width: 24%;
+    height: 550px;
+    padding: 35px 0px;
+    margin: 45px 0px;
+    background: #fff;
+    overflow: hidden;
+    @include customScroll;
+    // float: right;
+    &:hover
+    {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+}
+.sideRecentlyAdded
+{
+    @include rightSideBar;
+    width: 85%;
+    margin: 0px 7.5%;
+}
+.rightSideBar.rightSideBarEvent
+{
+    @include customTransition;
+    margin: 45px 55px 0px 0px;
+}
+
+/*    Article Writing style*/
+
+.articleWriteContainer
+{
+    width: 90%;
+    margin: 0px 5%;
+    @include clear;
+}
+.new-articles
+{
+    margin-top: 45px !important;
+}
+.articleHeader
+{
+    background: $whiteBackground;
+}
+.articleHeader
+{
+    p
+    {
+        font-size: 300%;
+        word-wrap: break-word;
+        padding: 30px 0px;
+    }
+}
+
+.articlieInputContainer
+{
+    @include boxShadow2;
+    background: $whiteBackground;
+    @include clear;
+}
+.newsInputContainer
+{
+    background: $whiteBackground;
+    @include clear;
+}
+.articleInputBox
+{
+    width: 50%;
+    margin: 20px 0px;
+    float: left;
+    select
+    {
+        width: 300px;
+        height: 30px;
+    }
+}
+.articleTitleInput
+{
+      font-size: 115%;
+      width: 300px;
+      height: 30px;
+      padding: 10px 10px;
+      margin-left: 25px;
+      border: 2px solid #F6F7F2;
+      border-radius: 10px;
+      display: block;
+      outline: none;
+      &:focus
+      {
+          border: 2px solid #1ABC9C;
+      }
+}
+.summernoteContainer
+{
+    @include boxShadow2;
+    width: 100%;
+    background: $whiteBackground;
+}
+.summernoteBox
+{
+    width: 90%;
+    padding: 25px 0px;
+    margin: 15px 5%;
+    textarea
+    {
+        width: 85%;
+        padding: 25px;
+        margin: 0px 7.5%;
+    }
+}
+
+.fileInputContainer
+{
+    position: relative;
+    h1
+    {
+        font-size: 100%;
+        width: 30%;
+    }
+    section
+    {
+        margin-left: 30px;
+    }
+}
+.fileInputBox
+{
+    position: absolute;
+    overflow: hidden;
+    width: 410px;
+    height: 40px;
+    @include fileInput;
+}
+.inputMaskBox
+{
+    width: 410px;
+    height: 40px;
+    @include inputMask;
+    @include clear;
+}
+// .articleInoutFile
+// {
+//     font-size: 125%;
+//     color: $commonButTextClr;
+//     width: 300px;
+//     margin-left: 20px;
+// }
+#submitArticleButton, #draftArticleButton, .addEventButton button
+{
+    @include customTransition;
+    font-size: 125%;
+    color: #fff;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+#submitArticleButton
+{
+    background: #44B39D;
+    margin-left: 20px;
+    &:hover
+    {
+        background: #47C9AF;
+    }
+}
+#draftArticleButton
+{
+    background: #28A9BC;
+    margin-right: 20px;
+    &:hover
+    {
+        background: #36C4D0;
+    }
+}
+.articleInputButton
+{
+    text-align: left;
+}
+.articleDraftButton
+{
+    text-align: right;
+}
+.oneArticleContainer, .oneQuestionContainer,
+.itemListContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    margin: 0px 5%;
+    background: #fff;
+}
+.mgtCatListContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    margin: 0px 5%;
+    background: #fff;
+    .backToCategoryListBox
+    {
+        width: 90%;
+        margin: 0px 5%;
+        .bachToCatButtonBox
+        {
+            text-align: left;
+            padding: 15px 0px;
+        }
+    }
+    .articleCategoryFilterContainer
+    {
+        @include clear;
+        width: 90%;
+        margin: 20px 5%;
+        .categoryFilterBox
+        {
+            width: 50%;
+            margin-top: 10px;
+            float: left;
+            .custom-select
+            {
+                    height: calc(2.25rem + 9px);
+            }
+        }
+        .articleCategorySearchBox
+        {
+            width: 50%;
+            float: right;
+            .searchArticleCategoryBox
+            {
+                width: 60%;
+                margin: 0px 5% 0px 35%;
+                input
+                {
+                    @include customSearchBar2;
+                }
+            }
+        }
+    }
+    .mgtArticleCatTable
+    {
+        width: 100%;
+        thead
+        {
+            background: $secondaryRed;
+            tr
+            {
+                th
+                {
+                    font-size: 110%;
+                    font-weight: normal;
+                    color: #fff;
+                    padding: 10px 5px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+                .catMgtThTitle
+                {
+                    width: 40%;
+                }
+                .catMgtTh
+                {
+                    width: (50% / 2);
+                }
+                .catMgtThIcon
+                {
+                    width: 10%;
+                }
+            }
+
+        }
+        tbody
+        {
+            tr
+            {
+                border-bottom: 1px solid $primaryGrey;
+                cursor: pointer;
+                td
+                {
+                    font-size: 110%;
+                    color: $secondaryDarkColor;
+                    padding: 10px 5px;
+                    text-align: center;
+                }
+                .catMgtThTitle
+                {
+                    width: 40%;
+                }
+                .catMgtTh
+                {
+                    width: (50% / 2);
+                }
+                .catMgtThIcon
+                {
+                    width: 10%;
+                    .round
+                    {
+                        position: relative;
+                        left: 35%;
+                        label
+                        {
+                            background-color: #fff;
+                            border: 1px solid #ccc;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            height: 28px;
+                            left: 0;
+                            position: absolute;
+                            top: 0;
+                            width: 28px;
+                            &:after
+                            {
+                                border: 2px solid #fff;
+                                border-top: none;
+                                border-right: none;
+                                content: "";
+                                height: 6px;
+                                left: 7px;
+                                opacity: 0;
+                                position: absolute;
+                                top: 8px;
+                                transform: rotate(-45deg);
+                                width: 12px;
+                            }
+                        }
+                        input[type = "checkbox"]
+                        {
+                            visibility: hidden;
+                        }
+                        input[type="checkbox"]:checked + label
+                        {
+                            background-color: #66bb6a;
+                            border-color: #66bb6a;
+                            &:after
+                            {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+    .manageCategoryFooterOps
+    {
+        @include clear;
+        width: 90%;
+        padding: 25px 0px;
+        margin: 20px 5%;
+        .moveToBox
+        {
+            width: 50%;
+            text-align: left;
+            float: left;
+            .custom-select
+            {
+                height: calc(2.25rem + 9px);
+            }
+            p:before
+            {
+                font-weight: bold;
+                color: $secondaryDarkColor;
+                text-align: left;
+                content: attr(type);
+            }
+        }
+        .updateArticleCategoryButtonBox
+        {
+            width: 50%;
+            float: right;
+            .submitUpdateArticleCatBox
+            {
+                text-align: right;
+                margin-top: 4%;
+            }
+        }
+    }
+}
+.titleHeaderContainer
+{
+    margin-bottom: 60px;
+}
+.oneArticleBox
+{
+    @include myOneArticle;
+    width: 80%;
+    padding: 60px 0px;
+    margin: 0px 10%;
+}
+.newsFeedOneArticleBox
+{
+    @include newsFeedArticle;
+    width: 80%;
+    padding: 50px 0px;
+    margin: 0px 10%;
+    .oneArticleDownloadFooter
+    {
+        width: 100%;
+        margin: 15px 0px;
+        .downloadButtonBox
+        {
+            width: 50%;
+            text-align: left;
+        }
+    }
+}
+.oneQuestionContainer
+{
+    @include clear;
+}
+.oneQuestionBox
+{
+    @include oneQuestionHeader;
+    width: 70%;
+    float: left;
+    padding: 25px 0px;
+}
+.answerFormContainer
+{
+    width: 70%;
+    margin: 0px 25% 0px 5%;
+    form
+    {
+        .anwserSubButBox
+        {
+            text-align: left;
+            input[type = "submit"]
+            {
+                @include buttonDesign4;
+                padding: 5px 30px;
+            }
+        }
+    }
+}
+.answersContainer
+{
+    width: 80%;
+    margin: 0px 15% 0px 5%;
+    h1
+    {
+        font-size: 150%;
+        font-weight: bold;
+        text-align: left;
+        padding: 10px 0px;
+        border-bottom: 1px solid $primaryGrey;
+    }
+    .empAnwserBox
+    {
+        width: 100%;
+        padding-bottom: 10px;
+        margin: 15px 0px;
+        border-bottom: 1px solid $primaryGrey;
+        .innerAnsweredContent
+        {
+            width: 100%;
+        }
+        .showCommentBox
+        {
+            width: 100%;
+            text-align: left;
+            div
+            {
+                width: 90%;
+                margin: 0px 5%;
+                button
+                {
+                    @include buttonDesign4;
+                    font-weight: bold;
+                    padding: 10px 25px;
+                    text-align: left;
+                }
+            }
+        }
+        .loadCommentInAnsQuest
+        {
+            position: relative;
+            width: 50%;
+            height: 50px;
+            margin: 0px 25%;
+            display: none;
+            .showCircleBoxAnsCom
+            {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                .circleLoader
+                {
+                    position: relative;
+                    margin: 0 auto;
+                    width: 40px;
+                }
+            }
+        }
+        .qAnswerCommentContent
+        {
+            width: 100%;
+            .qAnswerCommentContainer
+            {
+                width: 100%;
+                .qAnswerCommentBox
+                {
+                    width: 90%;
+                    padding: 15px 0px;
+                    margin: 10px 5%;
+                    background: $tertiaryGrey;
+                    form
+                    {
+                        @include clear;
+                        .feedQansComment
+                        {
+                            width: 75%;
+                            float: left;
+                            textarea
+                            {
+                                @include customScroll;
+                                font-size: 100%;
+                                width: 80%;
+                                margin: 0px 10%;
+                                padding: 10px;
+                                border: none;
+                                border: 1px solid $primaryGrey;
+                                box-sizing: border-box;
+                                resize: none;
+                                outline: none;
+
+                            }
+                        }
+                        .feedQansCommentButton
+                        {
+                            width: 15%;
+                            margin: 18px 10% 0px 0px;
+                            float: right;
+                            input
+                            {
+                                @include buttonDesign4;
+                                padding: 10px 25px;
+                            }
+                            input[disabled = "disabled"]
+                            {
+                                @include disable;
+                            }
+                        }
+                    }
+
+                }
+            }
+            .empCommentResContainer
+            {
+                width: 100%;
+                .empCommentResBox
+                {
+                    width: 90%;
+                    margin: 0px 5%;
+                    .empCommentResHeader
+                    {
+                        width: 100%;
+                        h2
+                        {
+                            font-size: 110%;
+                            font-weight: bold;
+                            color: $secondaryDarkColor;
+                            margin: 0px;
+                        }
+                        div
+                        {
+                            padding: 5px;
+                            span
+                            {
+                                color: $secondaryGreey;
+                            }
+                        }
+                    }
+                    .empCommentBox
+                    {
+                        width: 100%;
+                        p
+                        {
+                            word-wrap: break-word;
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+        .hideCommentsBoxButton
+        {
+            width: 100%;
+            div
+            {
+                width: 90%;
+                margin: 0px 5%;
+                text-align: left;
+                span
+                {
+                    font-size: 120%;
+                    color: $secondaryGreen;
+                    cursor: pointer;
+                    &:hover
+                    {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        header
+        {
+            @include clear;
+            padding: 10px 0px;
+            .ansEmpImg
+            {
+                width: 10%;
+                float: left;
+                img
+                {
+                    @include userPicture;
+                    width: 100%;
+                    height: 50px;
+                }
+            }
+            .ansEmpDetails
+            {
+                width: 90%;
+                float: right;
+                section
+                {
+                    padding-left: 10px;
+                    div:nth-child(1)
+                    {
+                        span
+                        {
+                            font-size: 120%;
+                            margin-right: 5px;
+                        }
+                    }
+                    div:nth-child(2)
+                    {
+                        span
+                        {
+                            color: $secondaryGreey;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+/*    Event style*/
+
+.eventTextHeader
+{
+    @include boxShadow2;
+    margin: 20px 0px;
+    background: #fff;
+    h1
+    {
+        color: $secondaryDarkColor;
+        padding: 20px 0px;
+    }
+}
+.eventPostContainer
+{
+    @include boxShadow2;
+    height: 650px;
+    background: #fff;
+}
+.eventPostBox
+{
+    width: 700px;
+    margin: 0px auto;
+}
+.eventPostHolder
+{
+    width: 400px;
+    margin: 0px auto;
+    h1
+    {
+        color: $secondaryDarkColor;
+        padding: 15px 0px;
+    }
+}
+.eventImg
+{
+    width: 400px;
+    height: 200px;
+    margin: 0px auto;
+    overflow: hidden;
+    img
+    {
+        width: 400px;
+    }
+}
+.eventDetails
+{
+    height: 150px;
+    text-align: left;
+    span:nth-child(2), span:nth-child(3)
+    {
+        font-size: 135%;
+        margin-right: 10px;
+    }
+}
+.eventDetailsBox
+{
+    padding: 5px 0px;
+    span:nth-child(1), .eventDescription span
+    {
+        font-size: 145%;
+        font-weight: bold;
+        height: 20px;
+        line-height: 20px;
+        display: block;
+    }
+}
+.eventDescription
+{
+    margin: 25px 0px;
+    text-align: left;
+    p
+    {
+        text-align: justify;
+    }
+}
+.eventDescBox
+{
+    height: 100px;
+    margin-top: 15px;
+    overflow-y: scroll;
+    p
+    {
+        padding: 5px;
+    }
+}
+
+/*    My question and article style*/
+
+.countSearchBox
+{
+    width: 90%;
+    margin: 20px 5%;
+    @include clear;
+}
+.dataCountBox, .searchBox
+{
+    width: 300px;
+}
+.dataCountBox
+{
+    height: 42px;
+    line-height: 60px;
+    text-align: left;
+    float: left;
+    span
+    {
+        font-size: 180%;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+}
+.searchBox
+{
+    float: right;
+}
+.createNewsHeader
+{
+    @include clear;
+    @include boxShadow2;
+    width: 95%;
+    margin: 15px 2.5%;
+    background: #fff;
+    .createNewsHeaderBox
+    {
+        width: 300px;
+        span
+        {
+            @include customTransition;
+            font-size: 180%;
+            color: #B8B89F;
+            text-align: left;
+            margin-left: 10px;
+            cursor: pointer;
+            &:hover
+            {
+                color: #1BBC9B;
+            }
+        }
+    }
+
+}
+.myArticleHeader
+{
+    @include boxShadow2;
+    width: 90%;
+    margin: 0px 5%;
+    background: #fff;
+    margin-top: 45px;
+    @include clear;
+    span
+    {
+        @include customTransition;
+        font-size: 180%;
+        color: #B8B89F;
+        text-align: left;
+        margin-left: 10px;
+        cursor: pointer;
+        &:hover
+        {
+            color: #1BBC9B;
+        }
+    }
+}
+.questionHeader, .addEventHeader
+{
+    @include boxShadow2;
+    background: #fff;
+    margin-top: 45px;
+    @include clear;
+    span
+    {
+        @include customTransition;
+        font-size: 180%;
+        color: #B8B89F;
+        text-align: left;
+        margin-left: 10px;
+        cursor: pointer;
+        &:hover
+        {
+            color: #1BBC9B;
+        }
+    }
+}
+.questionHeaderBox, .articleHeaderBox, .addEventButton
+{
+    width: 300px;
+    padding: 15px 0px;
+}
+.myArticleContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    background: #fff;
+    padding: 30px 0px;
+    margin: 15px 5%;
+    .headerManageButton
+    {
+        width: 90%;
+        margin: 0px 5%;
+        .mannageButtonBox
+        {
+            text-align: right;
+        }
+    }
+}
+.myQuestionsContainer
+{
+    background: #fff;
+    padding: 30px 0px;
+    margin: 15px 0px;
+}
+.new-questions
+{
+    margin-top: 45px !important;
+}
+.myQuestion
+{
+    width: 600px;
+    padding: 10px;
+    margin: 20px auto;
+    border-bottom: 1px solid #e2e2e2;
+}
+.myArticles
+{
+    @include clear;
+    width: 90%;
+    padding: 10px 10px 25px 10px;
+    margin: 5px 5%;
+    border-bottom: 1px solid #e2e2e2;
+    .myArticleTitleBox
+    {
+        width: 90%;
+        float: left;
+        .caArticleTitle, span
+        {
+            @include customTransition;
+            font-size: 130%;
+            font-weight: bold;
+            color: $secondaryDarkColor;
+            cursor: pointer;
+            &:hover
+            {
+                color: $primaryGreen;
+            }
+        }
+
+    }
+    .optionBox
+    {
+        @include clear;
+        width: 10%;
+        float: left;
+        .editOption, .deleteOption
+        {
+            width: 50%;
+            text-align: center;
+            float: left;
+            span
+            {
+                cursor: pointer;
+            }
+        }
+    }
+}
+.myArticles
+{
+    width: 90%;
+    padding: 10px 10px 25px 10px;
+    margin: 5px 5%;
+    border-bottom: 1px solid #e2e2e2;
+    .agentDetailsFooter
+    {
+        width: 100%;
+        .viewStateDetailsBox
+        {
+            width: 100%;
+            text-align: left;
+            span
+            {
+                font-weight: bold;
+                color: $secondaryGreen;
+                cursor: pointer;
+                &:hover
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .agentApprovedDetails
+    {
+        @include clear;
+        width: 100%;
+        height: 40px;
+        .approvedDetailsBox
+        {
+            width: 100%;
+            height: 20px;
+            .approvedBox
+            {
+                text-align: left;
+                span
+                {
+                    color: $secondaryGreey;
+                }
+            }
+        }
+
+    }
+    .rejectedArticleDetails
+    {
+        @include clear;
+        width: 100%;
+        height: 140px;
+        .rejectionParaBox
+        {
+            width: 100%;
+            height: 140px;
+            padding: 10px 0px;
+            .rejectPara
+            {
+                width: 50%;
+                height: 70px;
+                margin: 0px 45% 0px 5%;
+                p
+                {
+                    color: $secondaryDarkColor;
+                    text-align: justify;
+                }
+            }
+            .agentUpdateBut
+            {
+                height: 45px;
+            }
+        }
+        .approvedDetailsBox
+        {
+            width: 100%;
+            height: 20px;
+            .approvedBox
+            {
+                text-align: left;
+                span
+                {
+                    color: $secondaryGreey;
+                }
+            }
+        }
+    }
+}
+.myArticles.ng-enter, .myQuestion.ng-enter
+{
+    @include transitionFive;
+    opacity: 0;
+}
+.myArticles.ng-enter.ng-enter-active, .myQuestion.ng-enter-active
+{
+    opacity: 1;
+}
+.myArticles.ng-leave, .myQuestion.ng-leave,
+.savingArticleAndFile.ng-leave
+{
+    @include transitionFive;
+    opacity: 1;
+}
+.myArticles.ng-leave.ng-leave-active, .myQuestion.ng-leave-active,
+.savingArticleAndFile.ng-leave-active
+{
+    opacity: 0;
+}
+.myQuestionTitleBox, .myQuestionDetailsBox,
+ .myArticleTitleBox, .myArticleDetailsBox
+{
+    text-align: left;
+    float: left;
+}
+.myQuestionTitleBox span, .myArticleTitleBox .caArticleTitle, .myArticleTitleBox .agentArticleTitle
+{
+    @include customTransition;
+    font-size: 130%;
+    font-weight: bold;
+    color: $secondaryDarkColor;
+    cursor: pointer;
+    &:hover
+    {
+        color: $primaryGreen;
+    }
+}
+.myQuestionDetailsBox, .myArticleDetailsBox
+{
+    height: 45px;
+    color: #9E9D9B;
+    @include clear;
+}
+.questionDetailsDiv, .articleDetailsDiv
+{
+    width: 290px;
+    float: left;
+}
+.articleDetailsDiv
+{
+    span:nth-child(1)
+    {
+        padding-right: 10px;
+    }
+}
+.myArticleCategoryTypeBox
+{
+    span
+    {
+        cursor: pointer;
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }
+}
+.questionDetailsDiv
+{
+    span:nth-child(2)
+    {
+        cursor: pointer;
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }
+}
+.questionDetailsSettings, .articleDetailsSettings
+{
+    width: 290px;
+    height: 20px;
+    text-align: right;
+    float: right;
+    img
+    {
+        width: 20px;
+        padding-bottom: 5px;
+        cursor: pointer;
+    }
+}
+.feedsContainer
+{
+    @include boxShadow2;
+    width: 100%;
+    padding: 30px 0px;
+    margin: 10px 0px 10px 0px;
+    background: #fff;
+}
+.feedsBox
+{
+    @include newsFeed;
+    width: 100%;
+}
+
+/*    Settings style and formums article drop */
+
+.newsList
+{
+    @include customTransition;
+    @include sideBarOptions(2);
+    a
+    {
+        @include sideBarAys;
+    }
+}
+.articleList
+{
+    @include customTransition;
+    @include sideBarOptions(5);
+    a
+    {
+        @include sideBarAys;
+    }
+}
+.articleListAgent
+{
+    @include customTransition;
+    @include sideBarOptions(4);
+    a
+    {
+        @include sideBarAys;
+    }
+}
+.forumnList
+{
+    @include customTransition;
+    @include sideBarOptions(2);
+    a
+    {
+        @include sideBarAys;
+    }
+}
+.settingsList
+{
+    @include customTransition;
+    @include sideBarOptions(3);
+    a
+    {
+        @include sideBarAys;
+    }
+}
+
+// .settingsList, .forumnList, .articleList
+// {
+//     @include customTransition;
+//     height: 0px;
+//     overflow: hidden;
+//     a
+//     {
+//         font-size: 90%;
+//         color: #DED7E6;
+//         height: 20px;
+//         line-height: 20px;
+//         margin: 10px 0px;
+//         text-decoration: none;
+//         display: block;
+//         cursor: pointer;
+//         &:hover
+//         {
+//             color: #DED7E6;
+//             text-decoration: underline;
+//         }
+//     }
+// }
+// .forumnList.forumListEvent
+// {
+//     @include customTransition;
+//     height: 75px;
+//     overflow: none;
+// }
+// .articleList.articleListEvent
+// {
+//     @include customTransition;
+//     height: 110px;
+//     overflow: none;
+// }
+// .settingsList.settingsListEvent
+// {
+//     @include customTransition;
+//     height: 125px;
+//     overflow: none;
+// }
+
+/*    Article Categories style*/
+
+.categoriesFormBox
+{
+    @include boxShadow2;
+    width: 550px;
+    height: 175px;
+    margin: 15px auto;
+    background: $whiteBackground;
+    @include clear;
+}
+.newCategorInputBox
+{
+    position: relative;
+    width: 382px;
+    height: 100px;
+    padding-top: 25px;
+    margin: auto;
+    input
+    {
+        font-size: 115%;
+        width: 336px;
+        padding: 10px 10px;
+        border: 2px solid #D6DAC2;
+        border-radius: 10px;
+        outline: none;
+        float: left;
+        &:focus
+        {
+            border: 2px solid #1BBC9B;
+        }
+    }
+}
+.categoryErrorMessage
+{
+    width: 350px;
+    height: 50px;
+    text-align: center;
+    small
+    {
+        font-size: 140%;
+        color: $errorColor;
+        position: relative;
+        top: 0px;
+    }
+}
+.categoriesButton
+{
+    width: 250px;
+    float: right;
+    span
+    {
+      font-size: 120%;
+      color: $secondaryDarkColor;
+      padding-right: 15px;
+      cursor: pointer;
+    }
+    input
+    {
+        font-size: 120%;
+        color: $popInputColor;
+        border: none;
+        background: $whiteBackground;
+        cursor: pointer;
+    }
+}
+.categoryListBox
+{
+    @include boxShadow2;
+    width: 600px;
+    overflow: hidden;
+    padding: 20px 0px;
+    margin: 20px auto;
+    background: $whiteBackground;
+}
+.categorySearchBox
+{
+    height: 50px;
+    text-align: left;
+}
+.categorySearchHolder
+{
+    width: 300px;
+    margin: 0px auto;
+}
+.categoryList
+{
+    width: 500px;
+    height: 250px;
+    margin: 0px auto;
+    background: $whiteBackground;
+    li
+    {
+        font-size: 125%;
+        color: $secondaryDarkColor;
+        width: 492px;
+        list-style-type: none;
+        border-bottom: 1px solid #DED7E6;
+        cursor: pointer;
+        background-image: url(../imgs/rightArrow.png);
+        background-position: 450px 5px;
+        background-repeat: no-repeat;
+        background-size: 30px;
+        &:last-child
+        {
+            border: none;
+        }
+    }
+}
+.categoryNameBox
+{
+    font-size: 125%;
+    color: $secondaryDarkColor;
+    padding: 10px 0px;
+}
+
+/*    User profile style*/
+
+.employeeListContainer
+{
+    @include clear;
+    width: 95%;
+    margin: 30px 2.5%;
+    background: #fff;
+    .empListBox
+    {
+        width: 65%;
+        margin: 25px 0px;
+        float: left;
+        .empListSearchBox
+        {
+            @include clear;
+            width: 90%;
+            margin: 15px 5%;
+            div
+            {
+                width: 40%;
+                float: left;
+                input
+                {
+                    @include customSearchBar2;
+                }
+            }
+        }
+        .empListContent
+        {
+            width: 90%;
+            margin: 0px 5%;
+            ul
+            {
+                @include clear;
+                width: 100%;
+                padding: 0px;
+                li
+                {
+                    @include clear;
+                    width: 50%;
+                    padding: 10px 0px;
+                    list-style-type: none;
+                    float: left;
+                    .empProfAvatar
+                    {
+                        width: 25%;
+                        height: 70px;
+                        float: left;
+                        img
+                        {
+                            @include userPicture;
+                            width: 65%;
+                            height: 47px;
+                        }
+                    }
+                    .empName
+                    {
+                        width: 75%;
+                        height: 50px;
+                        line-height: 50px;
+                        float: left;
+                        cursor: pointer;
+                        span
+                        {
+                            font-size: 115%;
+                            font-weight: bold;
+                            color: $secondaryDarkColor;
+                            padding-left: 15px;
+                            text-align: left;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #oneEmpLoaderBox
+    {
+        position: relative;
+        top: 50px;
+        width: 35%;
+        float: left;
+    }
+    .empDetailsBox
+    {
+        width: 35%;
+        float: left;
+        .empAvatar
+        {
+            width: 100%;
+            .avatarBackgroundContent
+            {
+                position: relative;
+                height: 300px;
+                overflow: hidden;
+                .backImg
+                {
+                    width: 100%;
+                    height: 300px;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    -o-object-position: center right;
+                    object-position: center right;
+                    -webkit-filter: blur(3px);
+                    -moz-filter: blur(3px);
+                    filter: blur(3px);
+                    z-index: 3
+                }
+                .avatarBackgroundBotton
+                {
+                    position: absolute;
+                    top: 0px;
+                    height: 100%;
+                    background: rgba(200, 200, 200, 0.3);
+                    img
+                    {
+                        @include userPicture;
+                        width: 30%;
+                        height: 105px;
+                        margin-top: 10%;
+                    }
+                    .avatarEmpName
+                    {
+                        h2
+                        {
+                            font-size: 110%;
+                            color: #fff;
+                            margin: 15px 0px;
+                        }
+                        span
+                        {
+                            color: $fourthGrey;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+        .empPersonalDetailsCon
+        {
+            width: 100%;
+            .empPersonalDetBox
+            {
+                width: 90%;
+                margin: 30px 5%;
+                table
+                {
+                    width: 100%;
+                    tr
+                    {
+                        width: 100%;
+                        height: 50px;
+                        td
+                        {
+                            color: $secondaryDarkColor;
+                        }
+                        td:nth-child(1)
+                        {
+                            font-weight: bold;
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.campaignBorder
+{
+    border: 3px solid $primaryViolet;
+}
+.agentBorder
+{
+    border: 3px solid #fff;
+}
+.myProfileContainer
+{
+    padding: 10px 0px;
+    margin-top: 45px;
+    background: #fff;
+}
+.editUserContainer
+{
+    width: 90%;
+    margin: 0px 5%;
+}
+.userAvatarBox
+{
+    width: 50%;
+    height: 140px;
+    .avatarContent
+    {
+        position: relative;
+        width: 65%;
+        height: 140px;
+        &:after
+        {
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+        img
+        {
+            @include userPicture;
+            width: 65%;
+            height: 130px;
+            cursor: pointer;
+        }
+        div
+        {
+            position: absolute;
+            bottom: 10%;
+            width: 40%;
+            margin: 0px 30%;
+            span
+            {
+                font-size: 100%;
+                font-weight: bold;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+
+    }
+}
+.profileBanner
+{
+    height: 200px;
+    margin-bottom: 50px;
+    @include clear;
+}
+.leftBanner
+{
+    width: 428px;
+    margin: 10px 0px 0px 9px;
+    height: 170px;
+    border-right: 2px solid #E7E7E7;
+    float: left;
+    cursor: pointer;
+    @include clear;
+}
+.myProfileImgCon
+{
+    width: 180px;
+    float: left;
+    margin-top: 10px;
+    form
+    {
+        text-align: center;
+        div
+        {
+            margin: 0px auto;
+        }
+        div:nth-child(1)
+        {
+            width: 100px;
+            position: absolute;
+            overflow: hidden;
+            input
+            {
+                width: 100px;
+                opacity: 0;
+                cursor: pointer;
+            }
+        }
+        div:nth-child(2)
+        {
+            width: 100px;
+            input
+            {
+                width: 100px;
+            }
+        }
+    }
+    img
+    {
+        width: 120px;
+        height: 120px;
+        margin-top: 20px;
+        border: 3px solid #E7E7E7;
+        border-radius: 50%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center right;
+        object-position: center right;
+    }
+}
+.leftBannerDescription
+{
+    width: 246px;
+    text-align: left;
+    float: right;
+    margin-top: 10px;
+    h1
+    {
+        font-size: 200%;
+        word-wrap: break-word;
+    }
+    span
+    {
+        font-size: 135%;
+        color: #9E9D9B;
+        display: block;
+    }
+}
+span[class = "lBannerPos"]
+{
+    color: #1BBC9B;
+}
+.rightBanner
+{
+    width: 278px;
+    height: 180px;
+    margin: 20px auto 0px auto;
+    float: right;
+    text-align: left;
+    cursor: pointer;
+    @include clear;
+}
+.rightBannerTable
+{
+    width: 298px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    td
+    {
+        height: 30px;
+    }
+    table td:nth-child(1)
+    {
+        width: 130px;
+        font-weight: bold;
+    }
+}
+.aboutContainer
+{
+    cursor: pointer;
+    p
+    {
+        text-align: left;
+    }
+}
+.aboutContainer, .activitiesContainer, .userProfCampaignList
+{
+    width: 600px;
+    margin: 0px auto 50px auto;
+    h1
+    {
+        font-size: 160%;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+.userProfEditCon
+{
+    width: 428px;
+    text-align: left;
+    opacity: 0;
+}
+.userProfEditCon2
+{
+    width: 270px;
+    text-align: right;
+    opacity: 0;
+}
+.userProfEditCon, .userProfEditCon2
+{
+    span
+    {
+        font-size: 120%;
+        color: #1BBC9B;
+    }
+}
+.editTextContainer
+{
+    height: 10px;
+    @include clear;
+}
+.editContainer
+{
+    height: 10px;
+    text-align: left;
+    float: left;
+}
+.userProfEditCon
+{
+    padding-left: 60px;
+}
+.userProfEditCon2
+{
+    padding-left: 20px;
+}
+.userProfEditCon.editContainerEvent
+{
+    opacity: 1;
+}
+.userProfEditCon2.editContainerEvent
+{
+    opacity: 1;
+}
+.profileActTable
+{
+    td:nth-child(1)
+    {
+        font-weight: bold;
+    }
+}
+.profileActTable
+{
+    td
+    {
+        width: 100px;
+        height: 35px;
+        text-align: left;
+    }
+}
+.userProfCampaignList
+{
+    span
+    {
+        font-size: 120%;
+        display: block;
+        text-align: left;
+        padding: 5px 0px;
+    }
+}
+.userListContainer
+{
+    @include customTransition;
+    width: 1000px;
+    height: 500px;
+    @include userGridLayout(3, 1.5%);
+    @include clear;
+}
+.userListContainer.userListContainerEvent
+{
+    margin: 30px 0px 30px 50px;;
+}
+.owl-item
+{
+    width: 11% !important;
+}
+.eventsImgContainer
+{
+    @include boxShadow2;
+    width: 95%;
+    padding: 20px 0px;
+    margin: 0px 2.5%;
+    background: #fff;
+    .eventImgBox
+    {
+        @include clear;
+        width: 95%;
+        height: 550px;
+        margin: 0px 2.5%;
+        .eventImageSlideBox
+        {
+            width: 45%;
+            margin-right: 5%;
+            float: left;
+            ul
+            {
+                height: 400px;
+                -webkit-cursor: grab;
+                li
+                {
+                    .layer
+                    {
+                        height: 250px;
+                        overflow: hidden;
+                        img
+                        {
+                            cursor: grab;
+                        }
+                    }
+                }
+                .eventDetailsFooter
+                {
+                    width: 90%;
+                    margin: 0px 5%;
+                    .eventFooterTitle
+                    {
+                        padding: 5px;
+                        span
+                        {
+                            font-size: 150%;
+                            font-weight: bold;
+                            color: $secondaryDarkColor;
+                            cursor: pointer;
+                        }
+                    }
+                    .eventFooterEventDate
+                    {
+                        padding: 5px;
+                        span
+                        {
+                            color: $secondaryGreey;
+                        }
+                    }
+                }
+            }
+
+        }
+        .oneEventDetailsBox
+        {
+            width: 45%;
+            height: 400px;
+            margin-left: 5%;
+            float: right;
+            .oneEventImgContainer
+            {
+                -webkit-cursor: grab;
+                .oneEventImgBox
+                {
+                    height: 250px;
+                    overflow: hidden;
+                    img
+                    {
+
+                    }
+                }
+            }
+            .onveEventDetailsCon
+            {
+                width: 100%;
+                .oneEventTitleHeader
+                {
+                    width: 90%;
+                    margin: 0px 5%;
+                    .oneEventTitle
+                    {
+                        padding: 5px;
+                        span
+                        {
+                            font-size: 150%;
+                            font-weight: bold;
+                            color: $secondaryDarkColor;
+                            cursor: pointer;
+                        }
+                    }
+                    .goingButtonBox
+                    {
+                        width: 100%;
+                        text-align: left;
+                    }
+                }
+                .eventBodyDetails
+                {
+                    width: 90%;
+                    margin: 15px 5%;
+                    .eventDetailsTable
+                    {
+                        width: 100%;
+                        table
+                        {
+                            width: 100%;
+                            tr
+                            {
+                                height: 50px;
+                                td:nth-child(1)
+                                {
+                                    width: 45%;
+                                    padding: 15px 0px;
+                                    text-align: left;
+                                }
+                                td:nth-child(2)
+                                {
+                                    width: 55%;
+                                    color: $secondaryDarkColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// .empInfoBox
+// {
+//     @include boxShadow;
+//     width: 300px;
+//     height: 309px;
+//     background: #fff;
+//     float: left;
+//     margin: 15px 12.5px 0px 12.5px;
+//     cursor: default;
+// }
+// .userProfileImgCon
+// {
+//     width: 300px;
+//     text-align: center;
+//     padding-top: 30px;
+//     img
+//     {
+//         width: 80px;
+//         height: 80px;
+//         border-radius: 50%;
+//         -o-object-fit: cover;
+//         object-fit: cover;
+//         -o-object-position: center right;
+//         object-position: center right;
+//     }
+//     h1
+//     {
+//         font-size: 140%;
+//         color: $commonDarkTextColor;
+//         padding: 10px 0px;
+//     }
+//     h5
+//     {
+//         font-size: 105%;
+//         font-weight: normal;
+//         color: #DED7E6;
+//         text-align: center;
+//         padding-bottom: 5px;
+//     }
+// }
+
+
+  // User list style
+
+.usersViewContainer
+{
+    width: 1050px;
+    height: 500px;
+    background: #fff;
+}
+
+/*    Profile Edit Form style*/
+
+.formProfileCon
+{
+    width: 600px;
+    margin: 0px auto;
+}
+.formInputBox
+{
+    margin-bottom: 30px;
+    input
+    {
+        font-size: 115%;
+        width: 300px;
+        height: 30px;
+        padding: 10px 10px;
+        border: 2px solid #D6DAC2;
+        border-radius: 10px;
+        display: block;
+        outline: none;
+    }
+}
+.formLabelBox
+{
+    text-align: left;
+    label
+    {
+        font-size: 140%;
+    }
+}
+.formButtons
+{
+    text-align: left;
+    span
+    {
+        font-size: 140%;
+        cursor: pointer;
+    }
+    input
+    {
+        font-size: 140%;
+        color: #1BBC9B;
+        background: #fff;
+        margin-left: 20px;
+        border: none;
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+.editTextBox
+{
+    width: inherit;
+    height: 15px;
+    text-align: left;
+    span
+    {
+        font-size: 120%;
+        color: #1BBC9B;
+        opacity: 0;
+    }
+    span.editTextBoxEvent
+    {
+        opacity: 1;
+    }
+}
+.formInputBox
+{
+    textarea
+    {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #1BBC9B;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        resize: none;
+    }
+}
+.myProfileForm input:focus
+{
+    border: 2px solid #1BBC9B;
+}
+#articlePopBackground, #MgtCatPopBackground
+{
+    @include info-pop-up;
+
+}
+#savingArticleAndFile, #savingNews,
+#approvedArticle, #rejectdArticle
+{
+    @include savingArticlePopUp;
+}
+.success-dismiss
+{
+    background: $primaryGreen;
+}
+.error-dismiss
+{
+    background: $errorColor;
+}
+#newUserPop, #caEditCategory
+{
+    @include pop;
+}
+.newUserForm
+{
+    @include boxShadow2;
+    position: relative;
+    width: 30%;
+    height: 300px;
+    overflow: hidden;
+    margin: 150px 35% 0px 35%;
+    background: #fff;
+    header
+    {
+        @include clear;
+        width: 90%;
+        padding: 15px 0px;
+        margin: 0px 5%;
+        img
+        {
+            width: 10px;
+            float: right;
+            cursor: pointer;
+        }
+    }
+    form
+    {
+        height: 280px;
+        section
+        {
+            height: 280px;
+            div[title = "switch"]
+            {
+                width: 100%;
+                height: 280px;
+                section
+                {
+                    width: 100%;
+                    height: 110px;
+                    p:before
+                    {
+                        color: $secondaryDarkColor;
+                        content: attr(type);
+                    }
+                    p
+                    {
+                        position: relative;
+                        width: 70%;
+                        padding: 10px 0px;
+                        margin: 0px 15%;
+                        text-align: left;
+                        input
+                        {
+                            @include textInput;
+                        }
+                        span[type = "loading"]
+                        {
+                            @include loadingBox;
+                            top: 40px;
+                            right: -35px;
+                        }
+                        span[type = "check"]
+                        {
+                            @include check;
+                            top: 35px;
+                            right: -35px;
+                        }
+                        span[type = "ekis"]
+                        {
+                            @include ekis;
+                            top: 35px;
+                            right: -35px;
+                        }
+                        div[title = "error"]
+                        {
+                            @include errorMessage;
+                        }
+                        select
+                        {
+                            width: 100%;
+                            height: 30px;
+                            margin: 5px 0px;
+                            border: 1px solid #bebed2;
+                            option
+                            {
+                                font-family: "Montserrat", sans-serif;
+                            }
+                        }
+                    }
+
+                }
+                h1
+                {
+                    font-size: 130%;
+                    color: $secondaryDarkColor;
+                }
+                table
+                {
+                    width: 90%;
+                    height: 170px;
+                    padding-bottom: 30px;
+                    margin: 0px 5%;
+                    tr
+                    {
+                        td:nth-child(1)
+                        {
+                            font-weight: bold;
+                            width: 50%;
+                        }
+                        td:nth-child(2)
+                        {
+                            width: 50%;
+                        }
+                    }
+                }
+                footer
+                {
+                    @include clear;
+                    width: 100%;
+                    height: 40px;
+                    div
+                    {
+                        width: 50%;
+                        height: 40px;
+                    }
+                    div:nth-child(1)
+                    {
+                        @include popButtonLeft;
+                        float: left;
+                    }
+                    div:nth-child(2)
+                    {
+                        @include popButtonRight;
+                        float: right;
+                        input[disabled = "disabled"]
+                        {
+                            @include disable;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+.editCategoryForm
+{
+    @include boxShadow2;
+    position: relative;
+    width: 30%;
+    height: 190px;
+    overflow: hidden;
+    margin: 150px 35% 0px 35%;
+    background: #fff;
+    .caDeleteArticleHeader
+    {
+        padding: 10px 0px;
+    }
+    header
+    {
+        @include clear;
+        width: 90%;
+        padding: 15px 0px;
+        margin: 0px 5%;
+        img
+        {
+            width: 10px;
+            float: right;
+            cursor: pointer;
+        }
+    }
+    form
+    {
+        height: 190px;
+        section
+        {
+            height: 150px;
+            div[title = "switch"]
+            {
+                width: 100%;
+                height: 150px;
+                .updateCategorySuccessBox
+                {
+                    width: 100%;
+                    height: 110px;
+                    .updateCategoryImgBox
+                    {
+                        height: 55px;
+                        text-align: center;
+                        img
+                        {
+                            width: 15%;
+                        }
+                    }
+                    .updateCategorySuccessMessage
+                    {
+                        height: 55px;
+                        h1
+                        {
+                            font-weight: bold;
+                            color: $secondaryDarkColor;
+                            margin: 0px;
+                            line-height: 55px;
+                        }
+                    }
+                }
+                .upCatLastSwitchFooter
+                {
+                    width: 100%;
+                    height: 27%;
+                    text-align: center;
+                    background: $secondaryBlue;
+                    cursor: pointer;
+                    span
+                    {
+                        font-size: 140%;
+                        font-weight: bold;
+                        color: #fff;
+                        line-height: 50px;
+                    }
+                }
+                section
+                {
+                    width: 100%;
+                    height: 110px;
+                    p:before
+                    {
+                        color: $secondaryDarkColor;
+                        content: attr(type);
+                    }
+                    p
+                    {
+                        position: relative;
+                        width: 70%;
+                        padding: 10px 0px;
+                        margin: 0px 15%;
+                        text-align: left;
+                        input
+                        {
+                            @include textInput;
+                        }
+                        span[type = "loading"]
+                        {
+                            @include loadingBox;
+                            top: 40px;
+                            right: -35px;
+                        }
+                        span[type = "check"]
+                        {
+                            @include check;
+                            top: 35px;
+                            right: -35px;
+                        }
+                        span[type = "ekis"]
+                        {
+                            @include ekis;
+                            top: 35px;
+                            right: -35px;
+                        }
+                        div[title = "error"]
+                        {
+                            @include errorMessage;
+                        }
+                        select
+                        {
+                            width: 100%;
+                            height: 30px;
+                            margin: 5px 0px;
+                            border: 1px solid #bebed2;
+                            option
+                            {
+                                font-family: "Montserrat", sans-serif;
+                            }
+                        }
+                    }
+                    .categoryErrorMessage
+                    {
+                        width: 100%;
+                        height: 29px;
+                        text-align: center;
+                    }
+
+                }
+                .updateCategoryLoaderBox
+                {
+                    position: relative;
+                    height: 150px;
+                }
+                h1
+                {
+                    font-size: 130%;
+                    color: $secondaryDarkColor;
+                }
+                table
+                {
+                    width: 90%;
+                    height: 170px;
+                    padding-bottom: 30px;
+                    margin: 0px 5%;
+                    tr
+                    {
+                        td:nth-child(1)
+                        {
+                            font-weight: bold;
+                            width: 50%;
+                        }
+                        td:nth-child(2)
+                        {
+                            width: 50%;
+                        }
+                    }
+                }
+                footer
+                {
+                    @include clear;
+                    width: 100%;
+                    height: 40px;
+                    div
+                    {
+                        width: 50%;
+                        height: 40px;
+                    }
+                    div:nth-child(1)
+                    {
+                        @include popButtonLeft;
+                        float: left;
+                    }
+                    div:nth-child(2)
+                    {
+                        @include popButtonRight;
+                        float: right;
+                        input[disabled = "disabled"]
+                        {
+                            @include disable;
+                        }
+                    }
+                }
+            }
+            div[title = "switch2"]
+            {
+                width: 100%;
+                height: 150px;
+                section
+                {
+                    width: 100%;
+                    height: 90px;
+                    p:before
+                    {
+                        color: $secondaryDarkColor;
+                        content: attr(type);
+                    }
+                    p
+                    {
+                        position: relative;
+                        width: 70%;
+                        padding: 10px 0px;
+                        margin: 0px 15%;
+                        text-align: left;
+                        input
+                        {
+                            @include textInput;
+                        }
+                        span[type = "loading"]
+                        {
+                            @include loadingBox;
+                            top: 40px;
+                            right: -35px;
+                        }
+                        span[type = "check"]
+                        {
+                            @include check;
+                            top: 35px;
+                            right: -35px;
+                        }
+                        span[type = "ekis"]
+                        {
+                            @include ekis;
+                            top: 35px;
+                            right: -35px;
+                        }
+                        div[title = "error"]
+                        {
+                            @include errorMessage;
+                        }
+                        select
+                        {
+                            width: 100%;
+                            height: 30px;
+                            margin: 5px 0px;
+                            border: 1px solid #bebed2;
+                            option
+                            {
+                                font-family: "Montserrat", sans-serif;
+                            }
+                        }
+                    }
+
+                }
+                h1
+                {
+                    font-size: 130%;
+                    color: $secondaryDarkColor;
+                }
+                table
+                {
+                    width: 90%;
+                    height: 170px;
+                    padding-bottom: 30px;
+                    margin: 0px 5%;
+                    tr
+                    {
+                        td:nth-child(1)
+                        {
+                            font-weight: bold;
+                            width: 50%;
+                        }
+                        td:nth-child(2)
+                        {
+                            width: 50%;
+                        }
+                    }
+                }
+                footer
+                {
+                    @include clear;
+                    width: 100%;
+                    height: 40px;
+                    div
+                    {
+                        width: 50%;
+                        height: 40px;
+                    }
+                    div:nth-child(1)
+                    {
+                        @include popButtonLeft;
+                        float: left;
+                    }
+                    div:nth-child(2)
+                    {
+                        @include popButtonRight;
+                        float: right;
+                        input[disabled = "disabled"]
+                        {
+                            @include disable;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.newUserSwitch
+{
+    position: relative;
+    overflow: hidden;
+}
+.newUserSwitch.ng-animate
+{
+    @include transitionFive;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+
+/* hide */
+.forward .newUserSwitch.ng-leave.ng-leave-active
+{
+    transform: translateX(-350px);
+}
+.backward .newUserSwitch.ng-leave.ng-leave-active
+{
+    transform: translateX(-350px);
+}
+/* show entering slide  */
+/* hide */
+.forward .newUserSwitch.ng-enter
+{
+    transform: translateX(350px);
+}
+.backward .newUserSwitch.ng-enter
+{
+    transform: translateX(-350px);
+}
+/* show */
+.newUserSwitch.ng-enter.ng-enter-active
+{
+    transform: translateX(0px);
+}
+
+// [ng\:cloak], [ng-cloak], .ng-cloak
+// {
+//     display: none;
+// }
+.commentsContainer
+{
+    @include clear;
+    @include boxShadow2;
+    width: 90%;
+    margin: 20px 5%;
+    background: #fff;
+    section:nth-child(1)
+    {
+        @include articleComment;
+        width: 60%;
+        padding: 10px 0px;
+        margin: 20px 0px;
+        float: left;
+    }
+    section:nth-child(2)
+    {
+        width: 40%;
+        float: right;
+        h1
+        {
+            font-size: 110%;
+        }
+    }
+}
+.articleCommentsContainer
+{
+    @include clear;
+    @include boxShadow2;
+    width: 90%;
+    margin: 20px 5%;
+    background: #fff;
+    .articleComments
+    {
+        @include clear;
+        width: 60%;
+        padding: 30px 0px;
+        float: left;
+        section
+        {
+            padding-top: 5px;
+            display: block;
+            header
+            {
+                @include clear;
+                width: 90%;
+                margin: 10px 5%;
+                div
+                {
+                    float: left;
+                    margin: 0px;
+                }
+                div:nth-child(1)
+                {
+                    width: 15%;
+                    img
+                    {
+                        @include userPicture;
+                        width: 70%;
+                        height: 50px;
+                    }
+                }
+                div:nth-child(2)
+                {
+                    width: 70%;
+                    text-align: left;
+                    padding-left: 20px;
+                    h3
+                    {
+                        font-size: 115%;
+                        font-weight: bold;
+                        margin: 5px 0px;
+                        span
+                        {
+                            display: inline;
+                        }
+                        span:nth-child(1)
+                        {
+                            padding-right: 5px;
+                        }
+                    }
+                    span
+                    {
+                        display: block;
+                    }
+                }
+                div:nth-child(3)
+                {
+                    width: 15%;
+                    span
+                    {
+                        cursor: pointer;
+                    }
+                }
+            }
+            div[title = "comment"]
+            {
+                width: 80%;
+                margin: 0px 10%;
+                border-bottom: 1px solid $primaryGrey;
+                p
+                {
+                    width: 70%;
+                    margin: 0px 15%;
+                    padding-bottom: 20px;
+                    text-align: justify;
+                }
+            }
+        }
+
+    }
+    .oneArticleRecentlyAdded
+    {
+        width: 40%;
+        float: right;
+        h1
+        {
+            font-size: 110%;
+        }
+    }
+}
+#articleListContainer
+{
+    height: 520px;
+    .articleListBox
+    {
+        @include itemList(5);
+        height: 460px;
+    }
+}
+#articleListContainer
+{
+    height: 520px;
+    .articleCategoryListBox
+    {
+        @include itemList(3);
+        height: 460px;
+    }
+}
+.newsFeedpaginationContainer
+{
+    height: 60px;
+    margin-top: 30px;
+}
+.paginationContainer
+{
+    height: 60px;
+}
+.pagination
+{
+    margin: 0px !important;
+}
+.articleTableRow.ng-enter
+{
+    @include linearTransition;
+    opacity: 0;
+}
+.articleTableRow.ng-enter.ng-enter-active
+{
+    opacity: 1;
+}
+// .articleTableRow.ng-leave
+// {
+//     @include linearTransition;
+//     opacity: 1;
+// }
+// .articleTableRow.ng-leave.ng-leave-active
+// {
+//     opacity: 0;
+// }
+#questionListContainer
+{
+    height: 520px;
+    .articleListBox
+    {
+        @include itemList(4);
+        height: 460px;
+    }
+}
+#articleListContainer, #questionListContainer
+{
+    .itemListHeader
+    {
+        @include clear;
+        width: 90%;
+        margin: 10px 5%;
+        .sortBox
+        {
+            float: left;
+            width: 50%;
+        }
+        .sortBox2
+        {
+            @include clear;
+            float: right;
+            width: 50%;
+        }
+        .sortContainer
+        {
+            @include clear;
+            div
+            {
+                float: left;
+            }
+            .rightSorBox
+            {
+                width: 40%;
+            }
+            .rightSorBox2
+            {
+                width: 40%;
+                float: right;
+            }
+            .questionSearch
+            {
+                width: 65% !important;
+            }
+            .selectCatBox
+            {
+                width: 65%;
+                .selectCategory
+                {
+                    width: 100%;
+                    height: 30px;
+                }
+            }
+            .searchListBox
+            {
+                position: relative;
+                bottom: 13px;
+                width: 60%;
+                input
+                {
+                    @include customSearchBar2;
+                }
+            }
+            .searchListBoxQuestion
+            {
+                position: relative;
+                bottom: 13px;
+                margin-left: 60%;
+                input
+                {
+                    @include customSearchBar2;
+                }
+            }
+        }
+
+    }
+}
+.onePendingContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    padding: 35px 0px;
+    margin: 15px 5%;
+    background: #fff;
+    .rejectionTextAreaContainer
+    {
+        width: 90%;
+        padding: 10px 0px;
+        margin: 0px 5%;
+        .rejectionFormBox
+        {
+            width: 45%;
+            margin: 0px 50% 0px 5%;
+            form
+            {
+                p:before
+                {
+                    color: $secondaryDarkColor;
+                    content: attr(type);
+                }
+                p
+                {
+                    font-weight: bold;
+                    text-align: left;
+                    .rejectionTextarea
+                    {
+                        @include customScroll;
+                        font-size: 100%;
+                        width: 100%;
+                        height: 100px;
+                        padding: 10px;
+                        border: none;
+                        border: 1px solid $primaryGrey;
+                        box-sizing: border-box;
+                        resize: none;
+                        outline: none;
+                    }
+                }
+                .rejectionButtonBox
+                {
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .pendingActionHeader
+    {
+        width: 90%;
+        margin: 0px 5%;
+        text-align: right;
+        button
+        {
+            margin-right: 1%;
+        }
+    }
+    .onePendingTitleHeaderContainer
+    {
+        @include newsFeedArticle;
+        width: 90%;
+        margin: 20px 5%;
+    }
+    .innerPendingArticle
+    {
+      width: 90%;
+      margin: 20px 5%;
+    }
+}
+.aArticleOneArticleContainer
+{
+    @include boxShadow2;
+    width: 90%;
+    padding: 20px 0px;
+    margin: 10px 5%;
+    background: #fff;
+    display: none;
+}
+.aArticleOneBox
+{
+    @include oneArticleDesign;
+}
+.caret-blank
+{
+  	display: inline-block;
+  	width: 0;
+  	height: 0;
+  	border-left: 4px solid transparent;
+  	border-right: 4px solid transparent;
+}
+.caret-up
+{
+	 border-bottom: 8px solid #333;
+}
+.caret-down
+{
+	 border-top: 8px solid #333;
+}
+#questionListContainer
+{
+
+}
+.pinToTopContainer
+{
+    @include feedSideBar;
+}
+
+/* The loader */
+.loader {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+
+  width: 200px;
+  height: 200px;
+
+  margin-top: -100px;
+  margin-left: -100px;
+
+  perspective: 600px;
+  transform-style: perserve-3d;
+}
+
+/* The dot */
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 100px;
+  height: 100px;
+
+  margin-top: -50px;
+  margin-left: -50px;
+
+  border-radius: 100px;
+  border: 20px solid #1e3f57;
+
+  transform-style: perserve-3d;
+  transform: scale(0) rotateX(60deg);
+
+  animation: dot 3s cubic-bezier(.67,.08,.46,1.5) infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 200ms; }
+.dot:nth-child(3) { animation-delay: 400ms; }
+.dot:nth-child(4) { animation-delay: 600ms; }
+.dot:nth-child(5) { animation-delay: 800ms; }
+.dot:nth-child(6) { animation-delay: 1000ms; }
+.dot:nth-child(7) { animation-delay: 1200ms; }
+.dot:nth-child(8) { animation-delay: 1400ms; }
+
+@keyframes dot {
+  0% {
+    opacity: 0;
+    border-color: #6bb2cd;
+    transform: rotateX(60deg) rotateY(45deg) translateZ(-100px) scale(0.1);
+  }
+  40% {
+    opacity: 1;
+    transform: rotateX(0deg) rotateY(20deg) translateZ(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateX(60deg) rotateY(-45deg) translateZ(-100px) scale(0.1);
+  }
+}
+
+#oneArticleFromAllArticle
+{
+    position: relative;
+}
+#afterSubmitQuestion
+{
+    display: none;
+}
+.afterSubmitQuestion, .qSuccessSubmitBox
+{
+    width: 100%;
+    height: 270px;
+    background: #fff;
+}
+.qSuccessSubmitBox
+{
+    .qSuccImg
+    {
+        width: 100%;
+        height: 100px;
+        display: block;
+        img
+        {
+            width: 15%;
+        }
+    }
+    h1
+    {
+        font-size: 160%;
+        font-weight: bold;
+        margin: 25px 0px;
+    }
+    .qSuccFooter
+    {
+        width: 100%;
+        height: 76px;
+        line-height: 76px;
+        text-align: center;
+        background: $primaryViolet;
+        cursor: pointer;
+        span
+        {
+            font-size: 150%;
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+}
+.afterSubmitQuestion.ng-enter, .qSuccessSubmitBox.ng-enter
+{
+    @include customTransition;
+    opacity: 0;
+}
+.afterSubmitQuestion.ng-enter.ng-enter-active, .qSuccessSubmitBox.ng-enter.ng-enter-active
+{
+    opacity: 1;
+}
+
+$green: #008744;
+$blue: #0057e7;
+$red: #d62d20;
+$yellow: #ffa700;
+$white: #eee;
+
+// scaling... any units
+$width: 100px;
+
+
+// demo-specific
+.showCirlcebox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5%;
+  h1
+  {
+      font-size: 160%;
+      font-weight: bold;
+      color: $primaryGreen;
+  }
+}
+// end demo-specific
+
+.circleLoader {
+  position: relative;
+  margin: 0 auto;
+  width: $width;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+}
+.myQuestionCircleLoader
+{
+    top: 10%;
+}
+.circular {
+  animation: rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+@keyframes color {
+  100%,
+  0% {
+    stroke: $red;
+  }
+  40% {
+    stroke: $blue;
+  }
+  66% {
+    stroke: $green;
+  }
+  80%,
+  90% {
+    stroke: $yellow;
+  }
+}

@@ -1,0 +1,13 @@
+/*    Scroll bar style*/
+
+.saDetailsContainer::-webkit-scrollbar, .userLogCampNav::-webkit-scrollbar, .categoryList::-webkit-scrollbar, .eventFormHolder::-webkit-scrollbar, .eventDescBox::-webkit-scrollbar, .questionInputBox textarea::-webkit-scrollbar
+{
+    width: 8px;
+/*    background: #ECF0F1;*/
+    border-radius: 5px;
+}
+.saDetailsContainer::-webkit-scrollbar-thumb, .userLogCampNav::-webkit-scrollbar-thumb, .categoryList::-webkit-scrollbar-thumb, .eventFormHolder::-webkit-scrollbar-thumb, .eventDescBox::-webkit-scrollbar-thumb, .questionInputBox textarea::-webkit-scrollbar-thumb
+{
+    background: #3F3F3F;
+    border-radius: 5px;
+}

@@ -1,0 +1,374 @@
+<div class = "saAddCampaign" id = "saAddCampaign">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "hideAddCampaign()"/>
+        </header>
+
+        <form name = "saCampaignForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Campaign name:">
+                    <input type = "text" placeholder = "Campaign name" id = "saCampaignInput" ng-model = "campaign.campaignName" name = "campaignName"
+                     ng-maxlength = "20" ng-minlength = "6" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" campname required/>
+                    <span type = "loading" ng-show = "saCampaignForm.campaignName.$pending.campname">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span type = "check" ng-show = "saCampaignForm.campaignName.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "saCampaignForm.campaignName.$invalid && saCampaignForm.campaignName.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saFormErrorMessage" ng-messages = "saCampaignForm.campaignName.$error">
+
+
+                        <small ng-message = 'maxlength'>
+
+                            Max 14 characters
+
+                        </small>
+
+                        <small ng-message = 'minlength'>
+
+                            minimum 6 characters
+
+                        </small>
+
+                        <small ng-message = 'pattern'>
+
+                            Please enter valid characters
+
+                        </small>
+
+                        <small ng-message = "campFormError">
+
+                            Campaign name already exist
+
+                        </small>
+
+                    </div>
+
+                </p>
+            </section>
+
+            <footer class = "addCampaignFooter">
+                <div>
+                    <button ng-click = "hideAddCampaignz()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "disable == true || saCampaignForm.$invalid" ng-click = "addCampaign()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<!-- <div class = "popUpBackground" ng-show = "showPopUp == true">
+
+    <div class = "popUpContainer"  id = "popUpContainer">
+
+        <div id = popCampaignBox>
+
+            <div class = "campFormBox">
+
+                <form name = "saCampaignForm" novalidate>
+
+                    <div class = "saCampInputBox">
+
+                    <input type = "text" placeholder = "Campaign name" id = "saCampaignInput" ng-model = "campaign.campaignName" name = "campaignName" ng-maxlength = "14" ng-minlength = "6" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required/>
+
+                    <div class = "saFormErrorMessage" ng-messages = "saCampaignForm.campaignName.$error">
+
+
+                        <small ng-message = 'maxlength'>
+
+                            Max 14 characters
+
+                        </small>
+
+                        <small ng-message = 'minlength'>
+
+                            minimum 6 characters
+
+                        </small>
+
+                        <small ng-message = 'pattern'>
+
+                            Please enter valid characters
+
+                        </small>
+
+                        <small ng-message = "campFormError">
+
+                            Campaign name already exist
+
+                        </small>
+
+                    </div>
+
+                    </div>
+
+
+                    <div class = "saCampInputBox">
+
+
+                        <button type = "submit" ng-click = "addCampaign()" id = "saCampFormButton" ng-disabled = "campaignForm.$invalid">Create</button>
+
+
+                    </div>
+
+                    <div class = "saCampInputBox">
+
+                        <button id = "saCampCancelButton" ng-click = "cancelUpdate()">Cancel</button>
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+    </div>
+
+    </div>
+
+</div> -->
+
+<div class = "saAddCampaign" id = "saEditCampaign">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "saEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "hideEditCampaign()"/>
+        </header>
+
+        <form name = "editUserForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Edit Campaign name:">
+                    <input type = "text" class = "saNewUserInput" name = "editCampaignName" ng-model = "oneCampaign.campaignName"
+                     required  ng-minlength = "6" ng-maxlength = "20" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" ng-value = "campaign.campaignName" ng-value = "oneCampaign.campaignName" editcampname/>
+                    <span type = "loading" ng-show = "editUserForm.editCampaignName.$pending.editcampname">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span type = "check" ng-show = "editUserForm.editCampaignName.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "editUserForm.editCampaignName.$invalid && editUserForm.editCampaignName.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saFormErrorMessage" ng-messages = "editUserForm.editCampaignName.$error">
+
+
+                        <small ng-message = 'maxlength'>
+
+                            Max 14 characters
+
+                        </small>
+
+                        <small ng-message = 'minlength'>
+
+                            minimum 6 characters
+
+                        </small>
+
+                        <small ng-message = 'pattern'>
+
+                            Please enter valid characters
+
+                        </small>
+
+                        <small ng-message = "cNameInputError">
+
+                            Campaign name already exist
+
+                        </small>
+
+                    </div>
+
+                </p>
+            </section>
+
+            <footer class = "addCampaignFooter">
+                <div>
+                    <button ng-click = "hideEditCampaign()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "disable == true || editUserForm.$invalid" ng-click = "updateCampaign()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+
+<!-- <div class = "popUpBackground" ng-show = "showPopBackground == true && showEditCampaign == true">
+
+  <div class = "popUpContainer">
+
+      <div id = "saPopUpUsernameBox">
+
+          <div class = "editFormContainer">
+
+              <div class = "saEditUserInfodesc">
+                  <h1>Change Campaign name</h1>
+              </div>
+
+               <form id = "editUserForm" name = "campaignForm" novalidate>
+
+                   <div class = "saEditInputForm">
+
+                      <div class = "saEditUserLabel">
+
+                          <label>Campaign name</label>
+
+                      </div>
+
+                     <input type = "text" class = "saNewUserInput" name = "campaignName" ng-model = "oneCampaign.campaignName" required  ng-minlength = "6" ng-maxlength = "20" ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" ng-value = "campaign.campaignName" ng-value = "oneCampaign.campaignName" campname/>
+
+                     <span ng-show = "campaignForm.campaignName.$pending.campname" class = "newUserLoadingBox">
+                         <span></span>
+                         <span></span>
+                         <span></span>
+                     </span>
+
+                     <span ng-show = "campaignForm.campaignName.$valid" class = "newUserCheckEkisBox">
+                         <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                     </span>
+
+                     <span ng-show = "campaignForm.campaignName.$invalid && usernameForm.campaignName.$dirty" class = "newUserCheckEkisBox">
+                         <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                     </span>
+
+
+                     <div class = "saEditUsernameMessages" ng-messages = "usernameForm.username.$touched && usernameForm.username.$error">
+
+                         <small ng-message = "required">
+
+                                Required
+
+                         </small>
+
+                     </div>
+
+
+                     <div class = "saEditUsernameMessages" ng-messages = "campaignForm.campaignName.$dirty && campaignForm.campaignName.$error">
+
+
+                        <small ng-message = 'maxlength'>
+
+                            Max 20 characters
+
+                        </small>
+
+                        <small ng-message = 'minlength'>
+
+                            minimum 6 characters
+
+                        </small>
+
+                        <small ng-message = 'pattern'>
+
+                            Please enter valid characters
+
+                        </small>
+
+                        <small ng-message = 'cNameInputError' ng-hide = "campaignForm.campaignName.$error.required">
+
+                            Campaign name already exist
+
+                        </small>
+
+
+                    </div>
+
+                  </div>
+
+                  <div class = "saEditUsernameFooter">
+
+                       <span ng-click = "cancelUpdate()">Cancel</span>
+                       <input class = "saUpdateButton" type = "submit" ng-click = "updateCampaign()" ng-disabled = "campaignForm.$invalid" value = "Done"/>
+
+                  </div>
+
+               </form>
+
+
+
+           </div>
+
+      </div>
+
+
+
+  </div>
+
+
+</div> -->
+
+<div class = "saContainers">
+
+    <div class = "saHeaderServiceContainer">
+
+       <div class = "saHeaderBox saBox">
+
+            <button id = "saAddButton" ng-click = "showAddCampaign()">Add Campaign</button>
+
+       </div>
+
+        <div class = "saHeaderBox saBox2">
+
+            <input type = "text" placeholder = "Search campaigns" ng-model = "search" id = "saSearch"/>
+
+       </div>
+
+    </div>
+
+
+    <div class = "saDetailsContainer">
+
+        <table class = "saDetailsTable">
+
+            <tr>
+
+                <th>ID</th>
+                <th>Campaign name</th>
+                <th>Date created</th>
+                <th style = "opacity: 0;">Action</th>
+
+            </tr>
+
+            <tr class = "trDatas" ng-repeat = "campaign in campaigns | filter: search">
+                <td>{{campaign.campaignId}}</td>
+                <td>{{campaign.campaignName}}</td>
+                <td>{{campaign.dateCreated.monthOfYear}}/{{campaign.dateCreated.dayOfMonth}}/{{campaign.dateCreated.year}}</td>
+                <td title = "Edit campaign"><img ng-click = "editCampaign(campaign.campaignId)" src = "app-resources/imgs/edit.png"/></td>
+<!--
+                <td class = "saCampTdButtons"><button id = "saCampEditButton">Edit</button></td>
+                <td class = "saCampTdButtons"><button id = "saCampDeactButton">Deactivate</button></td>
+-->
+            </tr>
+
+
+        </table>
+
+    </div>
+
+</div>

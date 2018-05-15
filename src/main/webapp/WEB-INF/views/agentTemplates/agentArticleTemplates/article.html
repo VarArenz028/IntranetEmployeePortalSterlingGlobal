@@ -1,0 +1,183 @@
+<div id = "savingArticleAndFile" class = "savingArticleAndFile" ng-hide = "hideSubmittedPopUp == true">
+
+    <section class = "popSubArticleContainer" ng-switch on = "article" ng-cloak>
+
+      <div class = "popSubArticleBox" ng-switch-default>
+
+          <h1 ng-show = "showSavingArticleMsg == true">Saving your article...</h1>
+          <h1 ng-show = "showSavingFileMsg == true">Saving your file uploaded...</h1>
+          <div class = "subArticleCirBox">
+              <div class = "showCirlcebox">
+                  <div class="circleLoader myQuestionCircleLoader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+      <div class = "popSubArticleBox" ng-switch-when = "article2">
+
+        <div class = "popSucHeader">
+            <img src="app-resources/imgs/close.png" id = "popSucHeaderImg" ng-click = "hideSuccessfulSubmit()">
+        </div>
+        <span><img src = "app-resources/imgs/success.png"/></span>
+        <h1>Successfully saved</h1>
+
+        <button class = "savedArticleFile" id = "savedArticleFile" ng-click = "hideSuccessfulSubmit()">Dismiss</button>
+      </div>
+    </section>
+
+</div>
+
+<div class = "popBackground" id = "articlePopBackground">
+
+     <section>
+
+         <div>
+             <span ng-show = "success == true"><img src = "app-resources/imgs/success.png"/></span>
+             <span ng-show = "error == true"><img src = "app-resources/imgs/exclamatory.png"/></span>
+             <h2 class = "info-pop-header"></h2>
+
+             <p class = "info-pop-para">
+
+             </p>
+
+             <button class = "dismiss">Dismiss</button>
+
+         </div>
+
+     </section>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "articleViewContainer">
+    <header class = "backButtonHeader" style = "margin-bottom: 2%;">
+
+        <button type = "button" class = "btn btn-default btn-sm" ng-click = "backToMyArticles()">
+            <span class = "glyphicon glyphicon-chevron-left"></span> Back to all news
+        </button>
+
+    </header>
+
+    <div class = "articleWriteContainer">
+
+        <form name = "articleWritingForm" id = "articleForm" class = "articleForm" method = "POST" novalidate>
+
+           <div class = "articleHeader boxShadow">
+
+               <p>{{title}}</p>
+
+                <div class = "articlieInputContainer">
+
+
+                     <div class = "articleInputBox artInputBox">
+
+                         <input type = "text" class = "articleTitleInput" name = "title" placeholder = "Your article title"  ng-model = "title" ng-init = "setTitle()" required/>
+
+                     </div>
+
+                     <div class = "articleInputBox">
+ <!-- ng-options = "category.categoryName for category in responseData.categories" -->
+                        <select ng-model = "category" ng-init = "setCategory()">
+                            <option value = "Unassigned">---Please select---</option>
+                            <option ng-repeat = "category in responseData.categories">{{category.categoryName}}</option>
+
+                        </select>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+           </div>
+
+
+            <div class = "summernoteContainer">
+
+                <div class = "summernoteBox">
+
+                    <textarea hidden = "true" name = "summernote" id = "summernote" ng-model = "articleWriting.content" ng-init = "$scope.setSummernote()"></textarea>
+
+                    <div class = "fileInputContainer">
+
+                        <h1><span>Note: </span><i>Multiple files needs to be compressed. Use Winzip or WinRar</i></h1>
+
+                        <section>
+
+                            <div class = "fileInputBox">
+
+                                <input type="file" file-model = "file" title = "Select a file" id = "inputFile" class = "inputFile" />
+                                <!-- <input type = "file" file-model = "uploadedFile" title = "Select a file" id = "inputFile" class = "inputFile" multiple /> -->
+
+                            </div>
+
+                            <div class = "inputMaskBox">
+
+                                <input type = "text" id = "inputMask" placeholder = "Select file" />
+                                <a><img src = "app-resources/imgs/folder.png"/>Select a file</a>
+                            </div>
+
+                        </section>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <article class = "articlieInputContainer boxShadow">
+
+                <article class = "articleInputBox articleInputButton">
+
+                    <input type = "submit" id = "submitArticleButton" ng-click = "submit()" value = "Submit"/>
+
+                </article>
+
+                <article class = "articleInputBox articleDraftButton">
+
+                    <input type = "submit" id = "draftArticleButton" value = "Save as drafts"/>
+
+                </article>
+
+            </article>
+
+
+
+        </form>
+
+    </div>
+
+</div>

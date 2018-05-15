@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app = "sterling">
+    <head>
+        <title>System Admin Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel = "stylesheet" href = "app-resources/css/intranet.css" type = "text/css"/>
+
+        <script type = "text/javascript" src = "app-resources/lib/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-ui-router.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-animate.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-cookies.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-resource.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-messages.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/jquery-1.12.0.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/jQueryAnimations/system-admin-animations.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/sterlingApp.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/controllers/system-admin-controllers.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/services/system-admin-services.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/services/system-admin-resources.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/directives/system-admin-directives.js"></script>
+
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    </head>
+    <body class = "body">
+
+
+           <aside class = "sterlingSideBar" ng-controller = "systemAdminController">
+
+               <div class = "saLogoCon">
+                   <h1>SGCC</h1>
+               </div>
+
+               <div class = "saUserCon">
+
+                   <div class = "saSidebarDetails">
+
+                       <span>{{username}}</span>
+                       <span>System Administrator</span>
+
+                   </div>
+
+               </div>
+
+               <nav>
+
+                    <div class = "saSideBar">
+
+                      <ul>
+
+                          <li ng-click = "goToOverview()"><span>Overview</span></li>
+                          <li ng-click = "goToCampaign()"><span>Campaign</span></li>
+                          <li ng-click = "goToPeople()"><span>People</span></li>
+                          <li class = "pageNavLi" ng-click = "logout()"><span>Logout</span></li>
+                      </ul>
+
+                    </div>
+
+               </nav>
+               <!-- <nav class = "saMainNav">
+
+                   <ul>
+
+                       <li ng-click = "goToOverview()">Overview</li>
+                       <li ng-click = "goToCampaign()">Campaign</li>
+                       <li ng-click = "goToPeople()">People</li>
+                       <li ng-click = "goToFile()">File</li>
+                       <li ng-click = "goToArticle()">Article</li>
+                       <li id = "saSettingsButton">
+                       Settings
+
+                       </li>
+                           <nav id = "saSettings" class = "saSettings">
+                               <span>My details</span>
+                               <a href = "" ng-click = "logout()">Logout</a>
+                           </nav>
+                   </ul>
+               </nav> -->
+
+
+           </aside>
+
+           <div class = "viewsContaier">
+
+               <div ui-view = "saDashboard" class = "saViewsBox"></div>
+               <div ui-view = "saCampaign" class = "saViewsBox"></div>
+               <div ui-view = "user-layout" class = "saViewsBox"></div>
+               <div ui-view = "saFile" class = "saViewsBox"></div>
+               <div ui-view = "saArticle" class = "saViewsBox"></div>
+
+           </div>
+
+
+    </body>
+</html>

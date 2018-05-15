@@ -1,0 +1,102 @@
+<div class = "saContainers">
+
+    <div class = "statisticsBox">
+
+        <div class = "statisticsHeader">
+            <img src = "app-resources/imgs/dashCampIcon.png"/>
+                <span>Campaigns</span>
+        </div>
+
+        <p>
+            {{dashboardDetails.numberOfCampaign}}
+        </p>
+
+    </div>
+
+    <div class = "statisticsBox">
+
+        <div class = "statisticsHeader">
+            <img src = "app-resources/imgs/dashUsersIcon.png"/>
+                <span>Users</span>
+        </div>
+
+        <p>
+            {{dashboardDetails.numberOfUser}}
+        </p>
+
+    </div>
+
+    <div class = "statisticsBox">
+
+        <div class = "statisticsHeader">
+            <img src = "app-resources/imgs/dashUsersIcon.png"/>
+                <span>System Admins</span>
+        </div>
+
+        <p>
+            {{dashboardDetails.numberOfSystemAdmins}}
+        </p>
+
+    </div>
+
+    <div class = "statisticsBox">
+
+        <div class = "statisticsHeader">
+            <img src = "app-resources/imgs/dashUsersIcon.png"/>
+                <span>Campaign Admins</span>
+        </div>
+
+        <p>
+            {{dashboardDetails.numberOfCampaignAdmin}}
+        </p>
+
+    </div>
+
+    <div class = "statisticsBox">
+
+        <div class = "statisticsHeader">
+            <img src = "app-resources/imgs/dashUsersIcon.png"/>
+                <span>Agents</span>
+        </div>
+
+        <p>
+            {{dashboardDetails.numberOfAgent}}
+        </p>
+
+    </div>
+
+</div>
+
+<div>
+
+</div>
+
+
+<div class = "saPieWrapper">
+
+    <div class = "saPieContainer pie1">
+
+        <h2>Campaign Statistics</h2>
+        <div class = "saPieBox">
+
+            <canvas id = "pie" class = "chart chart-pie"
+          chart-data = "campaignUserSize" chart-labels = "campaignNameLabels" chart-options = "options"></canvas>
+
+        </div>
+
+    </div>
+
+    <div class = "saPieContainer pie2">
+
+        <h2>User Statistics</h2>
+        <div class = "saPieBox">
+
+            <canvas id="pie" class="chart chart-pie"
+            chart-data="userStatistics" chart-labels="doughLabels" chart-options="options">
+            </canvas>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,299 @@
+<section id = "caEventLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<div id = "eventPopUp">
+
+    <section class = "eventPopContainer">
+
+        <header class = "eventCloseHeader">
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeEventForm()"/>
+        </header>
+
+        <div class = "eventFormCon">
+
+            <form name = "eventForm" novalidate>
+
+                <section class = "eventFormInputPopBox">
+
+                    <div class = "eventInputsContent">
+
+                        <div class = "eventImgBoxPop">
+                            <header class = "eventFormHeaderPop">
+                              <div class="col-lg-6 col-sm-6 col-12">
+                                  <label class="btn btn-primary">
+                                      Browse&hellip; <input type = "file" ng-model = "formParams.eventImg" style = "display: none;" base-sixty-four-input />
+                                  </label>
+                              </div>
+                            </header>
+
+                            <div class = "eventImgPop">
+
+                                <img data-ng-src="data:{{formParams.eventImg.filetype}};base64,{{formParams.eventImg.base64}}" src = "app-resources/imgs/cat.jpg" />
+
+                            </div>
+
+                        </div>
+
+                        <div class = "eventInputBox">
+
+                            <p type = "Event name:">
+
+                                <input type = "text" class = "eventInputType" ng-model = "event.eventName" placeholder = "Event name" />
+
+                            </p>
+
+                        </div>
+
+                        <div class = "eventInputBox">
+
+                            <p type = "Location">
+
+                                <input type = "text" class = "eventInputType" ng-model = "event.location" placeholder = "location" />
+
+                            </p>
+
+                        </div>
+
+                        <div class = "eventInputBox">
+
+                            <p type = "Date of event:">
+
+                              <div class='input-group date' id='datetimepicker1'>
+                                  <input type='text' id = "eventDatePicker" class="form-control" />
+                                  <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                              </div>
+
+                            </p>
+
+                        </div>
+
+                        <div class = "eventInputBox">
+
+                            <p type = "Details" class = "eventDetails">
+
+                                <textarea id = "eventFormTextarea" class = "eventFormTextarea"></textarea>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </section>
+
+
+                <footer class = "eventFormFooter">
+                    <div class = "eventFormCancelButton">
+                        <button ng-click = "closeEventForm()">Cancel</button>
+                    </div>
+
+                    <div class = "eventFormSubmit">
+                        <input type = "submit" ng-disabled = "caEditPasswordForm.$invalid" ng-click = "submit()" value = "Submit" />
+                    </div>
+                </footer>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+
+<header class = "mainHeader" ng-show = "eventPage == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer" ng-show = "eventPage == true">
+
+    <div class = "createNewsHeader">
+
+        <div class = "createNewsHeaderBox">
+
+            <span ng-click = "showEventForm()">Create new event</span>
+
+        </div>
+
+    </div>
+
+    <section class = "eventsImgContainer">
+
+        <div class = "eventImgBox">
+
+            <div class = "eventImageSlideBox">
+
+                <ul rn-carousel class="image" rn-carousel-auto-slide = "3">
+                    <li ng-repeat="event in events" >
+                          <div class="layer">
+                              <img data-ng-src = "data:{{event.fileType }};base64,{{event.base64}}"
+                              src = "app-resources/imgs/cat.jpg" class = "img-responsive" alt = "events" />
+                          </div>
+
+                          <footer class = "eventDetailsFooter">
+
+                              <div class = "eventFooterTitle">
+                                  <span ng-click = "selectOneEvent(event.eventId)">{{event.eventName}}</span>
+                              </div>
+
+                              <div class = "eventFooterEventDate">
+
+                                  <span>{{event.eventDate}}</span>
+
+                              </div>
+
+                          </footer>
+
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class = "oneEventDetailsBox" ng-show = "oneEventDetailsBox == true">
+
+                <div class = "oneEventImgContainer">
+
+                    <div class = "oneEventImgBox">
+
+                      <img data-ng-src = "data:{{selectedEvent.fileType}};base64,{{selectedEvent.base64}}" src = "app-resources/imgs/cat.jpg" class = "img-responsive" alt = "events" />
+
+                    </div>
+                </div>
+
+                <section class = "onveEventDetailsCon">
+
+                    <header class = "oneEventTitleHeader">
+
+                        <div class = "oneEventTitle">
+
+                            <span>{{selectedEvent.eventName}}</span>
+
+                        </div>
+
+                        <div class = "goingButtonBox">
+                            <button type="button" class="btn btn-default btn-sm" ng-click = "eventAttendance(selectedEvent.eventId);" ng-if = "isGoing == 'Not going' || isGoing == null">
+                                <span class="glyphicon glyphicon-ok"></span> Going
+                            </button>
+
+                            <button type="button" class="btn btn-default btn-sm" ng-click = "eventAttendance(selectedEvent.eventId);" ng-if = "isGoing == 'Going'">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel
+                            </button>
+
+                        </div>
+
+                    </header>
+
+                    <section class = "eventBodyDetails">
+
+                        <div class = "eventDetailsTable">
+
+                            <table>
+                                <tbody>
+
+                                    <tr>
+
+                                        <td class = "glyphicon glyphicon-map-marker">
+                                            Location
+                                        </td>
+
+                                        <td>
+                                            {{selectedEvent.location}}
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td class = "glyphicon glyphicon-time">
+                                            Date
+                                        </td>
+
+                                        <td>
+                                            {{selectedEvent.eventDate}}
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td class = "glyphicon glyphicon-edit">
+                                            Details
+                                        </td>
+
+                                        <td>
+                                            {{selectedEvent.details}}
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td class = "glyphicon glyphicon-user">
+                                            Going
+                                        </td>
+
+                                        <td>
+                                            {{numOfGoing}}
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <!-- <ul rn-carousel class="image" style = "height: 200px" rn-carousel-auto-slide = "3">
+    <li ng-repeat="event in events">
+      <div class="layer" ><img data-ng-src="data:{{event.fileType }};base64,{{event.base64}}" src="app-resources/imgs/cat.jpg" class="img-responsive" alt="speakers"></div>
+    </li>
+    </ul> -->
+
+</div>

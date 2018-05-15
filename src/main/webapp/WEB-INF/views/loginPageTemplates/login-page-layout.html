@@ -1,0 +1,55 @@
+<section class = "homeWrapper">
+
+   <div ng-controller = "popUpController">
+
+       <div class = "logPopUpBackground" id = "logPopUpBackground">
+
+            <div class = "popUpContainer"  id = "popUpContainer">
+
+                <div id = "popUpPassBox">
+                    <span class = "promptPassInfo"><img src = "app-resources/imgs/exclamatory.png"/></span>
+                    <h2 class = "oopsHeader">Oooopps!</h2>
+
+                    <p>
+                        Please contact IT for assistance.
+                    </p>
+
+                    <span id = "dismissButton" class = "dismissButton">Dismiss</span>
+
+                </div>
+
+            </div>
+
+     </div>
+
+   </div>
+
+    <section id = "loginPageContainer">
+
+
+       <div class = "wrapper">
+
+
+          <div class = "loginContainer">
+              <div ui-view = "login" class = "log-ui-view logView"></div>
+              <div ui-view = "campaign" class = "log-ui-view campView" ng-show = "showCamp == true"></div>
+          </div>
+
+          <div class = "welcomeMessageContainer">
+
+             <div class = "messageBox">
+
+                   <p>
+                       Welcome to Sterling Global Call Center's Employee Portal
+                   </p>
+
+             </div>
+
+          </div>
+
+       </div>
+
+
+    </section>
+
+</section>

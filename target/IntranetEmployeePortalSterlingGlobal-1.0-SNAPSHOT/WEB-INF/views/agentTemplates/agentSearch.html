@@ -1,0 +1,282 @@
+<section id = "caSearchLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<header class = "mainHeader" ng-show = "showSearchedResult == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer" ng-show = "showSearchedResult == true">
+
+    <section class = "wideSearchContainer">
+
+        <nav class = "searchHeader">
+
+            <ul>
+
+                <li id = "searchAll" ng-click = "filterToAll()">
+                    <span class = "searchType">All</span>
+                </li>
+
+                <li id = "searchArticle" ng-click = "filterToArticles()">
+                    <span class = "glyphicon glyphicon-pencil"></span>
+                    <span class = "searchType">Article</span>
+                </li>
+
+                <li id = "searchQuestion" ng-click = "filterToQuestion()">
+                    <span class = "glyphicon glyphicon-question-sign"></span>
+                    <span class = "searchType">Question</span>
+                </li>
+
+                <li id = "searchNews" ng-click = "filterToNews()">
+                    <span class = "fa fa-newspaper-o"></span>
+                    <span class = "searchType">News</span>
+                </li>
+
+                <li id = "searchEvent" ng-click = "filterToEvents()">
+                    <span class = "glyphicon glyphicon-calendar"></span>
+                    <span class = "searchType">Event</span>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class = "searchedTitleBox">
+            <h1>Searched: "{{searched}}"</h1>
+        </div>
+
+        <section class = "searchedListContainer">
+
+            <div class = "searchedResultBox" ng-repeat = "searchResult in searchedResults" ng-if = "searchFilter == 'all'">
+
+                <header class = "searchedResultHeader">
+
+                    <div class = "searchedResultIcon">
+
+                        <span class = "glyphicon glyphicon-pencil" style = "font-size: 130%;" ng-if = "searchResult.type == 'article'"></span>
+                        <span class = "glyphicon glyphicon-question-sign" style = "font-size: 130%;" ng-if = "searchResult.type == 'question'"></span>
+                        <span class = "glyphicon glyphicon-calendar" style = "font-size: 130%;" ng-if = "searchResult.type == 'event'"></span>
+                        <span class = "fa fa-newspaper-o" style = "font-size: 130%;" ng-if = "searchResult.type == 'news'"></span>
+
+                    </div>
+
+                    <div class = "searchedResultTitle">
+                        <span>{{searchResult.title}}</span>
+                    </div>
+
+                </header>
+
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'article'">
+
+                    <div>
+                        <span>Author: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Category: {{searchResult.category}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'question'">
+
+                    <div>
+                        <span>Asked by: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'news'">
+
+                    <div>
+                        <span>Created by: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'event'">
+
+                    <div>
+                        <span>Created by: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+            </div>
+
+            <div class = "searchedResultBox" ng-repeat = "searchResult in searchedResults" ng-if = "searchFilter == 'article'">
+
+                <header class = "searchedResultHeader">
+
+                    <div class = "searchedResultIcon">
+
+                        <span class = "glyphicon glyphicon-pencil" style = "font-size: 130%;" ng-if = "searchResult.type == 'article'"></span>
+
+                    </div>
+
+                    <div class = "searchedResultTitle">
+                        <span ng-if = "searchResult.type == 'article'">{{searchResult.title}}</span>
+                    </div>
+
+                </header>
+
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'article'">
+
+                    <div>
+                        <span>Author: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Category: {{searchResult.category}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+            </div>
+
+            <div class = "searchedResultBox" ng-repeat = "searchResult in searchedResults" ng-if = "searchFilter == 'question'">
+
+                <header class = "searchedResultHeader">
+
+                    <div class = "searchedResultIcon">
+
+                        <span class = "glyphicon glyphicon-question-sign" style = "font-size: 130%;" ng-if = "searchResult.type == 'question'"></span>
+
+                    </div>
+
+                    <div class = "searchedResultTitle">
+                        <span ng-if = "searchResult.type == 'question'">{{searchResult.title}}</span>
+                    </div>
+
+                </header>
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'question'">
+
+                    <div>
+                        <span>Asked by: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+            </div>
+
+            <div class = "searchedResultBox" ng-repeat = "searchResult in searchedResults" ng-if = "searchFilter == 'news'">
+
+                <header class = "searchedResultHeader">
+
+                    <div class = "searchedResultIcon">
+
+                        <span class = "fa fa-newspaper-o" style = "font-size: 130%;" ng-if = "searchResult.type == 'news'"></span>
+
+                    </div>
+
+                    <div class = "searchedResultTitle">
+                        <span ng-if = "searchResult.type == 'news'">{{searchResult.title}}</span>
+                    </div>
+
+                </header>
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'news'">
+
+                    <div>
+                        <span>Created by: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+            </div>
+
+            <div class = "searchedResultBox" ng-repeat = "searchResult in searchedResults" ng-if = "searchFilter == 'event'">
+
+                <header class = "searchedResultHeader">
+
+                    <div class = "searchedResultIcon">
+
+                        <span class = "glyphicon glyphicon-calendar" style = "font-size: 130%;" ng-if = "searchResult.type == 'event'"></span>
+
+                    </div>
+
+                    <div class = "searchedResultTitle">
+                        <span ng-if = "searchResult.type == 'event'">{{searchResult.title}}</span>
+                    </div>
+
+                </header>
+
+                <footer class = "searchResultFooter" ng-if = "searchResult.type == 'event'">
+
+                    <div>
+                        <span>Created by: {{searchResult.empName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date created: {{searchResult.dateCreated | date: 'medium'}}</span>
+                    </div>
+
+                </footer>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+</div>

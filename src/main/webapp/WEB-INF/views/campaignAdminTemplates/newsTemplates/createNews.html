@@ -1,0 +1,148 @@
+<div id = "savingNews" class = "savingArticleAndFile" ng-hide = "hideSubmittedPopUp == true">
+
+    <section class = "popSubArticleContainer" ng-switch on = "article" ng-cloak>
+
+      <div class = "popSubArticleBox" ng-switch-default>
+
+          <h1>Saving your news...</h1>
+          <div class = "subArticleCirBox">
+              <div class = "showCirlcebox">
+                  <div class="circleLoader myQuestionCircleLoader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+      <div class = "popSubArticleBox" ng-switch-when = "article2">
+
+        <div class = "popSucHeader">
+            <img src="app-resources/imgs/close.png" id = "popSucHeaderImg" ng-click = "redirectToNews()">
+        </div>
+        <span><img src = "app-resources/imgs/success.png"/></span>
+        <h1>Successfully saved</h1>
+
+        <button class = "savedArticleFile" id = "savedArticleFile" ng-click = "redirectToNews()">Dismiss</button>
+      </div>
+    </section>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer">
+
+    <section class = "createNewsContainer">
+
+        <div class = "newsFormContainer">
+
+            <form name = "newsForm" novalidate>
+
+                <div class = "newsTitleInputContainer">
+
+                    <div class = "newsTitleInputBox">
+
+                        <input class="form-control" type = "text" placeholder = "Enter News Title" ng-model = "title" ng-init = "setTitle()" />
+                        <!-- <input type = "text" placeholder = "Enter News Title" ng-model = "title" ng-init = "setTitle()" /> -->
+
+                    </div>
+
+                </div>
+
+                <section class = "newsFrontImage">
+                    <div class = "newsFromImgageBox">
+
+                        <img data-ng-src="data:{{formParams.frontImage.filetype}};base64,{{formParams.frontImage.base64}}" src = "app-resources/imgs/sterling.jpg" ng-init = "setFrontImage()" />
+
+                    </div>
+
+
+                    <section class = "UploadFrontImage">
+
+                      <div class="col-lg-6 col-sm-6 col-12">
+                          <label class="btn btn-primary">
+                              Browse&hellip; <input type = "file" id = "frontImage" style = "display: none;" ng-model = "formParams.frontImage" base-sixty-four-input />
+                          </label>
+                      </div>
+                        <!-- <div>
+
+                          <input type = "file" id = "frontImage" ng-model = "formParams.frontImage" base-sixty-four-input/>
+
+                        </div>
+
+                        <div>
+
+                            <input type = "button" value = "Upload" />
+
+                        </div> -->
+
+                    </section>
+
+                </section>
+                <!-- <section class = "newsFronImgInputBox">
+
+                    <div class = "fileInputBox">
+
+                        <input type="file" file-model = "file" title = "Select a image" id = "inputFile" class = "inputFile" base-sixty-four-input />
+
+                    </div>
+
+                    <div class = "inputMaskBox">
+
+                        <input type = "text" id = "inputMask" placeholder = "Select image" />
+                        <a><img src = "app-resources/imgs/folder.png"/>Select image</a>
+                    </div>
+
+                </section> -->
+
+                <article class = "newsSummernoteBox">
+
+                    <div class = "newsTextareaBox">
+
+                        <textarea hidden = "true" name = "summernote" id = "summernoteNews" ng-init = "setContent()" ></textarea>
+
+                    </div>
+
+                </article>
+
+                <article class = "newsInputContainer">
+
+                    <article class = "articleInputBox articleInputButton">
+
+                        <input type = "submit" id = "submitArticleButton" ng-click = "submit()" value = "Submit"/>
+
+                    </article>
+
+                </article>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>

@@ -1,0 +1,75 @@
+@import "variables";
+
+#logButtonCon
+{
+    text-align: center;
+}
+#logButtonCon input
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 120%;
+    font-weight: bold;
+    color: $commonButTextClr;
+    padding: 10px 65px;
+    border: none;
+    border-radius: 20px;
+    background: #2980B9;
+    cursor: pointer;
+}
+#logButtonCon input:hover
+{
+    background: #44BBFF;
+}
+#logButtonCon input[disabled = "disabled"], .saCampInputBox button[disabled = "disabled"], .saInputButtonBox button[disabled = "disabled"]
+{
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+#saSearch
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 110%;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 130px;
+    outline: none;
+}
+
+.editCategoryinputBox input
+{
+    font-size: 115%;
+    width: 298px;
+    height: 30px;
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 1px solid #D6DAC2;
+    display: block;
+    outline: none;
+}
+#searchCategory, #searchNewArticle
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    font-size: 110%;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    padding: 10px 5px;
+    outline: none;
+}
+#saSearch:focus, #searchCategory:focus, #searchNewArticle:focus
+{
+    border-bottom: 2px solid #1ABC9C;
+}

@@ -1,0 +1,195 @@
+
+<section id = "newsFeedArticleLoader" class = "globalPageLoader">
+
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+</section>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "articleViewContainer" ng-show = "showNewsFeedArticle == true">
+
+    <header class = "backButtonHeader" style = "margin-bottom: 2%;">
+
+        <button type = "button" class = "btn btn-default btn-sm" ng-click = "backToNewsFeed()">
+            <span class = "glyphicon glyphicon-chevron-left"></span> Back to News Feed
+        </button>
+
+    </header>
+
+    <section class = "oneArticleContainer">
+
+        <section class = "newsFeedOneArticleBox">
+
+            <header class = "titleHeaderContainer">
+
+                <header>
+
+                    <h1>{{oneArticle.article.title}}</h1>
+
+                    <span>{{oneArticle.article.category}}</span>
+
+                    <div>
+
+                      <div>
+                          <img data-ng-src="data:{{authorAvatar.fileType}};base64,{{authorAvatar.base64}}"
+                            src = "app-resources/imgs/defaultAvatar.png"/>
+                      </div>
+
+                        <div>
+
+                            <span>by</span>
+                            <span>{{authorName}}</span>
+
+                        </div>
+
+                    </div>
+
+                </header>
+
+            </header>
+
+
+            <article class = "innerArticle">
+
+
+            </article>
+
+            <footer class = "oneArticleDownloadFooter" ng-hide = "hideDownloadButton == true">
+                <div class = "downloadButtonBox">
+                    <button type = "button" class = "btn btn-default btn-sm" ng-click = "downloadFile()">
+                        <span class = "glyphicon glyphicon-download-alt"></span> Download {{articleDocument.fileName}}
+                    </button>
+                </div>
+            </footer>
+
+        </section>
+
+    </section>
+
+    <section class = "commentsContainer">
+
+      <section>
+
+          <div>
+
+            <img data-ng-src="data:{{currentUserAvatar.fileType}};base64,{{currentUserAvatar.base64}}"
+              src = "app-resources/imgs/defaultAvatar.png"/>
+
+          </div>
+
+          <div>
+
+              <form name = "commentForm" method = "POST" novalidate>
+
+                  <article>
+
+                      <textarea placeholder = "Write a comment" name = "comment" ng-model = "myComment" ></textarea>
+                      <div>
+
+                      </div>
+                  </article>
+
+                  <div>
+
+                      <input ng-click = "submitComment()" type = "submit" value = "Submit" />
+
+                  </div>
+
+              </form>
+
+          </div>
+
+      </section>
+
+      <section>
+
+          <!-- <h1>Related Articles</h1> -->
+
+      </section>
+
+    </section>
+
+    <section class = "articleCommentsContainer">
+
+        <section class = "articleComments">
+
+            <section ng-repeat = "empComment in comments | orderBy: '-date'">
+
+                <header>
+
+                    <div>
+
+                      <img data-ng-src="data:{{empComment.employeeDetails.userAvatar.fileType}};base64,{{empComment.employeeDetails.userAvatar.base64}}"
+                        src = "app-resources/imgs/defaultAvatar.png"/>
+
+                    </div>
+
+                    <div>
+                        <h3><span>{{empComment.employeeDetails.lastName}}</span><span>{{empComment.employeeDetails.firstName}}</span></h3>
+                        <span>{{empComment.employeeDetails.position}}</span>
+                        <span>{{empComment.dateCommented | date:'medium'}}</span>
+                    </div>
+
+
+                    <div>
+                        <span class = "glyphicon glyphicon-edit" style = "padding-right: 15px;" title = "Edit"></span>
+                        <span class = "glyphicon glyphicon-trash" title = "Delete" ng-click = "showDeleteCommentPop(empComment.commentId)"></span>
+                    </div>
+
+                </header>
+
+                <div title = "comment">
+
+                    <p>
+
+                          {{empComment.comment}}
+
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section class = "oneArticleRecentlyAdded">
+
+            <!-- <h1>Recently Added</h1> -->
+
+        </section>
+
+    </section>
+
+
+</div>

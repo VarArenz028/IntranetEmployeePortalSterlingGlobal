@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel = "stylesheet" href = "app-resources/dist/summernote.css"  type = "text/css"/>
+        <script type = "text/javascript" src = "app-resources/dist/summernote.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/dist/summernote.js"></script>
+        <link rel = "stylesheet" href = "app-resources/css/test.css" type = "text/css"/>
+        <link rel = "stylesheet" href = "app-resources/css/sterling-style.css" type = "text/css"/>
+        
+        <script type = "text/javascript">
+            
+            $(document).ready(function()
+            {
+                
+                $('#summernote').summernote();
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        
+        <section class = "wrapper">
+            
+            <div class = "test">
+                
+                <form name = "articleWritingForm" method = "POST">
+            
+                  <textarea hidden = "true" id = "summernote"></textarea>    
+            
+                 </form>
+                
+            </div>
+                
+            
+            
+        </section>
+        
+    </body>
+</html>

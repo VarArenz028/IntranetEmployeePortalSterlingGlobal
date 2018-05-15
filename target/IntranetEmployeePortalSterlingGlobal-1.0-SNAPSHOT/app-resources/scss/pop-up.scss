@@ -1,0 +1,597 @@
+@import "variables";
+@import "mixin";
+/*   pop-up style*/
+
+.logPopUpBackground
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+.popUpBackground
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 32;
+    background: rgba(2, 2, 2, 0.5);
+}
+.popUpContainer
+{
+    width: 1000px;
+    margin: 0px auto;
+}
+#popUpPassBox
+{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    width: 450px;
+    height: 250px;
+    margin: 0px auto;
+    z-index: 30;
+    top: -600px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: #FFFFF7;
+    z-index: 31;
+
+}
+span[class = "promptPassInfo"]
+{
+    display: block;
+    width: 450px;
+    text-align: center;
+
+}
+.promptPassInfo
+{
+    img
+    {
+        width: 80px;
+        padding: 10px 0px;
+    }
+}
+.oopsHeader
+{
+    font-size: 220%;
+    color: #3F3F3F;
+    text-align: center;
+}
+#popUpPassBox > p
+{
+    font-size: 140%;
+    color: #3F3F3F;
+    text-align: center;
+    width: 400px;
+    padding: 15px 5px;
+    margin: 0px auto;
+}
+
+span[class = "dismissButton"]
+{
+    font-size: 120%;
+    color: #FFFFF7;
+    display: block;
+    width: 450px;
+    height: 58px;
+    line-height: 58px;
+    text-align: center;
+    background: #e74c3c;
+    cursor: pointer;
+}
+
+#popCampaignBox
+{
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    box-shadow: 0px 0px 15px 0px rgba(135,118,108,1);
+    width: 450px;
+    height: 280px;
+    margin: 0px auto;
+    background: #fff;
+    animation-name: drop;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    position: fixed;
+    top: -600px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 31;
+    border-radius: 10px;
+}
+.campFormBox
+{
+    width: 400px;
+    margin: 0px auto;
+    padding: 10px 5px;
+    text-align: center;
+}
+.saCampInputBox
+{
+    margin-top: 25px;
+}
+#saCampaignInput
+{
+    font-size: 115%;
+    width: 300px;
+    padding: 10px 10px;
+    border: 2px solid #F6F7F2;
+    border-radius: 10px;
+}
+#saCampaignInput.ng-invalid-maxlength, #saCampaignInput.ng-invalid-minlength, #saCampaignInput.ng-invalid-pattern, .saNewUserInput.ng-invalid-maxlength, .saNewUserInput.ng-invalid-minlength, .saNewUserInput.ng-invalid-pattern, .saNewUserInput.ng-invalid-uname, .saNewUserInput.ng-invalid-pass, .saNewUserInput.ng-touched, .categoryNameInput.ng-invalid-maxlength, .categoryNameInput.ng-invalid-minlength, .categoryNameInput.ng-invalid-pattern
+{
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    border: 2px solid #e74c3c;
+}
+.saFormErrorMessage, .saUserFormErrorMessage
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.saFormErrorMessage, .saEditUsernameMessages
+{
+    small
+    {
+        font-size: 100%;
+        color: #e74c3c;
+        text-align: center;
+    }
+}
+#saCampFormButton, #saCampCancelButton
+{
+    font-size: 115%;
+    font-weight: bold;
+    color: $commonButTextClr;
+    padding: 10px 65px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#saCampFormButton
+{
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    background: #2980B9;
+    &:hover
+    {
+        background: #44BBFF;
+    }
+
+}
+#saCampCancelButton
+{
+    @include customTransition;
+    background: #e74c3c;
+    &:hover
+    {
+        background: #EB6361;
+    }
+}
+
+/*    Pop up style*/
+
+.pop-wrapper
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 41;
+    background: rgba(2, 2, 2, 0.5);
+    display: none;
+}
+
+/*    Pop-ups*/
+
+/*    Events form*/
+
+.eventsFormContainer
+{
+    @include popShadowBox;
+    position: relative;
+    top: 35px;
+    width: 500px;
+    height: 600px;
+    margin: 0px auto;
+    background: #fff;
+}
+.eventFormHeader
+{
+    height: 30px;
+    padding-top: 10px;
+    @include clear;
+}
+.eventHeaderText
+{
+    width: 250px;
+    text-align: left;
+    float: left;
+    span
+    {
+        font-size: 145%;
+        font-weight: bold;
+        color: $commonDarkTextColor;
+        margin-left: 10px;
+    }
+}
+
+.eventHeaderExit
+{
+    width: 250px;
+    text-align: right;
+    float: right;
+    img
+    {
+        width: 15px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+}
+.eventFormContainer
+{
+    height: 480px;
+    margin: 45px 0px;
+}
+.eventFormHolder
+{
+    width: 480px;
+    height: 440px;
+    margin: 0px auto;
+    overflow-y: scroll;
+}
+.eventFormImgBox
+{
+    width: 400px;
+    margin: 0px auto;
+    img
+    {
+        width: 400px;
+    }
+}
+.eventFormBox
+{
+    width: 400px;
+    margin: 0px auto;
+}
+.eventFormInputBox
+{
+    height: 60px;
+    text-align: left;
+    margin-bottom: 20px;
+    @include clear;
+}
+.eventLabelsBox
+{
+    label
+    {
+        font-size: 140%;
+        color: $commonDarkTextColor;
+    }
+}
+.eventInputs
+{
+    width: 300px;
+    input[type = "text"]
+    {
+        font-size: 115%;
+        width: 300px;
+        height: 30px;
+        padding: 10px 10px;
+        border: 2px solid #D6DAC2;
+        border-radius: 10px;
+        display: block;
+        outline: none;
+    }
+}
+.eventFormTimeBox
+{
+    height: 120px;
+    padding: 10px 0px;
+}
+.eventTimeBox
+{
+    height: 50px;
+    padding: 10px 0px;
+}
+.eventTimeLabel
+{
+    width: 20%;
+    float: left;
+}
+.eventTimeInput
+{
+    width: 35%;
+    margin: 0px 2.5%;
+    text-align: center;
+    float: left;
+}
+.eventFormTextareaBox
+{
+    height: 120px;
+    text-align: left;
+}
+.eventTextarea textarea
+{
+    textarea
+    {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        resize: none;
+    }
+}
+.eventFormButtonBox
+{
+    width: 500px;
+    height: 56px;
+    margin-top: 30px;
+    @include clear;
+    span
+    {
+        font-size: 140%;
+    }
+    input
+    {
+        font-size: 140%;
+        color: $sideBarTextClr;
+        background: none;
+        margin-left: 20px;
+        border: none;
+    }
+}
+.eventCancellButtonBox
+{
+    width: 250px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    background: #F6F7F2;
+    float: left;
+    cursor: pointer;
+}
+.eventSubmitButtonBox
+{
+    width: 250px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    background: #3C3741;
+    float: right;
+    cursor: pointer;
+}
+
+/*    Edit Category form style*/
+
+.editCategoryContainer
+{
+    @include popShadowBox;
+    position: relative;
+    top: 200px;
+    width: 400px;
+    height: 200px;
+    margin: 0px auto;
+    background: #fff;
+    border-radius: 5px;
+}
+.EditCategoryHeader
+{
+    height: 30px;
+    padding-top: 10px;
+    @include clear;
+}
+.editCategoryText
+{
+    width: 200px;
+    text-align: left;
+    float: left;
+    span
+    {
+        font-size: 125%;
+        font-weight: bold;
+        color: #3F3F3F;
+        margin-left: 20px;
+    }
+}
+.editCategoryExit
+{
+    width: 200px;
+    text-align: right;
+    float: right;
+    img
+    {
+        position: relative;
+        right: 20px;
+        width: 25px;
+        padding: 5px;
+        border: 1px solid #F6F7F2;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+.editCategoryBox
+{
+    width: 350px;
+    height: 90px;
+    margin: 40px auto 0px auto;
+}
+.editCategoryForm
+{
+    height: 90px;
+}
+.editCategoryinputBox
+{
+    position: relative;
+    text-align: left;
+    height: 90px;
+}
+.editCategoryButtonBox
+{
+    width: 400px;
+    height: 40px;
+    @include clear;
+}
+.editCatCancelButton
+{
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #F6F7F2;
+    float: left;
+    cursor: pointer;
+    span
+    {
+        font-size: 120%;
+        color: #3F3F3F;
+        margin-left: 20px;
+    }
+}
+.editCatSubButton
+{
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #3C3741;
+    float: right;
+    cursor: pointer;
+    input
+    {
+        font-size: 120%;
+        color: #fff;
+        width: 200px;
+        height: 40px;
+        margin-right: 20px;
+        background: none;
+        border: none;
+    }
+}
+
+/*    Question pop up style*/
+
+.questionContainer
+{
+    @include popShadowBox;
+    position: relative;
+    top: 150px;
+    width: 650px;
+    margin: 0px auto;
+}
+.questionBox
+{
+    background: #fff;
+}
+.questionFormContainer
+{
+    width: 80%;
+    height: 190px;
+    margin: 0px 10%;
+}
+.questionFormHeader
+{
+    width: 100%;
+    height: 30px;
+    text-align: right;
+    img
+    {
+        width: 30px;
+        padding: 5px;
+        margin: 10px 10px 0px 0px;
+        border: 1px solid #F6F7F2;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+.questionInputBox
+{
+    padding-top: 35px;
+    textarea
+    {
+        font-size: 180%;
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border: none;
+        box-sizing: border-box;
+        border-bottom: 2px solid #e2e2e2;
+        resize: none;
+        outline: none;
+        overflow-y: scroll;
+    }
+}
+
+.questionButtonBox:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+.questionButtonBox
+{
+    width: 100%;
+    height: 50px;
+    @include clear;
+}
+.questionCancelBox
+{
+    width: 325px;
+    height: 50px;
+    line-height: 50px;
+    background: #F6F7F2;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+    span
+    {
+        font-size: 130%;
+        font-weight: bold;
+        color: #3C3741;
+    }
+}
+.questionSubmitBox
+{
+    width: 325px;
+    height: 50px;
+    line-height: 50px;
+    background: #3C3741;
+    float: right;
+    cursor: pointer;
+    input
+    {
+        font-size: 135%;
+        font-weight: bold;
+        color: #F6F7F2;
+        width: 325px;
+        height: 50px;
+        background: none;
+        border: none;
+    }
+}

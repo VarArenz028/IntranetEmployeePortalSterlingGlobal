@@ -1,0 +1,166 @@
+<div class = "popBackground" id = "MgtCatPopBackground">
+
+     <section>
+
+         <div>
+             <span><img src = "app-resources/imgs/success.png"/></span>
+             <h2 class = "info-pop-header">Successsfully Moved</h2>
+
+             <p class = "info-pop-para">
+                {{sizeOfArticles}} article has been moved to {{moveToCategory}}
+             </p>
+
+             <button class = "dismissPop" ng-click = "closeSuccessUpdateCat()">Dismiss</button>
+
+         </div>
+
+     </section>
+
+</div>
+
+
+<div class = "wideViewContainer">
+
+  <section class = "mgtCatListContainer">
+
+      <header class = "backToCategoryListBox">
+          <div class = "bachToCatButtonBox">
+            <button type = "button" class = "btn btn-default btn-sm" ng-click = "backToCategoryList()">
+                <span class = "glyphicon glyphicon-menu-left"></span> Back to category list
+            </button>
+          </div>
+      </header>
+
+      <header class = "articleCategoryFilterContainer">
+
+          <div class = "categoryFilterBox">
+
+            <select class="custom-select" ng-model = "categorySelection">
+                <option ng-repeat = "category in articleCategorys">{{category.categoryName}}</option>
+            </select>
+
+          </div>
+
+          <div class = "articleCategorySearchBox">
+
+              <div class = "searchArticleCategoryBox">
+
+                  <input type = "text" placeholder = "Search an Article" ng-model = "search"/>
+
+              </div>
+
+          </div>
+
+      </header>
+
+      <table class = "mgtArticleCatTable">
+          <thead>
+              <tr>
+                  <th class = "catMgtThTitle" ng-click = "singleSort('title')">
+                      Title
+                      <span class="caret-blank"
+                            ng-class="{'caret-down':sortDescend('title'), 'caret-up':sortAscend('title')}">
+                      </span>
+                  </th>
+
+                  <th class = "catMgtTh" ng-click = "singleSort('category')">
+                      Category
+                      <span class="caret-blank"
+                          ng-class="{'caret-down':sortDescend('category'), 'caret-up':sortAscend('category')}">
+                      </span>
+                  </th>
+
+                  <th class = "catMgtTh" ng-click = "singleSort('dateCreated')">
+                      Date created
+                      <span class="caret-blank"
+                            ng-class="{'caret-down':sortDescend('dateCreated'), 'caret-up':sortAscend('dateCreated')}">
+                      </span>
+                  </th>
+
+                  <th class = "catMgtThIcon">
+                      <span class = "glyphicon glyphicon-ok-sign" style = "font-size: 180%;"></span>
+                  </th>
+              </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat = "article in articles | orderBy:[filterSort, sortType] | filter: search" ng-if = "categorySelection == 'All Article'">
+
+                <td class = "catMgtThTitle">
+                    {{article.title}}
+                </td>
+
+                <td class = "catMgtTh">
+                    {{article.category}}
+                </td>
+
+                <td class = "catMgtTh">
+                    {{article.dateCreated | date: 'MM/dd/yyyy'}}
+                </td>
+
+                <td class = "catMgtThIcon">
+                    <div class="round">
+                        <input type = "checkbox" id="{{article.articleId}}"/>
+                        <label ng-click = "toggleSelection(article.articleId)"  for="{{article.articleId}}"></label>
+                    </div>
+                </td>
+
+            </tr>
+              <tr ng-repeat = "article in articles | orderBy:[filterSort, sortType] | filter: search" ng-if = "article.category == categorySelection">
+
+                  <td class = "catMgtThTitle">
+                      {{article.title}}
+                  </td>
+
+                  <td class = "catMgtTh">
+                      {{article.category}}
+                  </td>
+
+                  <td class = "catMgtTh">
+                      {{article.dateCreated | date: 'MM/dd/yyyy'}}
+                  </td>
+
+                  <td class = "catMgtThIcon">
+                      <div class="round">
+                          <input type = "checkbox" id="{{article.articleId}}"/>
+                          <label ng-click = "toggleSelection(article.articleId)"  for="{{article.articleId}}"></label>
+                      </div>
+                  </td>
+
+              </tr>
+          </tbody>
+
+      </table>
+
+      <footer class = "manageCategoryFooterOps">
+
+            <div class = "moveToBox">
+                <p type = "Move to:">
+
+                    <select class="custom-select" ng-model = "moveToCategory">
+                        <option ng-repeat = "category in moveToArticle">{{category.categoryName}}</option>
+                    </select>
+
+                </p>
+            </div>
+
+            <div class = "updateArticleCategoryButtonBox">
+                <div class = "submitUpdateArticleCatBox">
+
+                    <button type="button" class="btn btn-primary" ng-click = "moveArticle()">Move article</button>
+
+                </div>
+            </div>
+
+      </footer>
+
+      <!-- <footer class = "paginationContainer">
+
+          <ul uib-pagination="" total-items="articles.length" ng-model="currentPage" items-per-page="pageSize" class="ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+      </footer> -->
+
+
+  </section>
+
+</div>

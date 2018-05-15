@@ -1,0 +1,62 @@
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "uiViewContainer" ng-cloak>
+
+    <div class = "myArticleContainer new-articles boxShadow">
+
+       <div class = "countSearchBox">
+
+           <div class = "dataCountBox">
+
+               <span>{{numOfDraftNews}} Draft News</span>
+
+           </div>
+
+           <div class = "searchBox">
+
+               <input type = "text" id = "searchNewArticle" placeholder = "Search new articles"/>
+
+           </div>
+
+       </div>
+
+        <div class = "myArticles" ng-repeat = "draft in draftNews">
+
+            <div class = "myArticleTitleBox">
+
+                <span ng-click = "updateDraftNews(draft.draftNewsId)">{{draft.draftNewsTitle}}</span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<aside class = "rightSideBar">
+
+</aside>

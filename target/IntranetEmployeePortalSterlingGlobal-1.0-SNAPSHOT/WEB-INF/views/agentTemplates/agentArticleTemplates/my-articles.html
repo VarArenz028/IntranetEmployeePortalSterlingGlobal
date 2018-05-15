@@ -1,0 +1,164 @@
+<section id = "aMyArticlesLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<header class = "mainHeader" ng-show = "showMyArticles == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer" ng-show = "showMyArticles == true">
+
+    <div class = "myArticleHeader boxShadow">
+
+        <div class = "articleHeaderBox">
+
+            <span ng-click = "article()">Compose new article?</span>
+
+        </div>
+
+    </div>
+
+    <div class = "myArticleContainer boxShadow">
+
+       <div class = "countSearchBox">
+
+           <div class = "dataCountBox">
+
+               <span>{{responsed.numberOfArticles}} Articles</span>
+
+           </div>
+
+           <div class = "searchBox">
+
+               <input type = "text" id = "searchNewArticle" ng-model = "search" placeholder = "Search"/>
+
+           </div>
+
+       </div>
+
+        <div class = "myArticles" ng-repeat = "article in articles | orderBy: '-date' | filter: search">
+
+            <div class = "myArticleTitleBox">
+
+                <span class = "glyphicon glyphicon-ok" ng-if = "article.state === 'Approved'" style = "padding-right: 10px;" title = "Approved"></span>
+                <span class = "glyphicon glyphicon-eye-open" ng-if = "article.state === 'Pending'" style = "padding-right: 10px;" title = "Pending"></span>
+                <span class = "glyphicon glyphicon-remove" ng-if = "article.state === 'Rejected'" style = "padding-right: 10px;" title = "Rejected"></span>
+                <span class = "agentArticleTitle" ng-click = "oneArticle(article.articleId)">{{article.title}}</span>
+
+            </div>
+
+
+            <div class = "myArticleDetailsBox">
+
+                <div class = "myArticleCategoryTypeBox">
+
+                    <span>{{article.category}}</span>
+
+                </div>
+
+                <div class = "articleDetailsDiv">
+
+                    <span>Created {{article.localDateCreated.monthOfYear}}/{{article.localDateCreated.dayOfMonth}}/{{article.localDateCreated.year}}</span>
+                    <span>Views 100</span>
+
+                </div>
+
+            </div>
+
+            <footer class = "agentDetailsFooter" ng-if = "article.state === 'Approved' || article.state === 'Rejected'">
+
+                <div class = "viewStateDetailsBox">
+                    <span ng-click = "fetchAdminReview(article.articleId)">Views Details</span>
+                </div>
+
+            </footer>
+
+            <footer class = "agentApprovedDetails" ng-if = "article.articleId === currentArticleId && isApproved === 'OK'">
+
+                <div class = "approvedDetailsBox">
+
+                    <div class = "approvedBox">
+                        <span>Approved by: {{approved.approvedBy}}</span>
+                    </div>
+
+                </div>
+
+                <div class = "approvedDetailsBox">
+
+                    <div class = "approvedBox">
+                        <span>Date approved: {{approved.approvedDate | date: 'medium'}}</span>
+                    </div>
+
+                </div>
+
+            </footer>
+
+            <footer class = "rejectedArticleDetails" ng-if = "article.articleId === currentArticleId && isApproved === 'NOT_ACCEPTABLE'">
+
+              <div class = "approvedDetailsBox">
+
+                  <div class = "approvedBox">
+                      <span>Rejected by: {{rejected.rejectedBy}}</span>
+                  </div>
+
+              </div>
+
+              <div class = "approvedDetailsBox">
+
+                  <div class = "approvedBox">
+                      <span>Date reject: {{rejected.dateRejeted | date: 'medium'}}</span>
+                  </div>
+
+              </div>
+
+              <div class = "rejectionParaBox">
+
+                  <div class = "rejectPara">
+
+                      <p>
+                          {{rejected.reason}}
+                      </p>
+
+                      <button type = "button" class = "btn btn-default btn-sm" ng-click = "updateArticle(article.articleId)">
+                          <span class = "glyphicon glyphicon-pencil"></span> Update
+                      </button>
+
+                  </div>
+
+              </div>
+
+            </footer>
+
+        </div>
+
+
+    </div>
+
+</div>

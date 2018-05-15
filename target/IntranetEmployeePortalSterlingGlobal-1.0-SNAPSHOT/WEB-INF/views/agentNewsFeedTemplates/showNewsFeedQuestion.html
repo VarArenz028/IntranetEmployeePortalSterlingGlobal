@@ -1,0 +1,253 @@
+<section id = "caNewsFeedQuestionLoader" class = "globalPageLoader">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+<div class = "popBackground" id = "answeredPopBackground">
+
+     <section>
+
+         <div>
+             <span><img src = "app-resources/imgs/exclamatory.png"/></span>
+             <h2 class = "info-pop-header">Oooooops!</h2>
+
+             <p class = "info-pop-para">
+                  You've already answered this question
+             </p>
+
+             <button class = "dismiss">Dismiss</button>
+
+         </div>
+
+     </section>
+
+</div>
+
+<div class = "popBackground" id = "answeredPopBackground2">
+
+     <section>
+
+         <div>
+             <span><img src = "app-resources/imgs/success.png"/></span>
+             <h2 class = "info-pop-header">Great!</h2>
+
+             <p class = "info-pop-para">
+                  You've successfully answered the question
+             </p>
+
+             <button class = "dismiss">Dismiss</button>
+
+         </div>
+
+     </section>
+
+</div>
+
+<header class = "mainHeader">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "questionViewContainer">
+
+    <section class = "oneQuestionContainer" ng-show = "showOneQuestion == true">
+
+        <div class = "oneQuestionBox">
+
+            <header>
+
+                <h1>{{oneQuestion.question.title}}</h1>
+
+                <div class = "qHeader">
+
+                    <div class = "qEmpDetails">
+
+                          <span>Asked by</span><span>{{oneQuestion.question.employeeDetails.lastName}}</span><span>{{oneQuestion.question.employeeDetails.firstName}}</span>
+
+                    </div>
+
+                    <div>
+                        <span>Date Asked {{oneQuestion.question.dateCreated | date:'medium'}}</span>
+                    </div>
+
+                </div>
+
+                <div class = "qHeader2">
+
+                    <div>
+                        <button id = "sFormQ" ng-click = "showSummernote(oneQuestion.question.questionId)"><i></i>Answer</button>
+                    </div>
+
+
+                    <div>
+
+                    </div>
+
+                </div>
+
+            </header>
+            <section class = "answerFormContainer" ng-show = "showForm == true">
+
+                <form name = "answerForm" method = "POST" id = "answerQuestionForm" novalidate>
+
+                    <article>
+
+                        <textarea name = "summernote" id = "answerSummernote"></textarea>
+
+                    </article>
+
+                    <div class = "anwserSubButBox">
+
+                        <input type = "submit" ng-click = "submitAnswer()" id = "submitAnswer" value = "Submit" />
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section class = "answersContainer">
+
+                <h1>{{oneQuestion.numberOfAnswers}} answers</h1>
+                <section class = "empAnwserBox" ng-repeat = "answer in answers">
+
+                    <header>
+
+                        <div class = "ansEmpImg">
+
+                          <img data-ng-src="data:{{answer.employeeDetails.userAvatar.fileType}};base64,{{answer.employeeDetails.userAvatar.base64}}"
+                            src = "app-resources/imgs/defaultAvatar.png"/>
+
+                        </div>
+
+                        <div class = "ansEmpDetails">
+
+                            <section>
+
+                                <div>
+                                    <span>{{answer.employeeDetails.lastName}},</span><span>{{answer.employeeDetails.firstName}}</span><span>{{answer.employeeDetails.position}}</span>
+                                </div>
+
+                                <div>
+                                    <span>Date Answered {{answer.dateAnswered | date:'medium'}}</span>
+                                </div>
+
+                            </section>
+
+                        </div>
+
+                    </header>
+
+                    <article class = "innerAnsweredContent" data-ng-init = "convertHtml(answer.answer)">
+
+
+                    </article>
+
+                    <div class = "showCommentBox" ng-hide = "showCommentBoxButton == true">
+                        <div>
+
+                            <button ng-click = "showAllComment(answer.questionAnswerId)">Comment</button>
+
+                        </div>
+                    </div>
+
+                    <section class = "loadCommentInAnsQuest">
+
+                      <div class = "showCircleBoxAnsCom">
+                          <div class="showCircleBoxAnsCom ansQuesComCircleLoader">
+                            <svg class="circular" viewBox="25 25 50 50">
+                              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                            </svg>
+                      </div>
+
+                    </section>
+
+                    <footer class = "qAnswerCommentContent" ng-show = "showComment == true">
+
+                        <footer class = "qAnswerCommentContainer">
+
+                            <div class = "qAnswerCommentBox">
+
+                                <form name = "ansQuestionCommentForm" novalidate>
+                                    <div class = "feedQansComment">
+
+                                        <textarea class = "ansQuestComment" ng-model = "comment" comment name = "ansQuestComment"></textarea>
+
+                                    </div>
+
+                                    <div class = "feedQansCommentButton">
+                                        <input type = "submit" ng-disabled = "ansQuestionCommentForm.$invalid" ng-click = "submitComment(answer.questionAnswerId)" value = "Comment" />
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+                        </footer>
+
+                        <footer class = "empCommentResContainer" ng-repeat = "comment in comments | orderBy: '-date'" ng-hide = "hideComments == true">
+
+                          <div class = "empCommentResBox">
+
+                              <header class = "empCommentResHeader">
+                                  <h2>{{comment.employeeDetails.lastName}} {{comment.employeeDetails.firstName}}</h2>
+                                  <div>
+                                      <span>{{comment.dateCommented | date: 'medium'}}</span>
+                                  </div>
+                              </header>
+
+                              <div class = "empCommentBox">
+                                  <p>
+                                      {{comment.comment}}
+                                  </p>
+                              </div>
+
+                          </div>
+
+                        </footer>
+
+                        <footer class = "hideCommentsBoxButton">
+
+                            <div>
+                                <span ng-click = "showHideComments()">{{showHideMessage}}</span>
+                            </div>
+
+                        </footer>
+
+                    </footer>
+
+
+                </section>
+
+            </section>
+
+        </div>
+
+    </section>
+
+</div>

@@ -1,0 +1,851 @@
+<section id = "caMyProfileLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+
+<div id = "caEditPasswordPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "caEditPasswordForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Password">
+                    <input type = "password" name = "password" ng-model = "password" ng-maxlength = "20" ng-minlength = "6"
+                    ng-pattern = "/^[A-Za-z0-9_]{1,32}$/" required epassword/>
+                    <span type = "loading" ng-show = "caEditPasswordForm.password.$pending.epassword">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+
+                    <span type = "check" ng-show = "caEditPasswordForm.password.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "caEditPasswordForm.password.$invalid && caEditPasswordForm.password.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "caEditPasswordForm.password.$touched && caEditPasswordForm.password.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "caEditPasswordForm.password.$dirty && caEditPasswordForm.password.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                           <small ng-message = 'passInputError' ng-hide = "caEditPasswordForm.password.$error.required" style = "color: #e74c3c">
+
+                               <span>Password already exist</span>
+
+                           </small>
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "caEditPasswordForm.$invalid" ng-click = "updatePassword()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "caEditPositionPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "caEditPositionForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Postion">
+                    <input type = "text" name = "position" ng-model = "position" ng-maxlength = "20" ng-minlength = "6"
+                    ng-pattern = "/[a-zA-Z0-9\s]+/" required/>
+
+                    <span type = "check" ng-show = "caEditPositionForm.position.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "caEditPositionForm.position.$invalid && caEditPositionForm.position.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "caEditPositionForm.position.$touched && caEditPositionForm.position.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "caEditPositionForm.position.$dirty && caEditPositionForm.position.$error">
+
+                           <small ng-message = 'maxlength' style = "color: #e74c3c">
+
+                               Max 20 characters
+
+                           </small>
+
+                           <small ng-message = 'minlength' style = "color: #e74c3c">
+
+                              <span>minimum 6 characters</span>
+
+                           </small>
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Please enter valid characters
+
+                           </small>
+
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "caEditPositionForm.$invalid" ng-click = "updatePosition()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "caEditEmailPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "caEditEmailForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Email">
+                    <input type = "text" name = "email" ng-model = "email" ng-pattern = "/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" required/>
+
+                    <span type = "check" ng-show = "caEditEmailForm.email.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "caEditEmailForm.email.$invalid && caEditEmailForm.email.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "caEditEmailForm.email.$touched && caEditEmailForm.email.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "caEditEmailForm.email.$dirty && caEditEmailForm.email.$error">
+
+
+                           <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                               Enter a valid email
+
+                           </small>
+
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "caEditEmailForm.$invalid" ng-click = "updateEmail()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "caEditContactNumPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "caEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "caEditConNumForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+                <p type = "Contact Number">
+                    <input type = "text" name = "contactNumber" ng-model = "contactNumber" ng-pattern = "/[\+()]*(?:\d[\s\-\.()xX]*){10,14}/"
+                     required/>
+
+                    <span type = "check" ng-show = "caEditConNumForm.contactNumber.$valid">
+                        <img src = "app-resources/imgs/check.png" class = "saFormImg"/>
+                    </span>
+
+                    <span type = "ekis" ng-show = "caEditConNumForm.contactNumber.$invalid && caEditConNumForm.contactNumber.$dirty">
+                        <img src = "app-resources/imgs/ekis.png" class = "saFormImg"/>
+                    </span>
+                    <div class = "saEditUserErrorBox">
+                        <div title = "error" ng-messages = "caEditConNumForm.contactNumber.$touched && caEditConNumForm.contactNumber.$error">
+
+                            <small ng-message = "required" style = "color: #e74c3c">
+
+                                   Required
+
+                            </small>
+
+                        </div>
+
+                        <div title = "error" ng-messages = "caEditConNumForm.contactNumber.$dirty && caEditConNumForm.contactNumber.$error">
+
+                          <small ng-message = 'pattern' style = "color: #e74c3c">
+
+                              Enter a valid phone number
+
+                          </small>
+
+                         </div>
+
+                   </div>
+
+                </p>
+            </section>
+
+            <footer>
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "saEditFirstnameForm.$invalid" ng-click = "updateFirstname()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div class = "caEditGenderPop" id = "caEditGenderPop">
+
+    <section class = "editUserDetailsPopCon">
+
+        <header>
+            <img id = "saEditUnameEkis" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()"/>
+        </header>
+
+        <form name = "caEditGenderForm" class = "saEditUserForm" novalidate>
+
+            <section class = "editInputBox">
+              <p type = "Gender">
+
+                  <div class = "detailsGenderBox">
+
+                    <div class = "radio">
+                      <input id = "radio-1" ng-model = "gender" name = "radio" type = "radio" value = "Male" checked>
+                      <label for = "radio-1" class = "radio-label">Male</label>
+                    </div>
+
+                    <div class = "radio">
+                      <input id = "radio-2" ng-model = "gender" name = "radio" value = "Female" type = "radio">
+                      <label  for = "radio-2" class = "radio-label">Female</label>
+                    </div>
+
+                  </div>
+
+
+              </p>
+            </section>
+
+            <footer class = "caGenderFooter">
+                <div>
+                    <button ng-click = "cancelEdit()">Cancel</button>
+                </div>
+
+                <div>
+                    <input type = "submit" ng-disabled = "caEditGenderForm.$invalid" ng-click = "updateGender()" value = "Submit" />
+                </div>
+            </footer>
+        </form>
+
+    </section>
+
+</div>
+
+<div id = "caEditAvatar">
+  <div class = "logLoadingCon">
+
+      <div class = "logLoading" ng-show = "logLoading == true"></div>
+
+  </div>
+    <section = class = "editAvatarPopBox">
+
+        <header class = "editAvatarHeader">
+            <img id = "caEditAvatar" class = "caEditUserEkis" src = "app-resources/imgs/close.png" ng-click = "cancelEdit()" />
+        </header>
+
+        <div class = "avatarPopContainer">
+
+            <form class = "uploadAvatarForm">
+
+                <div class = "avatarPopBox">
+
+                    <img data-ng-src="data:{{formParams.userAvatar.filetype }};base64,{{formParams.userAvatar.base64}}"
+                      src = "app-resources/imgs/defaultAvatar.png"/>
+
+                </div>
+                <section class = "avatarUploadInputBox">
+
+                    <div class = "avatarUploadButton">
+
+                        <div class="col-lg-6 col-sm-6 col-12">
+                            <label class="btn btn-primary">
+                                Browse&hellip; <input type = "file" ng-model = "formParams.userAvatar" style = "display: none;" base-sixty-four-input />
+                            </label>
+                        </div>
+
+                    </div>
+
+
+                </section>
+                <footer class = "updateAvatarPopButton">
+                    <div class = "avatarCancelButton">
+                        <button ng-click = "cancelEdit()">Cancel</button>
+                    </div>
+
+                    <div class = "avatarSubmitButton">
+                        <input type = "submit" ng-click = "uploadProfilePic()" value = "Submit" />
+                    </div>
+                </footer>
+
+            </form>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+<header class = "mainHeader" ng-show = "showMyProfile == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "uiViewContainer" ng-show = "showMyProfile == true">
+
+    <div class = "myProfileContainer boxShadow">
+
+      <section class = "editUserContainer">
+
+          <section class = "userAvatarBox">
+              <div class = "avatarContent">
+                  <img data-ng-src="data:{{avatar.fileType}};base64,{{avatar.base64}}"
+                   src = "app-resources/imgs/defaultAvatar.png" title = "Your picture" ng-click = "showAvatarPop()" />
+                   <div>
+                      <span>Change</span>
+                   </div>
+              </div>
+          </section>
+
+          <header class = "edutUserHeader">
+
+             <h1><span style = "font-size: 80%">Account settings</span></h1>
+
+          </header>
+
+          <div class = "editUserContent">
+
+              <div class = "saEditLabel">
+                  <span>Password</span>
+              </div>
+
+              <div class = "saEditButton">
+                  <span ng-click = "showPasswordPop()">Edit Password</span>
+              </div>
+
+          </div>
+
+          <div class = "editUserContent">
+
+              <div class = "saEditLabel">
+                  <span>Position</span>
+              </div>
+
+              <div class = "saUserData">
+                  <span>{{empDetails.position}}</span>
+              </div>
+
+              <div class = "saEditButton">
+                  <span id = "saEdiUsernameBut" ng-click = "showPositionPop()">Edit Position</span>
+              </div>
+
+          </div>
+
+          <div class = "editUserContent">
+
+              <div class = "saEditLabel">
+                  <span>Email</span>
+              </div>
+
+              <div class = "saUserData">
+                  <span>{{empDetails.email}}</span>
+              </div>
+
+              <div class = "saEditButton">
+                  <span ng-click = "showEmailPop()">Edit Email</span>
+              </div>
+
+          </div>
+
+          <div class = "editUserContent">
+
+              <div class = "saEditLabel">
+                  <span>Contact Number</span>
+              </div>
+
+              <div class = "saUserData">
+                  <span>{{empDetails.contactNumber}}</span>
+              </div>
+
+              <div class = "saEditButton">
+                  <span ng-click = "showContactPop()">Edit Contact Number</span>
+              </div>
+
+          </div>
+
+          <div class = "editUserContent">
+
+              <div class = "saEditLabel">
+                  <span>Gender</span>
+              </div>
+
+              <div class = "saUserData">
+                  <span>{{empDetails.gender}}</span>
+              </div>
+
+              <div class = "saEditButton">
+                  <span ng-click = "showGenderPop()">Edit Gender</span>
+              </div>
+
+          </div>
+
+      </section>
+
+    </div>
+
+</div>
+
+<aside class = "rightSideBar">
+
+</aside>
+
+<!-- <div class = "uiViewContainer">
+
+
+    <div class = "myProfileContainer boxShadow">
+
+       <div class = "profileBanner">
+
+            <div class = "leftBanner">
+
+                <div class = "myProfileImgCon">
+
+                <form>
+
+                    <div>
+
+                      <input type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc"/>
+
+                    </div>
+
+                    <div>
+
+                        <input type = "button" value = "Select picture" />
+
+                    </div>
+
+                </form>
+
+                    <img ng-src = "{{imageSrc}}" title = "Change your profile image"/>
+
+                </div>
+
+                <div class = "leftBannerDescription" ng-click = "showFirstForm()">
+
+                    <h1>Peter Parker</h1>
+                    <span class = "lBannerPos">Position</span>
+                    <span>Campaign Admin</span>
+                </div>
+
+            </div>
+
+
+
+            <div class = "rightBanner">
+
+                <table class = "rightBannerTable" ng-click = "showSecondForm()">
+
+                   <tbody>
+
+                        <tr>
+                            <td>Location</td>
+                            <td>Manila</td>
+                        </tr>
+
+                        <tr>
+                            <td>Age</td>
+                            <td>24</td>
+                        </tr>
+
+                        <tr>
+                            <td>Date hired</td>
+                            <td>7/28/98</td>
+                        </tr>
+
+                        <tr>
+                            <td>Year experience</td>
+                            <td>5</td>
+                        </tr>
+
+                   </tbody>
+
+
+
+                </table>
+
+            </div>
+
+            <div class = "clear"></div>
+
+            <div class = "editTextContainer">
+
+                <div class = "editContainer userProfEditCon">
+
+                    <span>Edit</span>
+
+                </div>
+
+                <div class = "editContainer userProfEditCon2">
+
+                    <span>Edit</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class = "editProfile" ng-show = "firstFormActive == true">
+
+            <div class = "formProfileCon">
+
+                <form name = "firstProfForm" class = "myProfileForm" method = "POST">
+
+                    <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+                            <label>Last name</label>
+                        </div>
+
+                        <input type = "text" placeholder = "Your last name"/>
+
+                    </div>
+
+                     <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+                            <label>First name</label>
+                        </div>
+
+                        <input type = "text" placeholder = "Your first name"/>
+
+                    </div>
+
+                     <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+
+                            <label>Position</label>
+
+                        </div>
+
+                        <input type = "text" placeholder = "Your position"/>
+
+                    </div>
+
+                    <div class = "formButtons">
+
+                        <span ng-click = "hideFirstForm()">
+                            Cancel
+                        </span>
+
+                        <input type = "submit" value = "Save"/>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class = "editProfile" ng-show = "secondFormActive == true">
+
+            <div class = "formProfileCon">
+
+                <form name = "secondProfForm" class = "myProfileForm" method = "POST">
+
+                    <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+                            <label>Location</label>
+                        </div>
+
+                        <input type = "text" placeholder = "Your location"/>
+
+                    </div>
+
+                     <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+                            <label>Age</label>
+                        </div>
+
+                        <input type = "number" min = "1" max = "100" oninput = "validity.valid||(value='');" placeholder = "Your age"/>
+
+                    </div>
+
+                     <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+
+                            <label>Date hired</label>
+
+                        </div>
+
+                        <input type = "date"/>
+
+                    </div>
+
+                    <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+
+                            <label>Years experience</label>
+
+                        </div>
+
+                        <input type = "number" min = "1" max = "100" oninput = "validity.valid||(value='');"/>
+
+                    </div>
+
+                    <div class = "formButtons">
+
+                        <span ng-click = "hideSecondForm()">
+                            Cancel
+                        </span>
+
+                        <input type = "submit" value = "Save"/>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class = "aboutContainer" ng-click = "showThirdForm()">
+
+            <h1>About</h1>
+
+            <p>
+                What Goes in a Paragraph? A paragraph is a brief piece of writing that's around seven to ten sentences long. It has a topic sentence and supporting sentences that all relate closely to the topic sentence. The paragraph form refers to its overall structure, which is a group of sentences focusing on a single topic.
+            </p>
+
+            <div class = "editTextBox">
+                <span>Edit</span>
+            </div>
+
+        </div>
+
+        <div class = "editProfile" ng-show = "thirdFormActive == true">
+
+            <div class = "formProfileCon">
+
+                <form name = "firstProfForm" method = "POST">
+
+                    <div class = "formInputBox">
+
+                        <div class = "formLabelBox">
+                            <label>About me</label>
+                        </div>
+
+                        <textarea></textarea>
+
+                    </div>
+
+
+                    <div class = "formButtons">
+
+                        <span ng-click = "hideThirdForm()">
+                            Cancel
+                        </span>
+
+                        <input type = "submit" value = "Save"/>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class = "activitiesContainer">
+
+           <h1>Activities</h1>
+
+
+            <table class = "profileActTable">
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Articles</td>
+                        <td>14</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Answered</td>
+                        <td>10</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ask</td>
+                        <td>5</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class = "userProfCampaignList">
+
+            <h1>Campaigns</h1>
+
+            <span>The Avengers</span>
+            <span>The Avengers</span>
+            <span>The Avengers</span>
+            <span>The Avengers</span>
+            <span>The Avengers</span>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<aside class = "rightSideBar">
+
+</aside> -->

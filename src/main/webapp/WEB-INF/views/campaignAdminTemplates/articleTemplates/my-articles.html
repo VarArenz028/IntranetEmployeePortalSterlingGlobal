@@ -1,0 +1,189 @@
+<section id = "caMyArticleLoader" class = "globalPageLoader" style = "display: none">
+
+    <div class = "showCirlcebox">
+        <div class="circleLoader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+    </div>
+
+</section>
+
+
+<div id = "caDeleteArticle">
+
+    <div class = "editCategoryForm" ng-cloak>
+
+      <header>
+
+          <img id = "newUserEkis" src = "app-resources/imgs/close.png" ng-click = "closeDeletePop();" ng-hide = "hideCloseButton == true"/>
+
+      </header>
+
+        <form name = "deleteCategoryForm" novalidate>
+
+            <section ng-switch on = "details" ng-class = "{forward: direction, backward:!direction}">
+
+                <div title = "switch2" class = "newUserSwitch" ng-switch-default>
+
+                    <section>
+
+                        <h1>Are you sure to delete Article {{title}}?</h1>
+
+                    </section>
+
+                    <footer>
+
+                          <div title = "Cancel">
+
+                              <button ng-click = "closeDeletePop();">Cancel</button>
+
+                          </div>
+
+                          <div title = "Next">
+
+                              <input ng-click = "inactiveArticle();"  type = "button" value = "Delete"/>
+
+                          </div>
+
+                    </footer>
+
+                </div>
+
+                <div title = "switch" class = "newUserSwitch" ng-switch-when = "details2" style = "height: 100%;">
+
+                    <div class = "updateCategorySuccessBox">
+
+                        <div class = "updateCategoryImgBox">
+
+                            <img src = "app-resources/imgs/success.png" />
+
+                        </div>
+
+                        <div class = "updateCategorySuccessMessage">
+
+                            <h1>Successfully deleted</h1>
+
+                        </div>
+
+                    </div>
+                    <footer class = "upCatLastSwitchFooter" ng-click = "closeDeletePop();">
+                        <span>Close</span>
+                    </footer>
+
+                </div>
+
+            </section>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<header class = "mainHeader" ng-show = "showMyArticles == true">
+    <div class = "mainHeaderBox">
+
+        <div class = "searchContainer">
+            <form class = "wideSearchForm">
+                <div class = "searchBox">
+                    <input class="form-control" type = "text" ng-model = "wideSearch" placeholder = "Search">
+                </div>
+
+                <div class = "wideSearchButton">
+                    <button type = "submit" class="btn btn-light" ng-click = "goSearch()"><span class = "glyphicon glyphicon-search"></span></button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class = "notificationBox">
+
+        </div>
+
+    </div>
+</header>
+
+<div class = "wideViewContainer" ng-show = "showMyArticles == true">
+
+    <div class = "myArticleHeader boxShadow">
+
+        <div class = "articleHeaderBox">
+
+            <span ng-click = "article()">Compose new article?</span>
+
+        </div>
+
+    </div>
+
+    <div class = "myArticleContainer">
+
+       <div class = "countSearchBox">
+
+           <div class = "dataCountBox">
+
+               <span>{{responsed.numberOfArticles}} Articles</span>
+
+           </div>
+
+           <div class = "searchBox">
+
+               <input type = "text" id = "searchNewArticle" ng-model = "search" placeholder = "Search"/>
+
+           </div>
+
+       </div>
+
+        <div class = "myArticles" ng-repeat = "article in articles | startFrom: (currentPage - 1) * pageSize | limitTo: pageSize | orderBy: '-date' | filter: search">
+
+            <div class = "myArticleTitleBox">
+
+                <span class = "caArticleTitle" ng-click = "oneArticle(article.articleId)">{{article.title}}</span>
+
+            </div>
+
+            <div class = "optionBox">
+
+                <!-- <div class = "editOption">
+                    <span ng-click = "showEditCategory(category.categoryName)" class = "glyphicon glyphicon-edit"></span>
+                </div> -->
+
+                <div class = "deleteOption">
+                    <span ng-click = "showDeleteArticle(article.articleId)" class = "glyphicon glyphicon-trash"></span>
+                </div>
+
+            </div>
+
+
+            <div class = "myArticleDetailsBox">
+
+                <div class = "myArticleCategoryTypeBox">
+
+                    <span>{{article.category}}</span>
+
+                </div>
+
+                <div class = "articleDetailsDiv">
+
+                    <!-- <span>Created {{article.localDateCreated.monthOfYear}}/{{article.localDateCreated.dayOfMonth}}/{{article.localDateCreated.year}}</span>
+                    <span>Views 100</span> -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class = "paginationContainer" style = "padding-top: 3%;">
+
+            <ul uib-pagination="" total-items="articles.length" ng-model="currentPage" items-per-page="pageSize" class="ng-pristine ng-untouched ng-valid ng-not-empty"></ul>.
+
+        </footer>
+
+    </div>
+
+
+
+</div>

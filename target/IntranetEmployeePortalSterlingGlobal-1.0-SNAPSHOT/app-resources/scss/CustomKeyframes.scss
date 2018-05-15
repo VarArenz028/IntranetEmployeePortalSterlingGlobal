@@ -1,0 +1,114 @@
+/*    loading animation*/
+@keyframes loading
+{
+    0%
+    {
+        transform: translateX(0) scaleX(0);
+        transform-origin: left;
+    }
+    45%
+    {
+        transform: translateX(0) scaleX(1);
+        transform-origin: left;
+    }
+    50%
+    {
+        transform: translateX(0) scaleX(1);
+        transform-origin: right;
+    }
+    100%
+    {
+       transform: translateX(0) scaleX(0);
+        transform-origin: right;
+    }
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter
+{
+    from
+    {
+        background: #5264AE;
+    }
+    to
+    {
+        width: 0;
+        background: transparent;
+    }
+}
+@-moz-keyframes inputHighlighter
+{
+	from
+    {
+        background: #5264AE;
+    }
+    to
+    {
+        width: 0;
+        background: transparent;
+    }
+}
+@keyframes inputHighlighter
+{
+	from
+    {
+        background: #5264AE;
+    }
+    to
+    {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes drop
+{
+    0%
+    {
+        opacity: 0;
+    }
+    75%
+    {
+        transform: translateY(800px);
+    }
+    100%
+    {
+        transform: translateY(760px);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce
+{
+    0%, 50%, 100%
+    {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    25%
+    {
+        -webkit-transform: translateY(-15px);
+        -moz-transform: translateY(-15px);
+        -o-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes drop
+{
+    0%
+    {
+        opacity: 0;
+    }
+    75%
+    {
+        transform: translateY(800px);
+    }
+    100%
+    {
+        transform: translateY(760px);
+        opacity: 1;
+    }
+}

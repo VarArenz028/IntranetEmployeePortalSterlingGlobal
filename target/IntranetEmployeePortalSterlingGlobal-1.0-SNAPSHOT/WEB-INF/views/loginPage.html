@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app = "sterling">
+    <head>
+
+        <title>Welcome to Sterling Global Employee Portal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel = "stylesheet" href = "app-resources/css/intranet.css" type = "text/css"/>
+
+        <script type = "text/javascript" src = "app-resources/lib/angular.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-ui-router.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-animate.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-cookies.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-messages.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-resource.js"></script>
+        <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-base64-upload.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/sterlingApp.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/controllers/login-page-controllers.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/services/login-services.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/directives/login-page-directives.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/jquery-1.12.0.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/jQueryAnimations/login-page-script.js"></script>
+
+    </head>
+    <body class = "body">
+
+        <div ui-view class = "logViewTemplate logPageAnimation"></div>
+        <div ui-view = "yourDetails" class = "empDetailsLayout logPageAnimation"></div>
+
+    </body>
+</html>

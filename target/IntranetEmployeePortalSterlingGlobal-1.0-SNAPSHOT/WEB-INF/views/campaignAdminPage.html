@@ -1,0 +1,204 @@
+<!DocType html>
+<html ng-app = "sterling">
+    <head>
+        <title>Campaign Admin Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link rel = "stylesheet" href = "app-resources/css/intranet.css" type = "text/css"/>
+        <link rel = "stylesheet" href = "app-resources/css/owl.carousel.css" type = "text/css"/>
+        <link rel = "stylesheet" href = "app-resources/css/owl.carousel.css" type = "text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-carousel/1.1.0/angular-carousel.min.css">
+
+
+        <script type = "text/javascript" src = "app-resources/lib/jquery-1.12.0.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+
+
+        <script type = "text/javascript" src = "app-resources/lib/angular.min.js"></script>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-ui-router.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-animate.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-cookies.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-resource.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-messages.js"></script>
+        <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.min.js"></script>
+        <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.9/angular-touch.min.js"></script>
+        <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/angular-carousel/1.1.0/angular-carousel.min.js"></script>
+
+
+
+        <!-- <script type = "text/javascript" src = "app-resources/lib/angular-local-storage.js"></script> -->
+        <script type = "text/javascript" src = "app-resources/lib/ngStorage.min.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/angular-base64-upload.min.js"></script>
+
+        <!-- <script type = "text/javascript" src = "app-resources/lib/bootstrap.min.js"></script> -->
+        <script type = "text/javascript" src = "app-resources/lib/owl.carousel.js"></script>
+        <script type = "text/javascript" src = "app-resources/lib/wow.min.js"></script>
+
+        <script type = "text/javascript" src = "app-resources/js/jQueryAnimations/campaign-admin-script.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/sterlingApp.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/controllers/campaign-admin-controllers.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/services/campaign-admin-resources.js"></script>
+        <script type = "text/javascript" src = "app-resources/js/app/directives/campaign-admin-directives.js"></script>
+
+        <!-- <script type = "text/javascript" src = "app-resources/lib/require.js"></script> -->
+        <script type = "text/javascript" src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+
+        <!-- <script src = "app-resources/js/javascriptSupport/bootstrap-select.js"></script> -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> -->
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type = "text/css">
+
+        <script src = "app-resources/js/javascriptSupport/summernoteImpl.js" type = "application/javascript"></script>
+        <script type = "text/javascript" src = "app-resources/lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+    </head>
+    <body class = "body">
+
+       <section class = "mainWrapper">
+
+           <div class = "search-page-background"></div>
+
+           <aside class = "sideBar" ng-controller = "campaignAdminPageController" ng-init = "init()">
+
+               <div class = "campaignNameBox">
+                   <h1>{{campaign}}</h1>
+               </div>
+
+               <div class = "profileImgCon">
+
+                 <img data-ng-src="data:{{avatarFileType}};base64,{{avatarBase64}}" src = "app-resources/imgs/defaultAvatar.png" ng-init = "initAvatar()"/>
+
+                   <span>{{empName}}</span>
+                   <span>Campaign Admin</span>
+               </div>
+
+
+               <nav class = "pageNavCaAdmin">
+
+                    <div class = "pageNavBox">
+
+                       <ul>
+
+                           <li class = "pageNavLi" ng-click = "newsFeed()"><span>News Feed</span></li>
+                           <li class = "pageNavLi" ng-click = "dashboard()"><span>Overview</span></li>
+                           <li class = "pageNavLi" id = "article"><span>Articles</span></li>
+
+                           <li class = "articleList">
+
+                               <a ng-click = "allArticle()">All Articles</a>
+                               <a ng-click = "myArticles()">My Articles</a>
+                               <a ng-click = "categories()">Categories</a>
+                               <a ng-click = "pendingArticles()">Pending Articles</a>
+                               <a ng-click = "myDraftArticles()">Drafts</a>
+
+                           </li>
+
+                           <li class = "pageNavLi" id = "news"><span>News</span></li>
+                           <li class = "newsList">
+
+                               <a ng-click = "allNews()">All News</a>
+                               <a ng-click = "draftNews()">Drafts</a>
+
+                           </li>
+                           <li class = "pageNavLi" ng-click = "events()"><span>Events</span></li>
+                           <li class = "pageNavLi" id = "forums">
+
+                               <span>Questions</span>
+
+                           </li>
+
+                           <li class = "forumnList">
+
+                               <a ng-click = "allQuestion()">All Questions</a>
+                               <a ng-click = "myQuestions()">My Questions</a>
+
+                           </li>
+
+                           <li class = "pageNavLi" ng-click = "people()"><span>People</span></li>
+                           <li class = "pageNavLi" ng-click = "myProfile()"><span>My Profile</span></li>
+                           <li class = "pageNavLi" ng-click = "logout()"><span>Logout</span></li>
+
+                       </ul>
+
+                    </div>
+
+
+               </nav>
+
+           </aside>
+
+           <div class = "clear"></div>
+
+           <div class = "tempsContainer">
+
+              <div class = "tempsBox">
+
+                  <div class = "uiContainer" ng-cloak>
+
+                      <div ui-view = "newsFeed" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "search" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "dashboard" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "showNewsFeedArticle" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "showNewsFeedQuestion" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "news-feed-article" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "allArticles" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "new-articles" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "my-articles" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "showArticle" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "viewPendingArticle" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "myDraftArticles" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "article" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "pendingArticles" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "allNews" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "showNews" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "createNews" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "draftNews" class = "ui-views-desktop" ng-cloak></div>
+                      <div ui-view = "events" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "all-question" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "question-feed" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "new-questions" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "my-questions" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "people" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "my-profile" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "articleCategories" class = "ui-views" ng-cloak></div>
+                      <div ui-view = "manageCategories" class = "ui-views" ng-cloak></div>
+
+<!--
+                      <aside class = "rightSideBar">
+
+                      </aside> -->
+
+
+                  </div>
+
+              </div>
+
+           </div>
+           <!-- <section class = "artlceWritingContainer" ng-controller = "campaignAdminPageController">
+
+
+           </section> -->
+
+       </section>
+
+    </body>
+</html>
